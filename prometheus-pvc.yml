@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+ labels:
+   app: prometheus
+   prometheus: k8s
+ name: prometheus
+ namespace: monitoring
+ annotations:
+   volume.beta.kubernetes.io/storage-class: glusterfs-storage
+spec:
+ accessModes:
+  - ReadWriteOnce
+ resources:
+   requests:
+     storage: 10Gi
