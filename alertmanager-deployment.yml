@@ -38,6 +38,8 @@ spec:
           mountPath: /etc/alertmanager-templates
         - name: alertmanager
           mountPath: /alertmanager
+      nodeSelector:
+        glusterfs: 'false'
       volumes:
       - name: config-volume
         configMap:
