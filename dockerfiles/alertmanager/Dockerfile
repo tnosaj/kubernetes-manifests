@@ -8,6 +8,7 @@ RUN mkdir /etc/alertmanager
 RUN cp alertmanager      /bin/alertmanager
 RUN cp alertmanager.yml  /etc/alertmanager/config.yml
 RUN cp amtool            /bin/amtool
+RUN rm /root/*
 
 EXPOSE     9093
 VOLUME     [ "/alertmanager" ]
