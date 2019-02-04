@@ -21,7 +21,7 @@ spec:
       - args:
         - --config.file=/etc/prometheus/config/prometheus.yml
         - --storage.tsdb.path=/prometheus/
-        - --storage.tsdb.retention=7d
+        - --storage.tsdb.retention=3d
         - --web.listen-address=:9090
         - --web.enable-lifecycle
         - --log.level=info
@@ -69,6 +69,7 @@ spec:
           name: prometheus-storage-volume
       dnsPolicy: ClusterFirst
       nodeSelector:
+        glusterfs: 'true'
         node-role.kubernetes.io/worker: worker
       restartPolicy: Always
       schedulerName: default-scheduler

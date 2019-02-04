@@ -8,6 +8,10 @@ metadata:
     component: core
 spec:
   replicas: 1
+  selector:
+    matchLabels:
+      app: grafana
+      component: core
   template:
     metadata:
       labels:
@@ -43,6 +47,8 @@ spec:
           volumeMounts:
           - name: grafana-persistent-storage
             mountPath: /var/lib/grafana
+      nodeSelector:
+        glusterfs: 'true'
       volumes:
       - name: config-volume
         configMap:
