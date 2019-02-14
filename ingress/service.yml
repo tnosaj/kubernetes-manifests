@@ -6,13 +6,12 @@ metadata:
   namespace: ingress-nginx
 spec:
   ports:
-  - name: http
-    port: 80
-    protocol: TCP
-  - name: https
-    port: 443
-    protocol: TCP
+  - port: 443
+    name: https
+    targetPort: 443
+  - port: 80
+    name: http
+    targetPort: 80
+  type: LoadBalancer
   selector:
     app: ingress-nginx
-  externalIPs:
-    - 192.168.1.31

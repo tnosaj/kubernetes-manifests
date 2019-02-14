@@ -20,6 +20,9 @@ data:
         - targets:
           - "alertmanager.monitoring.svc:9093"
     scrape_configs:
+      - job_name: 'dlan'
+        static_configs:
+          - targets: ['192.168.1.34:8080']
       - job_name: 'router'
         static_configs:
           - targets: ['192.168.1.1:9100']

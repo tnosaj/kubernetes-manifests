@@ -1,0 +1,15 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: prometheus
+  namespace: monitoring
+  annotations:
+    kubernetes.io/ingress.class: nginx
+spec:
+  rules:
+  - host: alertmanager.tevnan.io
+    http:
+      paths:
+      - backend:
+          serviceName: alertmanager
+          servicePort: 9093
