@@ -1,0 +1,56 @@
+---
+kind: PersistentVolume
+apiVersion: v1
+metadata:
+  name: task-pv-volume1
+  labels:
+    type: local
+spec:
+  storageClassName: manual1
+  capacity:
+    storage: 10Gi
+  accessModes:
+    - ReadWriteOnce
+  nfs:
+    server: 192.168.1.1
+    path: "/mnt/grafana"
+---
+kind: PersistentVolume
+apiVersion: v1
+metadata:
+  name: task-pv-volume2
+  labels:
+    type: local
+spec:
+  storageClassName: manual2
+  capacity:
+    storage: 10Gi
+  accessModes:
+    - ReadWriteOnce
+  nfs:
+    server: 192.168.1.1
+    path: "/mnt/prometheus"
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: task-pv-claim-1
+spec:
+  storageClassName: manual1
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 3Gi
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: task-pv-claim-2
+spec:
+  storageClassName: manual2
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 3Gi

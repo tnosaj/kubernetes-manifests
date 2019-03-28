@@ -1,0 +1,20 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: dlan-sm
+  namespace: monitoring
+  labels:
+    k8s-app: dlan-exporter
+    prometheus: kube-prometheus
+spec:
+  targetLabels:
+  - location
+  selector:
+    matchLabels:
+      k8s-app: dlan-exporter
+  namespaceSelector:
+    matchNames:
+    - monitoring
+  endpoints:
+  - port: http
+    interval: 30s

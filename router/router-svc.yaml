@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+  labels:
+    app: node-exporter
+    k8s-app: node-exporter
+  name: router-node-exporter
+  namespace: monitoring
+spec:
+  ports:
+  - name: http
+    protocol: TCP
+    port: 9101
+    targetPort: 9101
