@@ -15,7 +15,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "id": 10,
+  "id": 12,
   "links": [],
   "panels": [
     {
@@ -81,7 +81,7 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "(sum(up{job=\"apiserver\"} == 1) / sum(up{job=\"apiserver\"})) * 100",
+          "expr": "(sum(up{job=\"kubernetes-apiservers\"} == 1) / sum(up{job=\"kubernetes-apiservers\"})) * 100",
           "format": "time_series",
           "intervalFactor": 2,
           "refId": "A",
@@ -165,7 +165,7 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "(sum(up{job=\"kube-controller-manager\"} == 1) / sum(up{job=\"kube-controller-manager\"})) * 100",
+          "expr": "(sum(up{kubernetes_name=\"kube-controller-manager\"} == 1) / sum(up{kubernetes_name=\"kube-controller-manager\"})) * 100",
           "format": "time_series",
           "intervalFactor": 2,
           "refId": "A",
@@ -249,7 +249,7 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "(sum(up{job=\"kube-scheduler\"} == 1) / sum(up{job=\"kube-scheduler\"})) * 100",
+          "expr": "(sum(up{kubernetes_name=\"kube-scheduler\"} == 1) / sum(up{kubernetes_name=\"kube-scheduler\"})) * 100",
           "format": "time_series",
           "intervalFactor": 2,
           "refId": "A",
@@ -403,7 +403,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum by(verb) (rate(apiserver_latency_seconds:quantile[5m]) >= 0)",
+          "expr": "sum by(verb) (rate(apiserver_request_latencies_summary[5m]) >= 0)",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "",
@@ -494,7 +494,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "cluster:scheduler_e2e_scheduling_latency_seconds:quantile",
+          "expr": "scheduler_e2e_scheduling_latency_microseconds_sum",
           "format": "time_series",
           "intervalFactor": 2,
           "refId": "A",
@@ -643,7 +643,7 @@
     "list": []
   },
   "time": {
-    "from": "now-6h",
+    "from": "now-30m",
     "to": "now"
   },
   "timepicker": {
@@ -673,5 +673,5 @@
   },
   "timezone": "browser",
   "title": "Kubernetes Control Plane Status",
-  "version": 1
+  "version": 3
 }

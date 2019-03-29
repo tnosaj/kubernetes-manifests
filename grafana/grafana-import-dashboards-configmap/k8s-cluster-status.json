@@ -15,7 +15,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "id": 9,
+  "id": 11,
   "links": [],
   "panels": [
     {
@@ -270,7 +270,8 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "(sum(up{job=\"apiserver\"} == 1) / count(up{job=\"apiserver\"})) * 100",
+          "$$hashKey": "object:1348",
+          "expr": "(sum(up{job=\"kubernetes-apiservers\"} == 1) / count(up{job=\"kubernetes-apiservers\"})) * 100",
           "format": "time_series",
           "intervalFactor": 2,
           "refId": "A",
@@ -352,7 +353,8 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "(sum(up{job=\"kube-controller-manager\"} == 1) / count(up{job=\"kube-controller-manager\"})) * 100",
+          "$$hashKey": "object:1396",
+          "expr": "(sum(up{kubernetes_name=\"kube-controller-manager\"} == 1) / count(up{kubernetes_name=\"kube-controller-manager\"})) * 100",
           "format": "time_series",
           "intervalFactor": 2,
           "refId": "A",
@@ -434,7 +436,8 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "(sum(up{job=\"kube-scheduler\"} == 1) / count(up{job=\"kube-scheduler\"})) * 100",
+          "$$hashKey": "object:1444",
+          "expr": "(sum(up{kubernetes_name=\"kube-scheduler\"} == 1) / count(up{kubernetes_name=\"kube-scheduler\"})) * 100",
           "format": "time_series",
           "intervalFactor": 2,
           "refId": "A",
@@ -611,7 +614,8 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "sum(100 - (avg by (instance) (rate(node_cpu{job=\"node-exporter\",mode=\"idle\"}[5m])) * 100)) / count(node_cpu{job=\"node-exporter\",mode=\"idle\"})",
+          "$$hashKey": "object:1589",
+          "expr": "sum(100 - (avg by (instance) (rate(node_cpu_seconds_total{kubernetes_pod_name=~\"node-exporter.*\",mode=\"idle\"}[5m])) * 100)) / count(node_cpu_seconds_total{kubernetes_pod_name=~\"node-exporter.*\",mode=\"idle\"})",
           "format": "time_series",
           "intervalFactor": 2,
           "refId": "A",
@@ -693,7 +697,8 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "((sum(node_memory_MemTotal) - sum(node_memory_MemFree) - sum(node_memory_Buffers) - sum(node_memory_Cached)) / sum(node_memory_MemTotal)) * 100",
+          "$$hashKey": "object:1541",
+          "expr": "((sum(node_memory_MemTotal_bytes) - sum(node_memory_MemFree_bytes) - sum(node_memory_Buffers_bytes) - sum(node_memory_Cached_bytes)) / sum(node_memory_MemTotal_bytes)) * 100",
           "format": "time_series",
           "intervalFactor": 2,
           "refId": "A",
@@ -775,7 +780,8 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "(sum(node_filesystem_size{device!=\"rootfs\"}) - sum(node_filesystem_free{device!=\"rootfs\"})) / sum(node_filesystem_size{device!=\"rootfs\"})",
+          "$$hashKey": "object:1493",
+          "expr": "(sum(node_filesystem_size_bytes{device!=\"rootfs\"}) - sum(node_filesystem_free_bytes{device!=\"rootfs\"})) / sum(node_filesystem_size_bytes{device!=\"rootfs\"})",
           "format": "time_series",
           "intervalFactor": 2,
           "refId": "A",
@@ -885,7 +891,7 @@
     "list": []
   },
   "time": {
-    "from": "now-6h",
+    "from": "now-5m",
     "to": "now"
   },
   "timepicker": {
@@ -915,5 +921,5 @@
   },
   "timezone": "browser",
   "title": "Kubernetes Cluster Status",
-  "version": 1
+  "version": 4
 }
