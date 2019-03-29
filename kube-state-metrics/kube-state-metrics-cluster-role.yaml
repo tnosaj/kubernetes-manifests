@@ -16,6 +16,8 @@ rules:
   - persistentvolumes
   - namespaces
   - endpoints
+  - configmaps
+  - secrets
   verbs: ["list", "watch"]
 - apiGroups: ["extensions"]
   resources:
