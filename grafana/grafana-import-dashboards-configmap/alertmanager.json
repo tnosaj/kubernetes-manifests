@@ -2,6 +2,7 @@
   "annotations": {
     "list": [
       {
+        "$$hashKey": "object:3400",
         "builtIn": 1,
         "datasource": "-- Grafana --",
         "enable": true,
@@ -11,6 +12,7 @@
         "type": "dashboard"
       },
       {
+        "$$hashKey": "object:3401",
         "datasource": "$datasource",
         "enable": true,
         "expr": "changes(process_start_time_seconds{ instance=~\"$instance\"}[$__interval]) > 0",
@@ -28,8 +30,8 @@
   "editable": true,
   "gnetId": 9578,
   "graphTooltip": 1,
-  "id": 13,
-  "iteration": 1549242815824,
+  "id": 2,
+  "iteration": 1553866599270,
   "links": [
     {
       "icon": "doc",
@@ -100,6 +102,7 @@
         "rgba(237, 129, 40, 0.89)",
         "#d44a3a"
       ],
+      "datasource": "prometheus",
       "decimals": 0,
       "format": "short",
       "gauge": {
@@ -152,6 +155,7 @@
       "tableColumn": "",
       "targets": [
         {
+          "$$hashKey": "object:3498",
           "expr": "count(alertmanager_build_info{instance=~\"$instance\"})",
           "format": "time_series",
           "intervalFactor": 1,
@@ -180,6 +184,7 @@
         "rgba(237, 129, 40, 0.89)",
         "#d44a3a"
       ],
+      "datasource": "prometheus",
       "decimals": 0,
       "description": "Number of peers in the Alertmanager cluster.",
       "format": "none",
@@ -233,6 +238,7 @@
       "tableColumn": "",
       "targets": [
         {
+          "$$hashKey": "object:3571",
           "expr": "max(alertmanager_cluster_members{instance=~\"$instance\"})",
           "format": "time_series",
           "intervalFactor": 1,
@@ -261,6 +267,7 @@
         "rgba(237, 129, 40, 0.89)",
         "#d44a3a"
       ],
+      "datasource": "prometheus",
       "description": "Current number of active alerts.",
       "format": "none",
       "gauge": {
@@ -313,6 +320,7 @@
       "tableColumn": "",
       "targets": [
         {
+          "$$hashKey": "object:3644",
           "expr": "max(alertmanager_alerts{state=\"active\", instance=~\"$instance\"})",
           "format": "time_series",
           "intervalFactor": 1,
@@ -341,6 +349,7 @@
         "rgba(237, 129, 40, 0.89)",
         "#d44a3a"
       ],
+      "datasource": "prometheus",
       "description": "Current number of suppressed alerts.",
       "format": "none",
       "gauge": {
@@ -393,6 +402,7 @@
       "tableColumn": "",
       "targets": [
         {
+          "$$hashKey": "object:3717",
           "expr": "max(alertmanager_alerts{state=\"suppressed\", instance=~\"$instance\"})",
           "format": "time_series",
           "intervalFactor": 1,
@@ -421,6 +431,7 @@
         "rgba(237, 129, 40, 0.89)",
         "#d44a3a"
       ],
+      "datasource": "prometheus",
       "description": "Current number of active silences.",
       "format": "none",
       "gauge": {
@@ -473,6 +484,7 @@
       "tableColumn": "",
       "targets": [
         {
+          "$$hashKey": "object:3790",
           "expr": "max(alertmanager_silences{state=\"active\", instance=~\"$instance\"})",
           "format": "time_series",
           "intervalFactor": 1,
@@ -494,6 +506,7 @@
     },
     {
       "columns": [],
+      "datasource": "prometheus",
       "description": "Table containing list of Alertmanager instances showing it's version, up time, last reload time and if it was successful.",
       "fontSize": "90%",
       "gridPos": {
@@ -620,6 +633,7 @@
       ],
       "targets": [
         {
+          "$$hashKey": "object:3861",
           "expr": "time() - (alertmanager_build_info{instance=~\"$instance\"} * on (instance, cluster) group_left process_start_time_seconds{instance=~\"$instance\"})",
           "format": "table",
           "instant": true,
@@ -627,6 +641,7 @@
           "refId": "A"
         },
         {
+          "$$hashKey": "object:3862",
           "expr": "time() - alertmanager_config_last_reload_success_timestamp_seconds{instance=~\"$instance\"}",
           "format": "table",
           "instant": true,
@@ -634,6 +649,7 @@
           "refId": "B"
         },
         {
+          "$$hashKey": "object:3863",
           "expr": "alertmanager_config_last_reload_successful{instance=~\"$instance\"}",
           "format": "table",
           "instant": true,
@@ -660,14 +676,14 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "$datasource",
+          "datasource": "prometheus",
           "description": "Number of sent notifications to distinct integrations such as PagerDuty, Slack and so on. On negative axis are displayed failed notifications.",
           "fill": 1,
           "gridPos": {
             "h": 5,
             "w": 24,
             "x": 0,
-            "y": 7
+            "y": 12
           },
           "id": 118,
           "legend": {
@@ -697,9 +713,9 @@
           "repeatDirection": "h",
           "scopedVars": {
             "instance": {
-              "selected": false,
-              "text": "10.38.0.4:9093",
-              "value": "10.38.0.4:9093"
+              "selected": true,
+              "text": "10.39.0.4:9093",
+              "value": "10.39.0.4:9093"
             }
           },
           "seriesOverrides": [
@@ -714,6 +730,7 @@
           "steppedLine": false,
           "targets": [
             {
+              "$$hashKey": "object:4115",
               "expr": "sum(increase(alertmanager_notifications_total{instance=~\"$instance\"}[$__interval])) by (integration)",
               "format": "time_series",
               "intervalFactor": 1,
@@ -721,6 +738,7 @@
               "refId": "B"
             },
             {
+              "$$hashKey": "object:4116",
               "expr": "sum(increase(alertmanager_notifications_failed_total{instance=~\"$instance\"}[$__interval])) by (integration)",
               "format": "time_series",
               "interval": "",
@@ -775,13 +793,14 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
+          "datasource": "prometheus",
           "description": "Duration of notification sends in 0.99 and 0.9 quantiles per integration.",
           "fill": 0,
           "gridPos": {
             "h": 6,
             "w": 24,
             "x": 0,
-            "y": 12
+            "y": 17
           },
           "id": 115,
           "legend": {
@@ -811,9 +830,9 @@
           "repeatDirection": "h",
           "scopedVars": {
             "instance": {
-              "selected": false,
-              "text": "10.38.0.4:9093",
-              "value": "10.38.0.4:9093"
+              "selected": true,
+              "text": "10.39.0.4:9093",
+              "value": "10.39.0.4:9093"
             }
           },
           "seriesOverrides": [
@@ -831,6 +850,7 @@
           "steppedLine": false,
           "targets": [
             {
+              "$$hashKey": "object:4267",
               "expr": "sum(histogram_quantile(0.9,rate(alertmanager_notification_latency_seconds_bucket{instance=~\"$instance\"}[$__interval]))) by (integration)",
               "format": "time_series",
               "intervalFactor": 1,
@@ -838,6 +858,7 @@
               "refId": "B"
             },
             {
+              "$$hashKey": "object:4268",
               "expr": "sum(histogram_quantile(0.99,rate(alertmanager_notification_latency_seconds_bucket{instance=~\"$instance\"}[$__interval]))) by (integration)",
               "format": "time_series",
               "interval": "",
@@ -906,13 +927,14 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
+          "datasource": "prometheus",
           "description": "Number of alerts by state such as `active`, `suppressed` etc.",
           "fill": 4,
           "gridPos": {
             "h": 5,
             "w": 24,
             "x": 0,
-            "y": 19
+            "y": 13
           },
           "id": 6,
           "legend": {
@@ -936,9 +958,9 @@
           "repeatDirection": "h",
           "scopedVars": {
             "instance": {
-              "selected": false,
-              "text": "10.38.0.4:9093",
-              "value": "10.38.0.4:9093"
+              "selected": true,
+              "text": "10.39.0.4:9093",
+              "value": "10.39.0.4:9093"
             }
           },
           "seriesOverrides": [
@@ -956,6 +978,7 @@
           "steppedLine": false,
           "targets": [
             {
+              "$$hashKey": "object:4400",
               "expr": "sum(alertmanager_alerts{instance=~\"$instance\"}) by (state)",
               "format": "time_series",
               "intervalFactor": 1,
@@ -1009,13 +1032,14 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
+          "datasource": "prometheus",
           "description": "Number of received alerts from Prometheus by status `firing` on positive axis and `resolved` on negative axis.",
           "fill": 1,
           "gridPos": {
             "h": 5,
             "w": 24,
             "x": 0,
-            "y": 24
+            "y": 18
           },
           "id": 8,
           "legend": {
@@ -1039,9 +1063,9 @@
           "repeatDirection": "h",
           "scopedVars": {
             "instance": {
-              "selected": false,
-              "text": "10.38.0.4:9093",
-              "value": "10.38.0.4:9093"
+              "selected": true,
+              "text": "10.39.0.4:9093",
+              "value": "10.39.0.4:9093"
             }
           },
           "seriesOverrides": [
@@ -1060,6 +1084,7 @@
           "steppedLine": false,
           "targets": [
             {
+              "$$hashKey": "object:4494",
               "expr": "sum(increase(alertmanager_alerts_received_total{instance=~\"$instance\"}[$__interval])) by (status)",
               "format": "time_series",
               "interval": "",
@@ -1128,13 +1153,14 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
+          "datasource": "prometheus",
           "description": "Shows cluster score representing cluster health. From Hashicorps official documentation: \n> This metric describes a node's perception of its own health based on how well it is meeting the soft real-time requirements of the protocol. This metric ranges from 0 to 8, where 0 indicates \"totally healthy\".\n\nFor more info see https://www.consul.io/docs/agent/telemetry.html#cluster-health",
           "fill": 1,
           "gridPos": {
             "h": 4,
             "w": 24,
             "x": 0,
-            "y": 20
+            "y": 14
           },
           "id": 57,
           "legend": {
@@ -1158,9 +1184,9 @@
           "repeatDirection": "h",
           "scopedVars": {
             "instance": {
-              "selected": false,
-              "text": "10.38.0.4:9093",
-              "value": "10.38.0.4:9093"
+              "selected": true,
+              "text": "10.39.0.4:9093",
+              "value": "10.39.0.4:9093"
             }
           },
           "seriesOverrides": [
@@ -1175,6 +1201,7 @@
           "steppedLine": false,
           "targets": [
             {
+              "$$hashKey": "object:4618",
               "expr": "alertmanager_cluster_health_score{instance=~\"$instance\"}",
               "format": "time_series",
               "intervalFactor": 1,
@@ -1228,13 +1255,14 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
+          "datasource": "prometheus",
           "description": "Shows gossip cluster members count in time and failing peers in case of any in red color.",
           "fill": 1,
           "gridPos": {
             "h": 4,
             "w": 24,
             "x": 0,
-            "y": 24
+            "y": 18
           },
           "id": 38,
           "legend": {
@@ -1258,9 +1286,9 @@
           "repeatDirection": "h",
           "scopedVars": {
             "instance": {
-              "selected": false,
-              "text": "10.38.0.4:9093",
-              "value": "10.38.0.4:9093"
+              "selected": true,
+              "text": "10.39.0.4:9093",
+              "value": "10.39.0.4:9093"
             }
           },
           "seriesOverrides": [
@@ -1275,6 +1303,7 @@
           "steppedLine": false,
           "targets": [
             {
+              "$$hashKey": "object:4712",
               "expr": "alertmanager_cluster_members{instance=~\"$instance\"}",
               "format": "time_series",
               "intervalFactor": 1,
@@ -1282,6 +1311,7 @@
               "refId": "A"
             },
             {
+              "$$hashKey": "object:4713",
               "expr": "alertmanager_cluster_failed_peers{instance=~\"$instance\"}",
               "format": "time_series",
               "intervalFactor": 1,
@@ -1335,13 +1365,14 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
+          "datasource": "prometheus",
           "description": "On positive axis shows number of peers that joined the cluster and on negative axis number of peers that left the cluster.",
           "fill": 1,
           "gridPos": {
             "h": 6,
             "w": 24,
             "x": 0,
-            "y": 28
+            "y": 22
           },
           "id": 75,
           "legend": {
@@ -1365,9 +1396,9 @@
           "repeatDirection": "h",
           "scopedVars": {
             "instance": {
-              "selected": false,
-              "text": "10.38.0.4:9093",
-              "value": "10.38.0.4:9093"
+              "selected": true,
+              "text": "10.39.0.4:9093",
+              "value": "10.39.0.4:9093"
             }
           },
           "seriesOverrides": [
@@ -1382,6 +1413,7 @@
           "steppedLine": false,
           "targets": [
             {
+              "$$hashKey": "object:4802",
               "expr": "increase(alertmanager_cluster_peers_left_total{instance=~\"$instance\"}[$__interval])",
               "format": "time_series",
               "intervalFactor": 1,
@@ -1389,6 +1421,7 @@
               "refId": "A"
             },
             {
+              "$$hashKey": "object:4803",
               "expr": "increase(alertmanager_cluster_peers_joined_total{instance=~\"$instance\"}[$__interval])",
               "format": "time_series",
               "intervalFactor": 1,
@@ -1442,13 +1475,14 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
+          "datasource": "prometheus",
           "description": "On positive axis is number of attempts to reconnect the cluster. On negative axis if number of failed attempts.",
           "fill": 1,
           "gridPos": {
             "h": 6,
             "w": 24,
             "x": 0,
-            "y": 34
+            "y": 28
           },
           "id": 68,
           "legend": {
@@ -1472,9 +1506,9 @@
           "repeatDirection": "h",
           "scopedVars": {
             "instance": {
-              "selected": false,
-              "text": "10.38.0.4:9093",
-              "value": "10.38.0.4:9093"
+              "selected": true,
+              "text": "10.39.0.4:9093",
+              "value": "10.39.0.4:9093"
             }
           },
           "seriesOverrides": [
@@ -1489,6 +1523,7 @@
           "steppedLine": false,
           "targets": [
             {
+              "$$hashKey": "object:4888",
               "expr": "increase(alertmanager_cluster_reconnections_total{instance=~\"$instance\"}[$__interval])",
               "format": "time_series",
               "intervalFactor": 1,
@@ -1496,6 +1531,7 @@
               "refId": "A"
             },
             {
+              "$$hashKey": "object:4889",
               "expr": "increase(alertmanager_cluster_reconnections_failed_total{instance=~\"$instance\"}[$__interval])",
               "format": "time_series",
               "intervalFactor": 1,
@@ -1549,13 +1585,14 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
+          "datasource": "prometheus",
           "description": "On positive axis is number of sent cluster messages by type `update`  or `full_state` and on negative axis the same for received messages.",
           "fill": 1,
           "gridPos": {
             "h": 6,
             "w": 24,
             "x": 0,
-            "y": 40
+            "y": 34
           },
           "id": 48,
           "legend": {
@@ -1579,9 +1616,9 @@
           "repeatDirection": "h",
           "scopedVars": {
             "instance": {
-              "selected": false,
-              "text": "10.38.0.4:9093",
-              "value": "10.38.0.4:9093"
+              "selected": true,
+              "text": "10.39.0.4:9093",
+              "value": "10.39.0.4:9093"
             }
           },
           "seriesOverrides": [
@@ -1603,6 +1640,7 @@
           "steppedLine": false,
           "targets": [
             {
+              "$$hashKey": "object:5040",
               "expr": "sum(increase(alertmanager_cluster_messages_sent_total{instance=~\"$instance\"}[$__interval])) by (msg_type)",
               "format": "time_series",
               "intervalFactor": 1,
@@ -1610,6 +1648,7 @@
               "refId": "A"
             },
             {
+              "$$hashKey": "object:5041",
               "expr": "sum(increase(alertmanager_cluster_messages_received_total{instance=~\"$instance\"}[$__interval])) by (msg_type)",
               "format": "time_series",
               "intervalFactor": 1,
@@ -1663,13 +1702,14 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
+          "datasource": "prometheus",
           "description": "On positive axis is size of sent cluster messages by type `update`  or `full_state` and on negative axis the same for received messages.",
           "fill": 1,
           "gridPos": {
             "h": 6,
             "w": 24,
             "x": 0,
-            "y": 46
+            "y": 40
           },
           "id": 53,
           "legend": {
@@ -1693,9 +1733,9 @@
           "repeatDirection": "h",
           "scopedVars": {
             "instance": {
-              "selected": false,
-              "text": "10.38.0.4:9093",
-              "value": "10.38.0.4:9093"
+              "selected": true,
+              "text": "10.39.0.4:9093",
+              "value": "10.39.0.4:9093"
             }
           },
           "seriesOverrides": [
@@ -1717,6 +1757,7 @@
           "steppedLine": false,
           "targets": [
             {
+              "$$hashKey": "object:5161",
               "expr": "sum(increase(alertmanager_cluster_messages_sent_size_total{instance=~\"$instance\"}[$__interval])) by (msg_type)",
               "format": "time_series",
               "intervalFactor": 1,
@@ -1724,6 +1765,7 @@
               "refId": "A"
             },
             {
+              "$$hashKey": "object:5162",
               "expr": "sum(increase(alertmanager_cluster_messages_received_size_total{instance=~\"$instance\"}[$__interval])) by (msg_type)",
               "format": "time_series",
               "intervalFactor": 1,
@@ -1777,13 +1819,14 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
+          "datasource": "prometheus",
           "description": "On positive axis is number of queued cluster messages and on negative axis number of pruned messages.",
           "fill": 1,
           "gridPos": {
             "h": 6,
             "w": 24,
             "x": 0,
-            "y": 52
+            "y": 46
           },
           "id": 62,
           "legend": {
@@ -1807,9 +1850,9 @@
           "repeatDirection": "h",
           "scopedVars": {
             "instance": {
-              "selected": false,
-              "text": "10.38.0.4:9093",
-              "value": "10.38.0.4:9093"
+              "selected": true,
+              "text": "10.39.0.4:9093",
+              "value": "10.39.0.4:9093"
             }
           },
           "seriesOverrides": [
@@ -1823,6 +1866,7 @@
           "steppedLine": false,
           "targets": [
             {
+              "$$hashKey": "object:5280",
               "expr": "alertmanager_cluster_messages_pruned_total{instance=~\"$instance\"}",
               "format": "time_series",
               "intervalFactor": 1,
@@ -1830,6 +1874,7 @@
               "refId": "A"
             },
             {
+              "$$hashKey": "object:5281",
               "expr": "alertmanager_cluster_messages_queued{instance=~\"$instance\"}",
               "format": "time_series",
               "intervalFactor": 1,
@@ -1897,12 +1942,13 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
+          "datasource": "prometheus",
           "fill": 1,
           "gridPos": {
             "h": 6,
             "w": 24,
             "x": 0,
-            "y": 31
+            "y": 15
           },
           "id": 314,
           "legend": {
@@ -1926,9 +1972,9 @@
           "repeatDirection": "h",
           "scopedVars": {
             "instance": {
-              "selected": false,
-              "text": "10.38.0.4:9093",
-              "value": "10.38.0.4:9093"
+              "selected": true,
+              "text": "10.39.0.4:9093",
+              "value": "10.39.0.4:9093"
             }
           },
           "seriesOverrides": [
@@ -1948,6 +1994,7 @@
           "steppedLine": false,
           "targets": [
             {
+              "$$hashKey": "object:5413",
               "expr": "increase(alertmanager_oversized_gossip_message_sent_total{instance=~\"$instance\"}[$__interval])",
               "format": "time_series",
               "hide": false,
@@ -1956,6 +2003,7 @@
               "refId": "A"
             },
             {
+              "$$hashKey": "object:5414",
               "expr": "increase(alertmanager_oversized_gossip_message_dropped_total{instance=~\"$instance\"}[$__interval])",
               "format": "time_series",
               "intervalFactor": 1,
@@ -1963,6 +2011,7 @@
               "refId": "B"
             },
             {
+              "$$hashKey": "object:5415",
               "expr": "increase(alertmanager_oversized_gossip_message_failure_total{instance=~\"$instance\"}[$__interval])",
               "format": "time_series",
               "intervalFactor": 1,
@@ -2016,12 +2065,13 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
+          "datasource": "prometheus",
           "fill": 1,
           "gridPos": {
             "h": 6,
             "w": 24,
             "x": 0,
-            "y": 37
+            "y": 21
           },
           "id": 307,
           "legend": {
@@ -2045,9 +2095,9 @@
           "repeatDirection": "h",
           "scopedVars": {
             "instance": {
-              "selected": false,
-              "text": "10.38.0.4:9093",
-              "value": "10.38.0.4:9093"
+              "selected": true,
+              "text": "10.39.0.4:9093",
+              "value": "10.39.0.4:9093"
             }
           },
           "seriesOverrides": [
@@ -2062,6 +2112,7 @@
           "steppedLine": false,
           "targets": [
             {
+              "$$hashKey": "object:5563",
               "expr": "histogram_quantile(1,rate(alertmanager_oversize_gossip_message_duration_seconds_bucket{instance=~\"$instance\"}[$__interval]))",
               "format": "time_series",
               "hide": false,
@@ -2116,12 +2167,13 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
+          "datasource": "prometheus",
           "fill": 1,
           "gridPos": {
             "h": 6,
             "w": 24,
             "x": 0,
-            "y": 43
+            "y": 27
           },
           "id": 303,
           "legend": {
@@ -2145,9 +2197,9 @@
           "repeatDirection": "h",
           "scopedVars": {
             "instance": {
-              "selected": false,
-              "text": "10.38.0.4:9093",
-              "value": "10.38.0.4:9093"
+              "selected": true,
+              "text": "10.39.0.4:9093",
+              "value": "10.39.0.4:9093"
             }
           },
           "seriesOverrides": [
@@ -2162,6 +2214,7 @@
           "steppedLine": false,
           "targets": [
             {
+              "$$hashKey": "object:5657",
               "expr": "increase(alertmanager_silences_gossip_messages_propagated_total{instance=~\"$instance\"}[$__interval])",
               "format": "time_series",
               "hide": false,
@@ -2170,6 +2223,7 @@
               "refId": "A"
             },
             {
+              "$$hashKey": "object:5658",
               "expr": "increase(alertmanager_nflog_gossip_messages_propagated_total{instance=~\"$instance\"}[$__interval])",
               "format": "time_series",
               "intervalFactor": 1,
@@ -2237,12 +2291,13 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
+          "datasource": "prometheus",
           "fill": 1,
           "gridPos": {
             "h": 6,
             "w": 24,
             "x": 0,
-            "y": 32
+            "y": 16
           },
           "id": 94,
           "legend": {
@@ -2266,9 +2321,9 @@
           "repeatDirection": "h",
           "scopedVars": {
             "instance": {
-              "selected": false,
-              "text": "10.38.0.4:9093",
-              "value": "10.38.0.4:9093"
+              "selected": true,
+              "text": "10.39.0.4:9093",
+              "value": "10.39.0.4:9093"
             }
           },
           "seriesOverrides": [
@@ -2283,6 +2338,7 @@
           "steppedLine": false,
           "targets": [
             {
+              "$$hashKey": "object:5767",
               "expr": "increase(alertmanager_nflog_queries_total{instance=~\"$instance\"}[$__interval])",
               "format": "time_series",
               "intervalFactor": 1,
@@ -2290,6 +2346,7 @@
               "refId": "A"
             },
             {
+              "$$hashKey": "object:5768",
               "expr": "increase(alertmanager_nflog_query_errors_total{instance=~\"$instance\"}[$__interval])",
               "format": "time_series",
               "intervalFactor": 1,
@@ -2343,12 +2400,13 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
+          "datasource": "prometheus",
           "fill": 1,
           "gridPos": {
             "h": 6,
             "w": 24,
             "x": 0,
-            "y": 38
+            "y": 22
           },
           "id": 106,
           "legend": {
@@ -2372,9 +2430,9 @@
           "repeatDirection": "h",
           "scopedVars": {
             "instance": {
-              "selected": false,
-              "text": "10.38.0.4:9093",
-              "value": "10.38.0.4:9093"
+              "selected": true,
+              "text": "10.39.0.4:9093",
+              "value": "10.39.0.4:9093"
             }
           },
           "seriesOverrides": [
@@ -2389,6 +2447,7 @@
           "steppedLine": false,
           "targets": [
             {
+              "$$hashKey": "object:5915",
               "expr": "histogram_quantile(1,rate(alertmanager_nflog_query_duration_seconds_bucket{instance=~\"$instance\"}[$__interval]))",
               "format": "time_series",
               "intervalFactor": 1,
@@ -2442,12 +2501,13 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
+          "datasource": "prometheus",
           "fill": 1,
           "gridPos": {
             "h": 6,
             "w": 24,
             "x": 0,
-            "y": 44
+            "y": 28
           },
           "id": 97,
           "legend": {
@@ -2471,9 +2531,9 @@
           "repeatDirection": "h",
           "scopedVars": {
             "instance": {
-              "selected": false,
-              "text": "10.38.0.4:9093",
-              "value": "10.38.0.4:9093"
+              "selected": true,
+              "text": "10.39.0.4:9093",
+              "value": "10.39.0.4:9093"
             }
           },
           "seriesOverrides": [
@@ -2488,6 +2548,7 @@
           "steppedLine": false,
           "targets": [
             {
+              "$$hashKey": "object:6040",
               "expr": "alertmanager_nflog_snapshot_size_bytes{instance=~\"$instance\"}",
               "format": "time_series",
               "intervalFactor": 1,
@@ -2541,12 +2602,13 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
+          "datasource": "prometheus",
           "fill": 1,
           "gridPos": {
             "h": 6,
             "w": 24,
             "x": 0,
-            "y": 50
+            "y": 34
           },
           "id": 101,
           "legend": {
@@ -2570,9 +2632,9 @@
           "repeatDirection": "h",
           "scopedVars": {
             "instance": {
-              "selected": false,
-              "text": "10.38.0.4:9093",
-              "value": "10.38.0.4:9093"
+              "selected": true,
+              "text": "10.39.0.4:9093",
+              "value": "10.39.0.4:9093"
             }
           },
           "seriesOverrides": [
@@ -2587,6 +2649,7 @@
           "steppedLine": false,
           "targets": [
             {
+              "$$hashKey": "object:6134",
               "expr": "rate(alertmanager_nflog_snapshot_duration_seconds_sum{instance=~\"$instance\"}[$__interval]) / rate(alertmanager_nflog_snapshot_duration_seconds_sum{instance=~\"$instance\"}[$__interval])",
               "format": "time_series",
               "hide": false,
@@ -2641,12 +2704,13 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
+          "datasource": "prometheus",
           "fill": 1,
           "gridPos": {
             "h": 6,
             "w": 24,
             "x": 0,
-            "y": 56
+            "y": 40
           },
           "id": 92,
           "legend": {
@@ -2670,9 +2734,9 @@
           "repeatDirection": "h",
           "scopedVars": {
             "instance": {
-              "selected": false,
-              "text": "10.38.0.4:9093",
-              "value": "10.38.0.4:9093"
+              "selected": true,
+              "text": "10.39.0.4:9093",
+              "value": "10.39.0.4:9093"
             }
           },
           "seriesOverrides": [
@@ -2687,6 +2751,7 @@
           "steppedLine": false,
           "targets": [
             {
+              "$$hashKey": "object:6226",
               "expr": "alertmanager_nflog_gc_duration_seconds{instance=~\"$instance\"}",
               "format": "time_series",
               "intervalFactor": 1,
@@ -2754,12 +2819,13 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
+          "datasource": "prometheus",
           "fill": 1,
           "gridPos": {
             "h": 6,
             "w": 24,
             "x": 0,
-            "y": 33
+            "y": 17
           },
           "id": 129,
           "legend": {
@@ -2783,9 +2849,9 @@
           "repeatDirection": "h",
           "scopedVars": {
             "instance": {
-              "selected": false,
-              "text": "10.38.0.4:9093",
-              "value": "10.38.0.4:9093"
+              "selected": true,
+              "text": "10.39.0.4:9093",
+              "value": "10.39.0.4:9093"
             }
           },
           "seriesOverrides": [
@@ -2800,6 +2866,7 @@
           "steppedLine": false,
           "targets": [
             {
+              "$$hashKey": "object:6342",
               "expr": "alertmanager_silences{instance=~\"$instance\"}",
               "format": "time_series",
               "hide": false,
@@ -2854,12 +2921,13 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
+          "datasource": "prometheus",
           "fill": 1,
           "gridPos": {
             "h": 6,
             "w": 24,
             "x": 0,
-            "y": 39
+            "y": 23
           },
           "id": 134,
           "legend": {
@@ -2883,9 +2951,9 @@
           "repeatDirection": "h",
           "scopedVars": {
             "instance": {
-              "selected": false,
-              "text": "10.38.0.4:9093",
-              "value": "10.38.0.4:9093"
+              "selected": true,
+              "text": "10.39.0.4:9093",
+              "value": "10.39.0.4:9093"
             }
           },
           "seriesOverrides": [
@@ -2900,6 +2968,7 @@
           "steppedLine": false,
           "targets": [
             {
+              "$$hashKey": "object:6436",
               "expr": "increase(alertmanager_silences_queries_total{instance=~\"$instance\"}[$__interval])",
               "format": "time_series",
               "hide": false,
@@ -2908,6 +2977,7 @@
               "refId": "A"
             },
             {
+              "$$hashKey": "object:6437",
               "expr": "increase(alertmanager_silences_query_errors_total{instance=~\"$instance\"}[$__interval])",
               "format": "time_series",
               "intervalFactor": 1,
@@ -2961,12 +3031,13 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
+          "datasource": "prometheus",
           "fill": 1,
           "gridPos": {
             "h": 6,
             "w": 24,
             "x": 0,
-            "y": 45
+            "y": 29
           },
           "id": 138,
           "legend": {
@@ -2990,9 +3061,9 @@
           "repeatDirection": "h",
           "scopedVars": {
             "instance": {
-              "selected": false,
-              "text": "10.38.0.4:9093",
-              "value": "10.38.0.4:9093"
+              "selected": true,
+              "text": "10.39.0.4:9093",
+              "value": "10.39.0.4:9093"
             }
           },
           "seriesOverrides": [
@@ -3007,6 +3078,7 @@
           "steppedLine": false,
           "targets": [
             {
+              "$$hashKey": "object:6559",
               "expr": "histogram_quantile(1,rate(alertmanager_silences_query_duration_seconds_bucket{instance=~\"$instance\"}[$__interval]))",
               "format": "time_series",
               "hide": false,
@@ -3061,12 +3133,13 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
+          "datasource": "prometheus",
           "fill": 1,
           "gridPos": {
             "h": 6,
             "w": 24,
             "x": 0,
-            "y": 51
+            "y": 35
           },
           "id": 149,
           "legend": {
@@ -3090,9 +3163,9 @@
           "repeatDirection": "h",
           "scopedVars": {
             "instance": {
-              "selected": false,
-              "text": "10.38.0.4:9093",
-              "value": "10.38.0.4:9093"
+              "selected": true,
+              "text": "10.39.0.4:9093",
+              "value": "10.39.0.4:9093"
             }
           },
           "seriesOverrides": [
@@ -3107,6 +3180,7 @@
           "steppedLine": false,
           "targets": [
             {
+              "$$hashKey": "object:6747",
               "expr": "alertmanager_silences_snapshot_size_bytes{instance=~\"$instance\"}",
               "format": "time_series",
               "hide": false,
@@ -3161,12 +3235,13 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
+          "datasource": "prometheus",
           "fill": 1,
           "gridPos": {
             "h": 6,
             "w": 24,
             "x": 0,
-            "y": 57
+            "y": 41
           },
           "id": 143,
           "legend": {
@@ -3190,9 +3265,9 @@
           "repeatDirection": "h",
           "scopedVars": {
             "instance": {
-              "selected": false,
-              "text": "10.38.0.4:9093",
-              "value": "10.38.0.4:9093"
+              "selected": true,
+              "text": "10.39.0.4:9093",
+              "value": "10.39.0.4:9093"
             }
           },
           "seriesOverrides": [
@@ -3207,6 +3282,7 @@
           "steppedLine": false,
           "targets": [
             {
+              "$$hashKey": "object:6653",
               "expr": "alertmanager_silences_snapshot_duration_seconds{instance=~\"$instance\", quantile=\"0.99\"}",
               "format": "time_series",
               "hide": false,
@@ -3261,12 +3337,13 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
+          "datasource": "prometheus",
           "fill": 1,
           "gridPos": {
             "h": 6,
             "w": 24,
             "x": 0,
-            "y": 63
+            "y": 47
           },
           "id": 131,
           "legend": {
@@ -3290,9 +3367,9 @@
           "repeatDirection": "h",
           "scopedVars": {
             "instance": {
-              "selected": false,
-              "text": "10.38.0.4:9093",
-              "value": "10.38.0.4:9093"
+              "selected": true,
+              "text": "10.39.0.4:9093",
+              "value": "10.39.0.4:9093"
             }
           },
           "seriesOverrides": [
@@ -3307,6 +3384,7 @@
           "steppedLine": false,
           "targets": [
             {
+              "$$hashKey": "object:6920",
               "expr": "alertmanager_silences_gc_duration_seconds{instance=~\"$instance\"}",
               "format": "time_series",
               "hide": false,
@@ -3375,14 +3453,14 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "$datasource",
+          "datasource": "prometheus",
           "decimals": 2,
           "fill": 1,
           "gridPos": {
             "h": 7,
             "w": 24,
             "x": 0,
-            "y": 34
+            "y": 18
           },
           "id": 175,
           "legend": {
@@ -3406,9 +3484,9 @@
           "repeatDirection": "h",
           "scopedVars": {
             "instance": {
-              "selected": false,
-              "text": "10.38.0.4:9093",
-              "value": "10.38.0.4:9093"
+              "selected": true,
+              "text": "10.39.0.4:9093",
+              "value": "10.39.0.4:9093"
             }
           },
           "seriesOverrides": [
@@ -3424,6 +3502,7 @@
           "steppedLine": false,
           "targets": [
             {
+              "$$hashKey": "object:7025",
               "expr": "rate(process_cpu_seconds_total{instance=~\"$instance\"}[$__interval])",
               "format": "time_series",
               "groupBy": [
@@ -3464,6 +3543,7 @@
               "tags": []
             },
             {
+              "$$hashKey": "object:7026",
               "expr": "max(kube_pod_container_resource_limits_cpu_cores{pod=~\"$instance\"}) by (pod)",
               "format": "time_series",
               "intervalFactor": 1,
@@ -3517,13 +3597,13 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "$datasource",
+          "datasource": "prometheus",
           "fill": 1,
           "gridPos": {
             "h": 7,
             "w": 24,
             "x": 0,
-            "y": 41
+            "y": 25
           },
           "id": 177,
           "legend": {
@@ -3547,9 +3627,9 @@
           "repeatDirection": "h",
           "scopedVars": {
             "instance": {
-              "selected": false,
-              "text": "10.38.0.4:9093",
-              "value": "10.38.0.4:9093"
+              "selected": true,
+              "text": "10.39.0.4:9093",
+              "value": "10.39.0.4:9093"
             }
           },
           "seriesOverrides": [
@@ -3565,6 +3645,7 @@
           "steppedLine": false,
           "targets": [
             {
+              "$$hashKey": "object:7147",
               "expr": "process_resident_memory_bytes{instance=~\"$instance\"}",
               "format": "time_series",
               "hide": false,
@@ -3574,6 +3655,7 @@
               "refId": "E"
             },
             {
+              "$$hashKey": "object:7148",
               "expr": "max(kube_pod_container_resource_limits_memory_bytes{pod=~\"$instance\"}) by (pod)",
               "format": "time_series",
               "intervalFactor": 1,
@@ -3640,8 +3722,10 @@
       {
         "allValue": "",
         "current": {
-          "text": "All",
-          "value": "$__all"
+          "text": "10.39.0.4:9093",
+          "value": [
+            "10.39.0.4:9093"
+          ]
         },
         "datasource": "$datasource",
         "definition": "query_result(alertmanager_build_info)",
@@ -3664,8 +3748,8 @@
       },
       {
         "current": {
-          "text": "default",
-          "value": "default"
+          "text": "prometheus",
+          "value": "prometheus"
         },
         "hide": 2,
         "label": "Prometheus datasource",
@@ -3680,7 +3764,7 @@
     ]
   },
   "time": {
-    "from": "now-12h",
+    "from": "now-6h",
     "to": "now"
   },
   "timepicker": {
@@ -3710,6 +3794,5 @@
   },
   "timezone": "",
   "title": "Alertmanager",
-  "uid": "eea-9_sik",
-  "version": 2
+  "version": 3
 }
