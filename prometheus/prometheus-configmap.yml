@@ -20,6 +20,18 @@ data:
         - targets:
           - "alertmanager.monitoring.svc:9093"
     scrape_configs:
+      - job_name: 'fk-traun-node'
+        metrics_path: '/node/metrics'
+        static_configs:
+          - targets: ['monitoring.freikirche-traun.at']
+      - job_name: 'fk-traun-mysql'
+        metrics_path: '/mysql/metrics'
+        static_configs:
+          - targets: ['monitoring.freikirche-traun.at']
+      - job_name: 'fk-traun-nginx'
+        metrics_path: '/nginx/metrics'
+        static_configs:
+          - targets: ['monitoring.freikirche-traun.at']
       - job_name: 'dlan'
         static_configs:
           - targets: ['192.168.1.33:8080']
