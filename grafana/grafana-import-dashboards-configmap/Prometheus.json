@@ -39,7 +39,7 @@
     {
       "aliasColors": {
         "prometheus": "#C15C17",
-        "{pod=\"prometheus-k8s-0\", service=\"prometheus-k8s\"}": "#CCA300"
+        "{instance=\"localhost:9090\",job=\"prometheus\"}": "#CCA300"
       },
       "bars": false,
       "dashLength": 10,
@@ -79,7 +79,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(irate(prometheus_tsdb_head_samples_appended_total{pod=\"prometheus-k8s-0\", service=\"prometheus-k8s\"}[5m]))",
+          "expr": "sum(irate(prometheus_tsdb_head_samples_appended_total{instance=\"localhost:9090\",job=\"prometheus\"}[5m]))",
           "format": "time_series",
           "hide": false,
           "interval": "",
@@ -256,7 +256,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(process_resident_memory_bytes{pod=\"prometheus-k8s-0\", service=\"prometheus-k8s\"})",
+          "expr": "sum(process_resident_memory_bytes{instance=\"localhost:9090\",job=\"prometheus\"})",
           "format": "time_series",
           "hide": false,
           "interval": "",
@@ -266,7 +266,7 @@
           "step": 20
         },
         {
-          "expr": "process_virtual_memory_bytes{pod=\"prometheus-k8s-0\", service=\"prometheus-k8s\"}",
+          "expr": "process_virtual_memory_bytes{instance=\"localhost:9090\",job=\"prometheus\"}",
           "format": "time_series",
           "hide": false,
           "intervalFactor": 2,
@@ -378,7 +378,7 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "prometheus_tsdb_wal_corruptions_total{pod=\"prometheus-k8s-0\", service=\"prometheus-k8s\"}",
+          "expr": "prometheus_tsdb_wal_corruptions_total{instance=\"localhost:9090\",job=\"prometheus\"}",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "",
@@ -436,7 +436,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(prometheus_tsdb_head_active_appenders{pod=\"prometheus-k8s-0\", service=\"prometheus-k8s\"})",
+          "expr": "sum(prometheus_tsdb_head_active_appenders{instance=\"localhost:9090\",job=\"prometheus\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -446,7 +446,7 @@
           "step": 20
         },
         {
-          "expr": "sum(process_open_fds{pod=\"prometheus-k8s-0\", service=\"prometheus-k8s\"})",
+          "expr": "sum(process_open_fds{instance=\"localhost:9090\",job=\"prometheus\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -499,7 +499,7 @@
     {
       "aliasColors": {
         "prometheus": "#F9BA8F",
-        "{instance=\"localhost:9090\",interval=\"5s\",pod=\"prometheus-k8s-0\", service=\"prometheus-k8s\"}": "#F9BA8F"
+        "{instance=\"localhost:9090\",interval=\"5s\",instance=\"localhost:9090\",job=\"prometheus\"}": "#F9BA8F"
       },
       "bars": false,
       "dashLength": 10,
@@ -539,7 +539,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "prometheus_tsdb_blocks_loaded{pod=\"prometheus-k8s-0\", service=\"prometheus-k8s\"}",
+          "expr": "prometheus_tsdb_blocks_loaded{instance=\"localhost:9090\",job=\"prometheus\"}",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "blocks",
@@ -625,7 +625,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "prometheus_tsdb_head_chunks{pod=\"prometheus-k8s-0\", service=\"prometheus-k8s\"}",
+          "expr": "prometheus_tsdb_head_chunks{instance=\"localhost:9090\",job=\"prometheus\"}",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -717,7 +717,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "prometheus_tsdb_head_gc_duration_seconds{pod=\"prometheus-k8s-0\", service=\"prometheus-k8s\",quantile=\"0.99\"}",
+          "expr": "prometheus_tsdb_head_gc_duration_seconds{instance=\"localhost:9090\",job=\"prometheus\",quantile=\"0.99\"}",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "duration-p99",
@@ -725,7 +725,7 @@
           "step": 20
         },
         {
-          "expr": "irate(prometheus_tsdb_head_gc_duration_seconds_count{pod=\"prometheus-k8s-0\", service=\"prometheus-k8s\"}[5m])",
+          "expr": "irate(prometheus_tsdb_head_gc_duration_seconds_count{instance=\"localhost:9090\",job=\"prometheus\"}[5m])",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "collections",
@@ -818,7 +818,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "histogram_quantile(0.99, sum(rate(prometheus_tsdb_compaction_duration_bucket{pod=\"prometheus-k8s-0\", service=\"prometheus-k8s\"}[5m])) by (le))",
+          "expr": "histogram_quantile(0.99, sum(rate(prometheus_tsdb_compaction_duration_bucket{instance=\"localhost:9090\",job=\"prometheus\"}[5m])) by (le))",
           "format": "time_series",
           "hide": false,
           "interval": "",
@@ -828,7 +828,7 @@
           "step": 20
         },
         {
-          "expr": "irate(prometheus_tsdb_compactions_total{pod=\"prometheus-k8s-0\", service=\"prometheus-k8s\"}[5m])",
+          "expr": "irate(prometheus_tsdb_compactions_total{instance=\"localhost:9090\",job=\"prometheus\"}[5m])",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "compactions",
@@ -836,7 +836,7 @@
           "step": 20
         },
         {
-          "expr": "irate(prometheus_tsdb_compactions_failed_total{pod=\"prometheus-k8s-0\", service=\"prometheus-k8s\"}[5m])",
+          "expr": "irate(prometheus_tsdb_compactions_failed_total{instance=\"localhost:9090\",job=\"prometheus\"}[5m])",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "failed",
@@ -844,7 +844,7 @@
           "step": 20
         },
         {
-          "expr": "irate(prometheus_tsdb_compactions_triggered_total{pod=\"prometheus-k8s-0\", service=\"prometheus-k8s\"}[5m])",
+          "expr": "irate(prometheus_tsdb_compactions_triggered_total{instance=\"localhost:9090\",job=\"prometheus\"}[5m])",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "triggered",
@@ -930,7 +930,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "rate(prometheus_tsdb_reloads_total{pod=\"prometheus-k8s-0\", service=\"prometheus-k8s\"}[5m])",
+          "expr": "rate(prometheus_tsdb_reloads_total{instance=\"localhost:9090\",job=\"prometheus\"}[5m])",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "reloads",
@@ -938,7 +938,7 @@
           "step": 20
         },
         {
-          "expr": "rate(prometheus_tsdb_reloads_failures_total{pod=\"prometheus-k8s-0\", service=\"prometheus-k8s\"}[5m])",
+          "expr": "rate(prometheus_tsdb_reloads_failures_total{instance=\"localhost:9090\",job=\"prometheus\"}[5m])",
           "format": "time_series",
           "hide": false,
           "intervalFactor": 2,
@@ -1025,7 +1025,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "prometheus_engine_query_duration_seconds{pod=\"prometheus-k8s-0\", service=\"prometheus-k8s\", quantile=\"0.99\"}",
+          "expr": "prometheus_engine_query_duration_seconds{instance=\"localhost:9090\",job=\"prometheus\", quantile=\"0.99\"}",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "{{slice}}_p99",
@@ -1117,7 +1117,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "max(prometheus_rule_group_duration_seconds{pod=\"prometheus-k8s-0\", service=\"prometheus-k8s\"}) by (quantile)",
+          "expr": "max(prometheus_rule_group_duration_seconds{instance=\"localhost:9090\",job=\"prometheus\"}) by (quantile)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -1203,7 +1203,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "rate(prometheus_rule_group_iterations_missed_total{pod=\"prometheus-k8s-0\", service=\"prometheus-k8s\"}[5m])",
+          "expr": "rate(prometheus_rule_group_iterations_missed_total{instance=\"localhost:9090\",job=\"prometheus\"}[5m])",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "missed",
@@ -1211,7 +1211,7 @@
           "step": 10
         },
         {
-          "expr": "rate(prometheus_rule_group_iterations_total{pod=\"prometheus-k8s-0\", service=\"prometheus-k8s\"}[5m])",
+          "expr": "rate(prometheus_rule_group_iterations_total{instance=\"localhost:9090\",job=\"prometheus\"}[5m])",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "iterations",
