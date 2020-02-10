@@ -1,0 +1,47 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: chief-alert-executor
+  namespace: monitoring
+spec:
+  selector:
+    matchLabels:
+      app: chief-alert-executor
+  replicas: 1
+  minReadySeconds: 5
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+  template:
+    metadata:
+      labels:
+        app: chief-alert-executor
+      annotations:
+        prometheus.io/scrape: 'true'
+    spec:
+      containers:
+      - name: chief-alert-executor
+        image: registry.gitlab.com/yakshaving.art/chief-alert-executor:0.0.1
+        args:
+          - -config
+          - /etc/chief-alert-executor/config.yml
+        imagePullPolicy: Always
+        resources:
+          requests:
+            cpu: "100m"
+            memory: "32Mi"
+          limits:
+            cpu: "500m"
+            memory: "64Mi"
+        ports:
+        - containerPort: 9099
+        volumeMounts:
+        - name: configuration
+          mountPath: /etc/chief-alert-executor
+      volumes:
+        - name: configuration
+          configMap:
+            name: chief-alert-executor

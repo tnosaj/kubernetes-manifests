@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: weather-station-exporter
+  name: weather-station-exporter
+  namespace: monitoring
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: weather-station-exporter
+  template:
+    metadata:
+      labels:
+        app: weather-station-exporter
+    spec:
+      containers:
+      - name: weather-station-exporter
+        image: tnosaj/weather-station-exporter:latest
+        ports:
+        - name: weather-station
+          containerPort: 8080
+        resources:                      
+          limits:                     
+            cpu: "1"                   
+            memory: 64Mi     
+          requests:            
+            cpu: 200m        
+            memory: 64Mi

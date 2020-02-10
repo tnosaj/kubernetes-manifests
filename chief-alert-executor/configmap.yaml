@@ -1,0 +1,17 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: chief-alert-executor
+  namespace: monitoring
+data:
+  config.yml: |-
+    ---
+    matchers:
+      - name: Dummy
+        labels:
+          alertname: .*
+        annotations: {}
+        command: echo
+        args:
+        - Dummy alert triggered
