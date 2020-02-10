@@ -28,3 +28,12 @@ spec:
           requests:            
             cpu: 200m        
             memory: 64Mi
+        volumeMounts:
+        - mountPath: /etc/weather-station-exporter/
+          name: config
+        args: ["--config=/etc/weather-station-exporter/config.yml"]
+      volumes:
+      - configMap:
+          defaultMode: 420
+          name: weather-station-exporter
+        name: config
