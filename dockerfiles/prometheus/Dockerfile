@@ -5,9 +5,9 @@ RUN apt-get update && apt-get install -qy curl ca-certificates
 WORKDIR /root/
 RUN mkdir /root/prometheus
 
-RUN curl -sSLO https://github.com/prometheus/prometheus/releases/download/v2.6.0/prometheus-2.6.0.linux-armv7.tar.gz && \
-   tar -xvf prometheus-linux-arm-nightly.tar.gz -C /root/prometheus/ --strip-components=1 && \
-   rm prometheus-linux-arm-nightly.tar.gz
+RUN curl -sSLO https://github.com/prometheus/prometheus/releases/download/v2.17.0/prometheus-2.17.0.linux-armv7.tar.gz && \
+   tar -xvf prometheus-2.17.0.linux-armv7.tar.gz -C /root/prometheus/ --strip-components=1 && \
+   rm prometheus-2.17.0.linux-armv7.tar.gz
 
 workdir /root/prometheus
 
