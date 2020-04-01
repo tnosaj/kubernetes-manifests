@@ -28,8 +28,9 @@ data:
   
       params:
         'match[]':
-          - '{longterm=true}'
-  
+          - '{job="blackbox"}'
+          - '{longterm="true"}'
+          - '{instance="monitoring.freikirche-traun.at:80"}'
       static_configs:
         - targets:
-          - 'prometheus.monitoring.svc.cluster.local:9090'
+          - 'prometheus:9090'
