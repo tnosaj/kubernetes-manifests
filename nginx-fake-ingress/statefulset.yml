@@ -1,0 +1,70 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  labels:
+    app: nginx-ingress
+  name: nginx-ingress
+  namespace: monitoring
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nginx-ingress
+  template:
+    metadata:
+      labels:
+        app: nginx-ingress
+    spec:
+      containers:
+      - name: acme
+        image: neilpang/acme.sh
+        entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"
+        resources:
+          limits:
+            cpu: 100m
+            memory: 48Mi
+          requests:
+            cpu: 20m
+            memory: 48Mi
+        volumeMounts:
+        - name: letsencrypt
+          mountPath: /etc/letsencrypt
+      - name: nginx
+        image: nginx/1.17.9-alpine
+        command: "/bin/sh -c 'while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g \"daemon off;\"'"
+        ports:
+        - name: http
+          containerPort: 80
+        - name: https
+          containerPort: 443
+        resources:
+          limits:
+            cpu: 100m
+            memory: 64Mi
+          requests:
+            cpu: 20m
+            memory: 64Mi
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 80
+        volumeMounts:
+        - name: letsencrypt
+          mountPath: /etc/letsencrypt
+        - name: nginx-configs
+          mountPath: /etc/nginx/conf.d
+     volumes:
+        - name: nginx-config
+          configMap:
+            name: nginx-config
+  volumeClaimTemplates:
+  - metadata:
+      name: letsencrypt
+    spec:
+      storageClassName: managed-nfs-storage
+      accessModes:
+        - ReadWriteOnce
+      resources:
+        requests:
+          storage: "100Mi"
+

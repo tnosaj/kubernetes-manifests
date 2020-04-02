@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-external
+  namespace: monitoring
+spec:
+  selector:
+    k8s-app: nginx-ingress
+  type: NodePort
+  ports:
+    - name: http
+      port: 80
+      nodePort: 31111
+    - name: https
+      port: 443
+      nodePort: 31112
+

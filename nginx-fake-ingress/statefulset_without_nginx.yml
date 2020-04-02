@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  labels:
+    app: nginx-ingress
+  name: nginx-ingress
+  namespace: monitoring
+spec:
+  serviceName: "nginx-ingress"
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nginx-ingress
+  template:
+    metadata:
+      labels:
+        app: nginx-ingress
+    spec:
+      containers:
+      - name: acme
+        image: tnosaj/nginx-acme:1.17.9-alpine
+        resources:
+          limits:
+            cpu: 100m
+            memory: 48Mi
+          requests:
+            cpu: 20m
+            memory: 48Mi
+      volumes:
+        - name: nginx-config
+          configMap:
+            name: nginx-config
