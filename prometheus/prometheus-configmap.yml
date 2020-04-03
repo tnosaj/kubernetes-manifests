@@ -8,8 +8,8 @@ metadata:
 data:
   prometheus.yml: |-
     global:
-      scrape_interval: 60s
-      evaluation_interval: 59s
+      scrape_interval: 90s
+      evaluation_interval: 85s
     rule_files:
       - /etc/prometheus/rules/prometheus.rules
     alerting:
@@ -38,9 +38,6 @@ data:
         metrics_path: '/nginx/metrics'
         static_configs:
           - targets: ['monitoring.freikirche-traun.at']
-      - job_name: 'dlan'
-        static_configs:
-          - targets: ['192.168.1.33:8080']
       - job_name: 'router'
         static_configs:
           - targets: ['192.168.1.1:9101']
