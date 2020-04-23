@@ -182,7 +182,7 @@ data:
             for: 5m
             labels:
               severity: slack
-              channel: '#fk-alerts'
+              channel: '#alerts'
             annotations:
               title: "nginx is down"
               description: "nginx exporter is not reporting, or is down. check it out."
@@ -191,25 +191,25 @@ data:
             for: 5m
             labels:
               severity: slack
-              channel: '#fk-alerts'
+              channel: '#alerts'
             annotations:
               title: "mysql is down"
               description: "mysql exporter is not reporting, or is down. check it out."
           - alert: nodeDfLow
-            expr: (node_filesystem_size_bytes{instance="$server", device!="tmpfs"} - node_filesystem_free_bytes{instance="$server", device!="tmpfs"}) / node_filesystem_size_bytes{instance="$server", device!="tmpfs"} > 0.8 
+            expr: (node_filesystem_size_bytes{instance="monitoring.freikirche-traun.at:80", device!="tmpfs"} - node_filesystem_free_bytes{instance="monitoring.freikirche-traun.at:80", device!="tmpfs"}) / node_filesystem_size_bytes{instance="monitoring.freikirche-traun.at:80", device!="tmpfs"} > 0.8 
             for: 5m
             labels:
               severity: slack
-              channel: '#fk-alerts'
+              channel: '#alerts'
             annotations:
               title: "Space is getting low"
               description: "Disk free on {{ $labels.mountpoint }} is getting low: {{ $value }}. check it out."
           - alert: nodeDfCritical
-            expr: (node_filesystem_size_bytes{instance="$server", device!="tmpfs"} - node_filesystem_free_bytes{instance="$server", device!="tmpfs"}) / node_filesystem_size_bytes{instance="$server", device!="tmpfs"} > 0.9 
+            expr: (node_filesystem_size_bytes{instance="monitoring.freikirche-traun.at:80", device!="tmpfs"} - node_filesystem_free_bytes{instance="monitoring.freikirche-traun.at:80", device!="tmpfs"}) / node_filesystem_size_bytes{instance="monitoring.freikirche-traun.at:80", device!="tmpfs"} > 0.9 
             for: 5m
             labels:
               severity: slack
-              channel: '#fk-alerts'
+              channel: '#alerts'
             annotations:
               title: "Space is getting critically low"
               description: "Disk free on {{ $labels.mountpoint }} is getting low: {{ $value }}. check it out."
@@ -218,7 +218,7 @@ data:
             for: 5m
             labels:
               severity: slack
-              channel: '#fk-alerts'
+              channel: '#alerts'
             annotations:
               title: "Free Memory is getting low."
               description: "Free memory is low: {{ $value }}."
