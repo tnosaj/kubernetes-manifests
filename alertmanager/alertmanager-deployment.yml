@@ -17,6 +17,7 @@ spec:
       containers:
       - name: alertmanager
         image: tnosaj/alertmanager-arm:latest
+        imagePullPolicy: Always
         args:
           - --config.file=/etc/alertmanager/config.yml
           - --storage.path=/alertmanager
