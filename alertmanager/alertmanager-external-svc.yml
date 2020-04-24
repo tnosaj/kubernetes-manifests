@@ -9,6 +9,5 @@ spec:
   type: NodePort
   ports:
   - name: alertmanager
-    protocol: TCP
     port: 9093
     nodePort: 30002

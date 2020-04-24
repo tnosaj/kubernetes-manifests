@@ -23,8 +23,7 @@ spec:
           - --storage.path=/alertmanager
           - --web.external-url=http://alertmanager.monitoring.svc.cluster.local/alertmanager
         ports:
-        - name: alertmanager
-          containerPort: 9093
+          - containerPort: 9093
         resources:                      
           limits:                     
             cpu: "1"                   
