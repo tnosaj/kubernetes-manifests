@@ -38,6 +38,9 @@ data:
       - job_name: 'prometheus'
         static_configs:
           - targets: ['localhost:9090']
+      - job_name: 'pushgateway'
+        static_configs:
+          - targets: ['192.168.1.190:9091']
       - job_name: 'blackbox'
         metrics_path: /probe
         params:
@@ -196,7 +199,7 @@ data:
               title: "mysql is down"
               description: "@here - mysql exporter is not reporting, or is down. check it out."
           - alert: nodeDfLow
-            expr: (((node_filesystem_size_bytes{instance="monitoring.freikirche-traun.at:80", device!="tmpfs"} - node_filesystem_free_bytes{instance="monitoring.freikirche-traun.at:80", device!="tmpfs"}) / node_filesystem_size_bytes{instance="monitoring.freikirche-traun.at:80", device!="tmpfs"}) * 100 > 80 ) and (((node_filesystem_size_bytes{instance="monitoring.freikirche-traun.at:80", device!="tmpfs"} - node_filesystem_free_bytes{instance="monitoring.freikirche-traun.at:80", device!="tmpfs"}) / node_filesystem_size_bytes{instance="monitoring.freikirche-traun.at:80", device!="tmpfs"}) * 100 < 90 ) 
+            expr: (1 - (node_filesystem_avail_bytes{instance="monitoring.freikirche-traun.at:80",fstype!="tmpfs"} / node_filesystem_size_bytes{instance="monitoring.freikirche-traun.at:80",fstype!="tmpfs"})) * 100 > 85 AND (1 - (node_filesystem_avail_bytes{instance="monitoring.freikirche-traun.at:80",fstype!="tmpfs"} / node_filesystem_size_bytes{instance="monitoring.freikirche-traun.at:80",fstype!="tmpfs"})) * 100 < 95
             for: 5m
             labels:
               severity: slack
@@ -205,7 +208,7 @@ data:
               title: "Space is getting low"
               description: "@here - Disk free on {{ $labels.mountpoint }} is getting low: {{ $value }}. check it out."
           - alert: nodeDfCritical
-            expr: ((node_filesystem_size_bytes{instance="monitoring.freikirche-traun.at:80", device!="tmpfs"} - node_filesystem_free_bytes{instance="monitoring.freikirche-traun.at:80", device!="tmpfs"}) / node_filesystem_size_bytes{instance="monitoring.freikirche-traun.at:80", device!="tmpfs"}) * 100 >= 90 
+            expr: (1 - (node_filesystem_avail_bytes{instance="monitoring.freikirche-traun.at:80",fstype!="tmpfs"} / node_filesystem_size_bytes{instance="monitoring.freikirche-traun.at:80",fstype!="tmpfs"})) * 100 >= 95
             for: 5m
             labels:
               severity: slack
