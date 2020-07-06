@@ -54,7 +54,7 @@ spec:
               memory: 10Mi
 
         - name: prometheus-server
-          image: "tnosaj/prometheus-arm:2.17.0"
+          image: "prom/prometheus:v2.19.1"
           imagePullPolicy: "IfNotPresent"
           args:
             - --config.file=/etc/config/prometheus.yml
