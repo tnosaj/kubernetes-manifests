@@ -25,7 +25,7 @@ spec:
         scheduler.alpha.kubernetes.io/critical-pod: ''
     spec:
       nodeSelector:
-        k3s.io/hostname: wrk-master
+        k3s.io/hostname: wrk-2
       serviceAccountName: prometheus
       containers:
         - name: prometheus-server-configmap-reload
@@ -76,10 +76,10 @@ spec:
           resources:
             limits:
               cpu: 200m
-              memory: 450Mi
+              memory: 768Mi
             requests:
               cpu: 200m
-              memory: 350Mi
+              memory: 512Mi
           volumeMounts:
             - name: config-volume
               mountPath: /etc/config

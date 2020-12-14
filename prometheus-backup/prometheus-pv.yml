@@ -21,4 +21,4 @@ spec:
         - key: kubernetes.io/hostname
           operator: In
           values:
-          - wrk-master
+          - wrk-2

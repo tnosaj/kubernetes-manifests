@@ -15,7 +15,8 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 1,
-  "id": 9,
+  "id": 1,
+  "iteration": 1607980352687,
   "links": [
     {
       "icon": "info",
@@ -39,7 +40,7 @@
     {
       "aliasColors": {
         "prometheus": "#C15C17",
-        "{instance=\"localhost:9090\",job=\"prometheus\"}": "#CCA300"
+        "{instance=\"$prometheus\"}": "#CCA300"
       },
       "bars": false,
       "dashLength": 10,
@@ -47,7 +48,14 @@
       "datasource": "prometheus",
       "editable": true,
       "error": false,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "fill": 0,
+      "fillGradient": 0,
       "grid": {},
       "gridPos": {
         "h": 5,
@@ -55,6 +63,7 @@
         "x": 0,
         "y": 0
       },
+      "hiddenSeries": false,
       "id": 3,
       "legend": {
         "avg": false,
@@ -69,7 +78,11 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "connected",
+      "options": {
+        "alertThreshold": true
+      },
       "percentage": false,
+      "pluginVersion": "7.3.5",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -79,7 +92,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(irate(prometheus_tsdb_head_samples_appended_total{instance=\"localhost:9090\",job=\"prometheus\"}[5m]))",
+          "expr": "sum(irate(prometheus_tsdb_head_samples_appended_total{instance=\"$prometheus\"}[5m]))",
           "format": "time_series",
           "hide": false,
           "interval": "",
@@ -137,7 +150,14 @@
       "datasource": "prometheus",
       "editable": true,
       "error": false,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "fill": 0,
+      "fillGradient": 0,
       "grid": {},
       "gridPos": {
         "h": 5,
@@ -145,6 +165,7 @@
         "x": 6,
         "y": 0
       },
+      "hiddenSeries": false,
       "id": 14,
       "legend": {
         "avg": false,
@@ -159,7 +180,11 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "connected",
+      "options": {
+        "alertThreshold": true
+      },
       "percentage": false,
+      "pluginVersion": "7.3.5",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -225,13 +250,21 @@
       "dashes": false,
       "datasource": "prometheus",
       "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "fill": 0,
+      "fillGradient": 0,
       "gridPos": {
         "h": 5,
         "w": 6,
         "x": 12,
         "y": 0
       },
+      "hiddenSeries": false,
       "id": 16,
       "legend": {
         "avg": false,
@@ -246,7 +279,11 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
       "percentage": false,
+      "pluginVersion": "7.3.5",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -256,7 +293,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(process_resident_memory_bytes{instance=\"localhost:9090\",job=\"prometheus\"})",
+          "expr": "sum(process_resident_memory_bytes{instance=\"$prometheus\"})",
           "format": "time_series",
           "hide": false,
           "interval": "",
@@ -266,7 +303,7 @@
           "step": 20
         },
         {
-          "expr": "process_virtual_memory_bytes{instance=\"localhost:9090\",job=\"prometheus\"}",
+          "expr": "process_virtual_memory_bytes{instance=\"$prometheus\"}",
           "format": "time_series",
           "hide": false,
           "intervalFactor": 2,
@@ -285,7 +322,6 @@
         "sort": 2,
         "value_type": "individual"
       },
-      "transparent": false,
       "type": "graph",
       "xaxis": {
         "buckets": null,
@@ -327,6 +363,12 @@
         "rgba(245, 54, 54, 0.9)"
       ],
       "datasource": "prometheus",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "format": "none",
       "gauge": {
         "maxValue": 100,
@@ -378,7 +420,7 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "prometheus_tsdb_wal_corruptions_total{instance=\"localhost:9090\",job=\"prometheus\"}",
+          "expr": "prometheus_tsdb_wal_corruptions_total{instance=\"$prometheus\"}",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "",
@@ -405,13 +447,21 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": "prometheus",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "fill": 0,
+      "fillGradient": 0,
       "gridPos": {
         "h": 5,
         "w": 6,
         "x": 0,
         "y": 5
       },
+      "hiddenSeries": false,
       "id": 29,
       "legend": {
         "avg": false,
@@ -426,7 +476,11 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
       "percentage": false,
+      "pluginVersion": "7.3.5",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -436,7 +490,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(prometheus_tsdb_head_active_appenders{instance=\"localhost:9090\",job=\"prometheus\"})",
+          "expr": "sum(prometheus_tsdb_head_active_appenders{instance=\"$prometheus\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -446,7 +500,7 @@
           "step": 20
         },
         {
-          "expr": "sum(process_open_fds{instance=\"localhost:9090\",job=\"prometheus\"})",
+          "expr": "sum(process_open_fds{instance=\"$prometheus\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -499,7 +553,7 @@
     {
       "aliasColors": {
         "prometheus": "#F9BA8F",
-        "{instance=\"localhost:9090\",interval=\"5s\",instance=\"localhost:9090\",job=\"prometheus\"}": "#F9BA8F"
+        "{instance=\"$prometheus\",interval=\"5s\",instance=\"$prometheus\"}": "#F9BA8F"
       },
       "bars": false,
       "dashLength": 10,
@@ -507,7 +561,14 @@
       "datasource": "prometheus",
       "editable": true,
       "error": false,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "fill": 0,
+      "fillGradient": 0,
       "grid": {},
       "gridPos": {
         "h": 5,
@@ -515,6 +576,7 @@
         "x": 6,
         "y": 5
       },
+      "hiddenSeries": false,
       "id": 2,
       "legend": {
         "avg": false,
@@ -529,7 +591,11 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "connected",
+      "options": {
+        "alertThreshold": true
+      },
       "percentage": false,
+      "pluginVersion": "7.3.5",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -539,7 +605,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "prometheus_tsdb_blocks_loaded{instance=\"localhost:9090\",job=\"prometheus\"}",
+          "expr": "prometheus_tsdb_blocks_loaded{instance=\"$prometheus\"}",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "blocks",
@@ -594,13 +660,21 @@
       "datasource": "prometheus",
       "decimals": null,
       "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "fill": 0,
+      "fillGradient": 0,
       "gridPos": {
         "h": 5,
         "w": 6,
         "x": 12,
         "y": 5
       },
+      "hiddenSeries": false,
       "id": 33,
       "legend": {
         "avg": false,
@@ -615,7 +689,11 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "connected",
+      "options": {
+        "alertThreshold": true
+      },
       "percentage": false,
+      "pluginVersion": "7.3.5",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -625,7 +703,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "prometheus_tsdb_head_chunks{instance=\"localhost:9090\",job=\"prometheus\"}",
+          "expr": "prometheus_tsdb_head_chunks{instance=\"$prometheus\"}",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -681,13 +759,21 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": "prometheus",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
         "h": 5,
         "w": 6,
         "x": 18,
         "y": 5
       },
+      "hiddenSeries": false,
       "id": 36,
       "legend": {
         "avg": false,
@@ -702,7 +788,11 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
       "percentage": false,
+      "pluginVersion": "7.3.5",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -717,7 +807,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "prometheus_tsdb_head_gc_duration_seconds{instance=\"localhost:9090\",job=\"prometheus\",quantile=\"0.99\"}",
+          "expr": "prometheus_tsdb_head_gc_duration_seconds{instance=\"$prometheus\",quantile=\"0.99\"}",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "duration-p99",
@@ -725,7 +815,7 @@
           "step": 20
         },
         {
-          "expr": "irate(prometheus_tsdb_head_gc_duration_seconds_count{instance=\"localhost:9090\",job=\"prometheus\"}[5m])",
+          "expr": "irate(prometheus_tsdb_head_gc_duration_seconds_count{instance=\"$prometheus\"}[5m])",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "collections",
@@ -782,13 +872,21 @@
       "datasource": "prometheus",
       "decimals": null,
       "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "fill": 0,
+      "fillGradient": 0,
       "gridPos": {
         "h": 5,
         "w": 8,
         "x": 0,
         "y": 10
       },
+      "hiddenSeries": false,
       "id": 20,
       "legend": {
         "avg": false,
@@ -803,7 +901,11 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "connected",
+      "options": {
+        "alertThreshold": true
+      },
       "percentage": false,
+      "pluginVersion": "7.3.5",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -818,7 +920,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "histogram_quantile(0.99, sum(rate(prometheus_tsdb_compaction_duration_bucket{instance=\"localhost:9090\",job=\"prometheus\"}[5m])) by (le))",
+          "expr": "histogram_quantile(0.99, sum(rate(prometheus_tsdb_compaction_duration_bucket{instance=\"$prometheus\"}[5m])) by (le))",
           "format": "time_series",
           "hide": false,
           "interval": "",
@@ -828,7 +930,7 @@
           "step": 20
         },
         {
-          "expr": "irate(prometheus_tsdb_compactions_total{instance=\"localhost:9090\",job=\"prometheus\"}[5m])",
+          "expr": "irate(prometheus_tsdb_compactions_total{instance=\"$prometheus\"}[5m])",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "compactions",
@@ -836,7 +938,7 @@
           "step": 20
         },
         {
-          "expr": "irate(prometheus_tsdb_compactions_failed_total{instance=\"localhost:9090\",job=\"prometheus\"}[5m])",
+          "expr": "irate(prometheus_tsdb_compactions_failed_total{instance=\"$prometheus\"}[5m])",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "failed",
@@ -844,7 +946,7 @@
           "step": 20
         },
         {
-          "expr": "irate(prometheus_tsdb_compactions_triggered_total{instance=\"localhost:9090\",job=\"prometheus\"}[5m])",
+          "expr": "irate(prometheus_tsdb_compactions_triggered_total{instance=\"$prometheus\"}[5m])",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "triggered",
@@ -899,13 +1001,21 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": "prometheus",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
         "h": 5,
         "w": 8,
         "x": 8,
         "y": 10
       },
+      "hiddenSeries": false,
       "id": 32,
       "legend": {
         "avg": false,
@@ -920,7 +1030,11 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
       "percentage": false,
+      "pluginVersion": "7.3.5",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -930,7 +1044,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "rate(prometheus_tsdb_reloads_total{instance=\"localhost:9090\",job=\"prometheus\"}[5m])",
+          "expr": "rate(prometheus_tsdb_reloads_total{instance=\"$prometheus\"}[5m])",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "reloads",
@@ -938,7 +1052,7 @@
           "step": 20
         },
         {
-          "expr": "rate(prometheus_tsdb_reloads_failures_total{instance=\"localhost:9090\",job=\"prometheus\"}[5m])",
+          "expr": "rate(prometheus_tsdb_reloads_failures_total{instance=\"$prometheus\"}[5m])",
           "format": "time_series",
           "hide": false,
           "intervalFactor": 2,
@@ -994,13 +1108,21 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": "prometheus",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "fill": 0,
+      "fillGradient": 0,
       "gridPos": {
         "h": 5,
         "w": 8,
         "x": 16,
         "y": 10
       },
+      "hiddenSeries": false,
       "id": 38,
       "legend": {
         "avg": false,
@@ -1015,7 +1137,11 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
       "percentage": false,
+      "pluginVersion": "7.3.5",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -1025,7 +1151,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "prometheus_engine_query_duration_seconds{instance=\"localhost:9090\",job=\"prometheus\", quantile=\"0.99\"}",
+          "expr": "prometheus_engine_query_duration_seconds{instance=\"$prometheus\", quantile=\"0.99\"}",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "{{slice}}_p99",
@@ -1083,7 +1209,14 @@
       "decimals": null,
       "editable": true,
       "error": false,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "fill": 0,
+      "fillGradient": 0,
       "grid": {},
       "gridPos": {
         "h": 7,
@@ -1091,6 +1224,7 @@
         "x": 0,
         "y": 15
       },
+      "hiddenSeries": false,
       "id": 35,
       "legend": {
         "alignAsTable": false,
@@ -1107,7 +1241,11 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "connected",
+      "options": {
+        "alertThreshold": true
+      },
       "percentage": false,
+      "pluginVersion": "7.3.5",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -1117,7 +1255,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "max(prometheus_rule_group_duration_seconds{instance=\"localhost:9090\",job=\"prometheus\"}) by (quantile)",
+          "expr": "max(prometheus_rule_group_duration_seconds{instance=\"$prometheus\"}) by (quantile)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -1172,13 +1310,21 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": "prometheus",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
         "h": 7,
         "w": 12,
         "x": 12,
         "y": 15
       },
+      "hiddenSeries": false,
       "id": 39,
       "legend": {
         "avg": false,
@@ -1193,7 +1339,11 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
       "percentage": false,
+      "pluginVersion": "7.3.5",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -1203,7 +1353,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "rate(prometheus_rule_group_iterations_missed_total{instance=\"localhost:9090\",job=\"prometheus\"}[5m])",
+          "expr": "rate(prometheus_rule_group_iterations_missed_total{instance=\"$prometheus\"}[5m])",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "missed",
@@ -1211,7 +1361,7 @@
           "step": 10
         },
         {
-          "expr": "rate(prometheus_rule_group_iterations_total{instance=\"localhost:9090\",job=\"prometheus\"}[5m])",
+          "expr": "rate(prometheus_rule_group_iterations_total{instance=\"$prometheus\"}[5m])",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "iterations",
@@ -1263,13 +1413,41 @@
   ],
   "refresh": "1m",
   "revision": "1.0",
-  "schemaVersion": 16,
+  "schemaVersion": 26,
   "style": "dark",
   "tags": [
     "prometheus"
   ],
   "templating": {
-    "list": []
+    "list": [
+      {
+        "allValue": null,
+        "current": {
+          "selected": false,
+          "text": "prometheus-backup.monitoring.svc:9090",
+          "value": "prometheus-backup.monitoring.svc:9090"
+        },
+        "datasource": "prometheus",
+        "definition": "label_values(prometheus_build_info,instance)",
+        "error": null,
+        "hide": 0,
+        "includeAll": false,
+        "label": null,
+        "multi": false,
+        "name": "prometheus",
+        "options": [],
+        "query": "label_values(prometheus_build_info,instance)",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      }
+    ]
   },
   "time": {
     "from": "now-1h",
@@ -1304,5 +1482,5 @@
   "timezone": "browser",
   "title": "Prometheus",
   "uid": "Aiii99iRz",
-  "version": 2
+  "version": 5
 }
