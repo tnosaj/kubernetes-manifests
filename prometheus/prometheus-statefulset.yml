@@ -24,16 +24,9 @@ spec:
       annotations:
         scheduler.alpha.kubernetes.io/critical-pod: ''
     spec:
+      nodeSelector:
+        k3s.io/hostname: wrk-4 
       serviceAccountName: prometheus
-      initContainers:
-      - name: "init-chown-data"
-        image: "busybox:latest"
-        imagePullPolicy: "IfNotPresent"
-        command: ["chown", "-R", "65534:65534", "/data"]
-        volumeMounts:
-        - name: prometheus-data
-          mountPath: /data
-          subPath: ""
       containers:
         - name: prometheus-server-configmap-reload
           image: "tnosaj/configmap-reload-arm"
@@ -54,7 +47,7 @@ spec:
               memory: 10Mi
 
         - name: prometheus-server
-          image: "prom/prometheus:v2.19.1"
+          image: "prom/prometheus:latest"
           imagePullPolicy: "IfNotPresent"
           args:
             - --config.file=/etc/config/prometheus.yml
@@ -98,13 +91,6 @@ spec:
         - name: config-volume
           configMap:
             name: prometheus-config
-  volumeClaimTemplates:
-  - metadata:
-      name: prometheus-data
-    spec:
-      storageClassName: managed-nfs-storage
-      accessModes:
-        - ReadWriteOnce
-      resources:
-        requests:
-          storage: "16Gi"
+        - name: prometheus-data
+          persistentVolumeClaim:
+            claimName: prometheus

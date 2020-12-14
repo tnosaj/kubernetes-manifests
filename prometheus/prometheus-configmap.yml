@@ -37,10 +37,10 @@ data:
           - targets: ['192.168.1.1:9101']
       - job_name: 'prometheus'
         static_configs:
-          - targets: ['localhost:9090']
-      - job_name: 'pushgateway'
+          - targets: ['prometheus.monitoring.svc:9090']
+      - job_name: 'prometheus-backup'
         static_configs:
-          - targets: ['192.168.1.190:9091']
+          - targets: ['prometheus-backup.monitoring.svc:9090']
       - job_name: 'blackbox'
         metrics_path: /probe
         params:

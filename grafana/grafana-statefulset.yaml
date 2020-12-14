@@ -14,28 +14,27 @@ spec:
       labels:
         app: grafana
     spec:
+      nodeSelector:
+        k3s.io/hostname: wrk-2
       securityContext:
         runAsNonRoot: true
         runAsUser: 65534
       containers:
       - name: grafana
-        image: carlosedp/monitoring-grafana:v6.6.1-arm
+        image: grafana/grafana:latest
         volumeMounts:
-        - name: grafana-config
-          mountPath: /grafana/conf/config.ini
-          subPath: config.ini
         - name: grafana-claim
-          mountPath: /data
+          mountPath: /var/lib/grafana
         - name: grafana-datasources
-          mountPath: /grafana/conf/provisioning/datasources
+          mountPath: /grafana/provisioning/datasources
         ports:
         - name: web
           containerPort: 3000
         env:
         - name: GF_INSTALL_PLUGINS
           value: "grafana-clock-panel,grafana-piechart-panel,camptocamp-prometheus-alertmanager-datasource"
-        - name: GF_PATHS_PLUGINS
-          value: "/data/plugins"
+        - name: GF_PATHS_PROVISIONING
+          value: "/grafana/provisioning/datasources"
         resources:
           requests:
             memory: 180Mi
@@ -44,19 +43,9 @@ spec:
             memory: 180Mi
             cpu: 200m
       volumes:
-      - name: grafana-config
-        configMap:
-          name: grafana-config
       - name: grafana-datasources
         configMap:
           name: grafana-datasources
-  volumeClaimTemplates:
-  - metadata:
-      name: grafana-claim
-    spec:
-      storageClassName: managed-nfs-storage
-      accessModes:
-        - ReadWriteOnce
-      resources:
-        requests:
-          storage: 5Gi
+      - name: grafana-claim
+        persistentVolumeClaim:
+          claimName: grafana

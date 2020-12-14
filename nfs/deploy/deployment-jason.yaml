@@ -20,9 +20,11 @@ spec:
         app: nfs-client-provisioner
     spec:
       serviceAccountName: nfs-client-provisioner
+      nodeSelector:
+        beta.kubernetes.io/arch: arm64
       containers:
         - name: nfs-client-provisioner
-          image: quay.io/external_storage/nfs-client-provisioner-arm:latest
+          image: kopkop/nfs-client-provisioner-arm64
           volumeMounts:
             - name: nfs-client-root
               mountPath: /persistentvolumes
