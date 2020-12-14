@@ -1,0 +1,52 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  labels:
+    app: homeassistant
+  name: homeassistant
+  namespace: homeassistant
+spec:
+  selector:
+    matchLabels:
+      app: homeassistant
+  serviceName: homeassistant
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: homeassistant
+    spec:
+      nodeSelector:
+        k3s.io/hostname: wrk-1
+      containers:
+    spec:
+      volumes:
+       - name: config
+         persistentVolumeClaim:
+          claimName: homeassistant
+       - name: dev-usb0
+         hostPath:
+           path: /dev/ttyACM0
+       - name: dev-ama0
+         hostPath:
+           path: /dev/ttyAMA0
+      containers:
+      - image: homeassistant/raspberrypi4-homeassistant:stable
+        name: home-assistant
+        resources:
+          limits:
+            cpu: 800m
+            memory: 512Mi
+          requests:
+            cpu: 500m
+            memory: 512Mi
+        volumeMounts:
+         - mountPath: "/config"
+           name: config
+         - mountPath: "/dev/ttyACM0"
+           name: dev-usb0
+         - mountPath: "/dev/ttyAMA0"
+           name: dev-ama0
+        securityContext:
+          privileged: true
+      restartPolicy: Always
