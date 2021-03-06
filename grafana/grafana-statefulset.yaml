@@ -15,7 +15,7 @@ spec:
         app: grafana
     spec:
       nodeSelector:
-        k3s.io/hostname: wrk-4
+        k3s.io/hostname: wrk-3
       securityContext:
         runAsNonRoot: true
         runAsUser: 65534

@@ -51,8 +51,8 @@ spec:
           imagePullPolicy: "IfNotPresent"
           args:
             - --config.file=/etc/config/prometheus.yml
-            - --storage.tsdb.path=/data
-            - --storage.tsdb.retention=5d
+            - --storage.tsdb.path=/prometheus/
+            - --storage.tsdb.retention.time=5d
             - --web.console.libraries=/etc/prometheus/console_libraries
             - --web.console.templates=/etc/prometheus/consoles
             - --web.enable-lifecycle
@@ -84,8 +84,7 @@ spec:
             - name: config-volume
               mountPath: /etc/config
             - name: prometheus-data
-              mountPath: /data
-              subPath: ""
+              mountPath: /prometheus/
       terminationGracePeriodSeconds: 300
       volumes:
         - name: config-volume

@@ -12,7 +12,7 @@ spec:
   persistentVolumeReclaimPolicy: Retain
   storageClassName: local-storage
   local:
-    path: /mnt/a/homeassistant
+    path: /data/homeassistant
   nodeAffinity:
     required:
       nodeSelectorTerms:
@@ -20,4 +20,4 @@ spec:
         - key: kubernetes.io/hostname
           operator: In
           values:
-          - wrk-1
+          - wrk-3

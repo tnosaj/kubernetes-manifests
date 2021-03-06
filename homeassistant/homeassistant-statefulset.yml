@@ -17,7 +17,7 @@ spec:
         app: homeassistant
     spec:
       nodeSelector:
-        k3s.io/hostname: wrk-1
+        k3s.io/hostname: wrk-3
       containers:
     spec:
       volumes:
