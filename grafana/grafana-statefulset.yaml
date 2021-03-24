@@ -14,19 +14,28 @@ spec:
       labels:
         app: grafana
     spec:
-      nodeSelector:
-        k3s.io/hostname: wrk-3
       securityContext:
-        runAsNonRoot: true
+        fsGroup: 65534
+        runAsNonRoot: false
         runAsUser: 65534
       containers:
       - name: grafana
-        image: grafana/grafana:latest
+        image: grafana/grafana:7.4.3
         volumeMounts:
-        - name: grafana-claim
-          mountPath: /var/lib/grafana
         - name: grafana-datasources
           mountPath: /grafana/provisioning/datasources
+        - name: grafana-dashboard
+          mountPath: /grafana/provisioning/dashboards
+        - name: grafana-dashboards-services
+          mountPath: /var/lib/grafana/dashboards/services
+        - name: grafana-dashboards-capacity
+          mountPath: /var/lib/grafana/dashboards/capacity
+        - name: grafana-dashboards-k8s
+          mountPath: /var/lib/grafana/dashboards/k8s
+        - name: grafana-dashboards-fk
+          mountPath: /var/lib/grafana/dashboards/fk
+        - name: grafana-dashboards-prometheus
+          mountPath: /var/lib/grafana/dashboards/prometheus
         ports:
         - name: web
           containerPort: 3000
@@ -34,7 +43,17 @@ spec:
         - name: GF_INSTALL_PLUGINS
           value: "grafana-clock-panel,grafana-piechart-panel,camptocamp-prometheus-alertmanager-datasource"
         - name: GF_PATHS_PROVISIONING
-          value: "/grafana/provisioning/datasources"
+          value: "/grafana/provisioning/"
+        - name: GF_SECURITY_ADMIN_USER
+          valueFrom:
+            secretKeyRef:
+              name: grafana-secret
+              key: admin-user
+        - name: GF_SECURITY_ADMIN_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: grafana-secret
+              key: admin-password
         resources:
           requests:
             memory: 180Mi
@@ -46,6 +65,21 @@ spec:
       - name: grafana-datasources
         configMap:
           name: grafana-datasources
-      - name: grafana-claim
-        persistentVolumeClaim:
-          claimName: grafana
+      - name: grafana-dashboard
+        configMap:
+          name: grafana-dashboard
+      - name: grafana-dashboards-capacity
+        configMap:
+          name: grafana-dashboards-capacity
+      - name: grafana-dashboards-k8s
+        configMap:
+          name: grafana-dashboards-k8s
+      - name: grafana-dashboards-services
+        configMap:
+          name: grafana-dashboards-services
+      - name: grafana-dashboards-fk
+        configMap:
+          name: grafana-dashboards-fk
+      - name: grafana-dashboards-prometheus
+        configMap:
+          name: grafana-dashboards-prometheus
