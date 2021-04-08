@@ -3,6 +3,8 @@ apiVersion: v1
 metadata:
   name: grafana-dashboards-services
   namespace: monitoring
+  labels:
+    grafana-dashboard: "true"
 data:
   Docker.json: |-
     {

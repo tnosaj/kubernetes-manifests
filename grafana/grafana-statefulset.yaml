@@ -14,28 +14,33 @@ spec:
       labels:
         app: grafana
     spec:
+      serviceAccountName: configmapwatching
       securityContext:
         fsGroup: 65534
         runAsNonRoot: false
         runAsUser: 65534
       containers:
+      - name: sidecar
+        image: kiwigrid/k8s-sidecar:latest
+        volumeMounts:
+        - name: grafana-dashboards
+          mountPath: /tmp/
+        env:
+        - name: LABEL
+          value: "grafana-dashboard"
+        - name: FOLDER
+          value: /tmp/
+        - name: FOLDER_ANNOTATION
+          value: "grafana-dashboard-folder"
       - name: grafana
         image: grafana/grafana:7.4.3
         volumeMounts:
+        - name: grafana-dashboards
+          mountPath: /var/lib/grafana/dashboards
         - name: grafana-datasources
           mountPath: /grafana/provisioning/datasources
         - name: grafana-dashboard
           mountPath: /grafana/provisioning/dashboards
-        - name: grafana-dashboards-services
-          mountPath: /var/lib/grafana/dashboards/services
-        - name: grafana-dashboards-capacity
-          mountPath: /var/lib/grafana/dashboards/capacity
-        - name: grafana-dashboards-k8s
-          mountPath: /var/lib/grafana/dashboards/k8s
-        - name: grafana-dashboards-fk
-          mountPath: /var/lib/grafana/dashboards/fk
-        - name: grafana-dashboards-prometheus
-          mountPath: /var/lib/grafana/dashboards/prometheus
         ports:
         - name: web
           containerPort: 3000
@@ -62,24 +67,11 @@ spec:
             memory: 180Mi
             cpu: 200m
       volumes:
+      - name: grafana-dashboards
+        emptyDir: {}
       - name: grafana-datasources
         configMap:
           name: grafana-datasources
       - name: grafana-dashboard
         configMap:
           name: grafana-dashboard
-      - name: grafana-dashboards-capacity
-        configMap:
-          name: grafana-dashboards-capacity
-      - name: grafana-dashboards-k8s
-        configMap:
-          name: grafana-dashboards-k8s
-      - name: grafana-dashboards-services
-        configMap:
-          name: grafana-dashboards-services
-      - name: grafana-dashboards-fk
-        configMap:
-          name: grafana-dashboards-fk
-      - name: grafana-dashboards-prometheus
-        configMap:
-          name: grafana-dashboards-prometheus

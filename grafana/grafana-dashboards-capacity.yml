@@ -3,6 +3,9 @@ apiVersion: v1
 metadata:
   name: grafana-dashboards-capacity
   namespace: monitoring
+  labels:
+    grafana-dashboard: "true"
+    grafana-dashboard-folder: "capacity"
 data:
   Kubernetes_cluster_monitoring.json: |-
     {

@@ -3,6 +3,8 @@ apiVersion: v1
 metadata:
   name: grafana-dashboards-k8s
   namespace: monitoring
+  labels:
+    grafana-dashboard: "true"
 data:
   k8s-capacity-planning.json: |
     {

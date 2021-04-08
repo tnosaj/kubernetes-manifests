@@ -3,6 +3,8 @@ apiVersion: v1
 metadata:
   name: grafana-dashboards-fk
   namespace: monitoring
+  labels:
+    grafana-dashboard: "true"
 data:
   blackbox.json: |
     {
