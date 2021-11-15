@@ -2,3 +2,11 @@
 {{range .Alerts}}{{.Annotations.DESCRIPTION}}
 {{end}}
 {{ end }}
+{{ define "slack.channel" }}
+  {{ if .CommonLabels.channel }}
+    {{ .CommonLabels.channel }}
+  {{ else }}
+    #alerts
+  {{ end }}
+{{ end }}
+

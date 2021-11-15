@@ -22,7 +22,7 @@ data:
       slack_configs:
       - api_url: '$SLACK_API_URL'
         username: 'Alertmanager'
-        channel: '#alerts'
+        channel: '{{ template "slack.channel" . }}'
         send_resolved: true
         title: |-
           [{{ .Status | toUpper }}{{ if eq .Status "firing" }}:{{ .Alerts.Firing | len }}{{ end }}] {{ .CommonLabels.alertname }} for {{ .CommonLabels.job }}
@@ -51,4 +51,6 @@ data:
             {{ range .Labels.SortedPairs }} • *{{ .Name }}:* \`{{ .Value }}\`
             {{ end }}
           {{ end }}
+    templates:
+    - /etc/alertmanager-templates/*.tmpl
 EOF
