@@ -217,4 +217,19 @@ data:
             annotations:
               title: "Free Memory is getting low."
               description: "@here - Free memory is low: {{ \$value }}."
+
+  my.rules: |-
+    groups:
+      - name: home
+        rules:
+          - alert: TempratureSensorBatteryOut
+            expr: rate(hass_temperature_c[720m])*100 == 0
+            for: 60m
+            labels:
+              severity: slack
+              channel: '#private-alerts'
+            annotations:
+              title: "Check Temprature Sensor Battery"
+              description: "Battery might be empty on the Temperature Sensor {{ \$labels.friendly_name }}"
+
 EOF
