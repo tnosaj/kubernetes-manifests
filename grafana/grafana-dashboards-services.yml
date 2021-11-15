@@ -5,6 +5,7 @@ metadata:
   namespace: monitoring
   labels:
     grafana-dashboard: "true"
+    grafana-dashboard-folder: "services"
 data:
   Docker.json: |-
     {
