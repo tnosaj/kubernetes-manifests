@@ -12,7 +12,7 @@ data:
       scrape_timeout: 60s
       evaluation_interval: 75s
     rule_files:
-      - /etc/prometheus/rules/prometheus.rules
+      - /etc/config/*.rules
     alerting:
       alertmanagers:
       - scheme: http
