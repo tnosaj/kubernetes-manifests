@@ -32,6 +32,7 @@ spec:
            path: /dev/ttyAMA0
       containers:
       - image: homeassistant/raspberrypi4-homeassistant:stable
+        imagePullPolicy: always
         name: home-assistant
         resources:
           limits:
