@@ -249,5 +249,13 @@ data:
             annotations:
               title: "Exporter not up"
               description: "Exporter job {{ \$labels.job }} is failing"
-
+          - alert: HomeAssistantHangUp
+            expr: rate(hass_sensor_power_w{friendly_name="refrigerator Electricalmeasurement"}[30m])*100 == 0
+            for: 60m
+            labels:
+              severity: slack
+              channel: '#private-alerts'
+            annotations:
+              title: "Check HomeAssistantHangUp"
+              description: "Zigbee GW might be foobar"
 EOF
