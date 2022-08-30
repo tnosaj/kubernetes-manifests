@@ -61,6 +61,7 @@ data:
         static_configs:
           - targets:
             - https://freikirche-traun.at
+            - http://192.168.1.127
         relabel_configs:
           - source_labels: [__address__]
             target_label: __param_target
