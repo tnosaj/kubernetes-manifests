@@ -26,13 +26,15 @@ spec:
           claimName: homeassistant
        - name: dev-usb0
          hostPath:
-           path: /dev/ttyACM0
-       - name: dev-ama0
+           type: CharDevice
+           path: /dev/ttyUSB0
+       - name: dev-acm0
          hostPath:
-           path: /dev/ttyAMA0
+           type: CharDevice
+           path: /dev/ttyACM0
       containers:
       - image: homeassistant/raspberrypi4-homeassistant:stable
-        imagePullPolicy: always
+        imagePullPolicy: Always
         name: home-assistant
         resources:
           limits:
@@ -45,9 +47,9 @@ spec:
          - mountPath: "/config"
            name: config
          - mountPath: "/dev/ttyACM0"
+           name: dev-acm0
+         - mountPath: "/dev/ttyUSB0"
            name: dev-usb0
-         - mountPath: "/dev/ttyAMA0"
-           name: dev-ama0
         securityContext:
           privileged: true
       restartPolicy: Always
