@@ -175,7 +175,7 @@ data:
         rules:
           - alert: nginxDown
             expr: nginx_up{instance="monitoring.freikirche-traun.at:80"} != 1
-            for: 5m
+            for: 60m
             labels:
               severity: slack
               channel: '#alerts'
@@ -224,8 +224,8 @@ data:
       - name: home
         rules:
           - alert: TempratureSensorBatteryOut
-            expr: rate(hass_temperature_c[720m])*100 == 0
-            for: 60m
+            expr: rate(hass_sensor_temperature_celsius[720m])*100 == 0
+            for: 120m
             labels:
               severity: slack
               channel: '#private-alerts'
@@ -233,7 +233,7 @@ data:
               title: "Check Temprature Sensor Battery"
               description: "Battery might be empty on the Temperature Sensor {{ \$labels.friendly_name }}"
           - alert: TempratureSensorMissing
-            expr: absent(hass_temperature_c) == 1
+            expr: absent(hass_sensor_temperature_celsius) == 1
             for: 60m
             labels:
               severity: slack
@@ -252,11 +252,20 @@ data:
               description: "Exporter job {{ \$labels.job }} is failing"
           - alert: HomeAssistantHangUp
             expr: rate(hass_sensor_power_w{friendly_name="refrigerator Electricalmeasurement"}[30m])*100 == 0
-            for: 60m
+            for: 120m
             labels:
               severity: slack
               channel: '#private-alerts'
             annotations:
               title: "Check HomeAssistantHangUp"
               description: "Zigbee GW might be foobar"
+          - alert: PowerConsumptionHigh
+            expr: sum(hass_sensor_power_w) > 250
+            for: 120m
+            labels:
+              severity: slack
+              channel: '#private-alerts'
+            annotations:
+              title: "Power Consumption high"
+              description: "Power usage in the house is high"
 EOF
