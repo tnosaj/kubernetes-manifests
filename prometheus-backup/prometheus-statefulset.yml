@@ -21,11 +21,9 @@ spec:
     metadata:
       labels:
         k8s-app: prometheus-backup
-      annotations:
-        scheduler.alpha.kubernetes.io/critical-pod: ''
     spec:
       nodeSelector:
-        k3s.io/hostname: wrk-3
+        kubernetes.io/hostname: wrk-3
       serviceAccountName: prometheus
       containers:
         - name: prometheus-server-configmap-reload

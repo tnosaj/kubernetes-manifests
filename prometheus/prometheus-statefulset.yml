@@ -21,11 +21,9 @@ spec:
     metadata:
       labels:
         k8s-app: prometheus
-      annotations:
-        scheduler.alpha.kubernetes.io/critical-pod: ''
     spec:
       nodeSelector:
-        k3s.io/hostname: wrk-4 
+        kubernetes.io/hostname: wrk-4 
       serviceAccountName: prometheus
       containers:
         - name: prometheus-server-configmap-reload
@@ -45,7 +43,6 @@ spec:
             requests:
               cpu: 10m
               memory: 10Mi
-
         - name: prometheus-server
           image: "prom/prometheus:latest"
           imagePullPolicy: "IfNotPresent"
