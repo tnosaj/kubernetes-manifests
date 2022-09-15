@@ -11,6 +11,7 @@ data:
   prometheus.yml: |-
     global:
       scrape_interval: 80s
+      scrape_timeout: 30s
       evaluation_interval: 75s
     rule_files:
       - /etc/config/*.rules
