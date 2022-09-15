@@ -4830,7 +4830,7 @@ data:
           "tableColumn": "",
           "targets": [
             {
-              "expr": "node_hwmon_temp_celsius{instance=\"192.168.1.30:9100\"}",
+              "expr": "avg(node_hwmon_temp_celsius{instance=\"192.168.1.30:9100\"})",
               "format": "time_series",
               "intervalFactor": 1,
               "refId": "A"
@@ -4916,7 +4916,7 @@ data:
           "tableColumn": "",
           "targets": [
             {
-              "expr": "node_hwmon_temp_celsius{instance=\"192.168.1.31:9100\"}",
+              "expr": "avg(node_hwmon_temp_celsius{instance=\"192.168.1.31:9100\"})",
               "format": "time_series",
               "intervalFactor": 1,
               "refId": "A"
@@ -5002,7 +5002,7 @@ data:
           "tableColumn": "",
           "targets": [
             {
-              "expr": "node_hwmon_temp_celsius{instance=\"192.168.1.32:9100\"}",
+              "expr": "avg(node_hwmon_temp_celsius{instance=\"192.168.1.32:9100\"})",
               "format": "time_series",
               "intervalFactor": 1,
               "refId": "A"
@@ -5088,7 +5088,7 @@ data:
           "tableColumn": "",
           "targets": [
             {
-              "expr": "node_hwmon_temp_celsius{instance=\"192.168.1.33:9100\"}",
+              "expr": "avg(node_hwmon_temp_celsius{instance=\"192.168.1.33:9100\"})",
               "format": "time_series",
               "intervalFactor": 1,
               "refId": "A"
@@ -5174,7 +5174,7 @@ data:
           "tableColumn": "",
           "targets": [
             {
-              "expr": "node_hwmon_temp_celsius{instance=\"192.168.1.34:9100\"}",
+              "expr": "avg(node_hwmon_temp_celsius{instance=\"192.168.1.34:9100\"})",
               "format": "time_series",
               "intervalFactor": 1,
               "refId": "A"
