@@ -2,13 +2,15 @@ apiVersion: apps/v1
 kind: DaemonSet
 metadata:
   labels:
-    app: node-exporter
+    app.kubernetes.io/component: exporter
+    app.kubernetes.io/name: node-exporter
   name: node-exporter
   namespace: monitoring
 spec:
   selector:
     matchLabels:
-      app: node-exporter
+      app.kubernetes.io/component: exporter
+      app.kubernetes.io/name: node-exporter
   template:
     metadata:
       annotations:
@@ -16,7 +18,8 @@ spec:
         prometheus.io/path:   /metrics
         prometheus.io/port:   '9100'
       labels:
-        app: node-exporter
+        app.kubernetes.io/component: exporter
+        app.kubernetes.io/name: node-exporter
     spec:
       containers:
       - args:
@@ -26,15 +29,15 @@ spec:
         - --path.rootfs=/host/root
         - --collector.filesystem.ignored-mount-points=^/(dev|proc|sys|var/lib/docker/.+)($|/)
         - --collector.filesystem.ignored-fs-types=^(autofs|binfmt_misc|cgroup|configfs|debugfs|devpts|devtmpfs|fusectl|hugetlbfs|mqueue|overlay|proc|procfs|pstore|rpc_pipefs|securityfs|sysfs|tracefs)$
-        image: rycus86/prometheus-node-exporter
+        image: prom/node-exporter
         name: node-exporter
         resources:
           limits:
             cpu: 250m
-            memory: 180Mi
+            memory: 100Mi
           requests:
             cpu: 102m
-            memory: 180Mi
+            memory: 100Mi
         volumeMounts:
         - mountPath: /host/proc
           name: proc
@@ -48,15 +51,10 @@ spec:
           readOnly: true
       hostNetwork: true
       hostPID: true
-      nodeSelector:
-        beta.kubernetes.io/os: linux
       securityContext:
         runAsNonRoot: true
         runAsUser: 65534
       serviceAccountName: prometheus
-      tolerations:
-      - effect: NoSchedule
-        key: node-role.kubernetes.io/master
       volumes:
       - hostPath:
           path: /proc
