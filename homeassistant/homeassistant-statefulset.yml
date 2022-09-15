@@ -17,7 +17,7 @@ spec:
         app: homeassistant
     spec:
       nodeSelector:
-        k3s.io/hostname: wrk-3
+        kubernetes.io/hostname: wrk-3
       containers:
     spec:
       volumes:
@@ -28,10 +28,6 @@ spec:
          hostPath:
            type: CharDevice
            path: /dev/ttyUSB0
-       - name: dev-acm0
-         hostPath:
-           type: CharDevice
-           path: /dev/ttyACM0
       containers:
       - image: homeassistant/raspberrypi4-homeassistant:stable
         imagePullPolicy: Always
@@ -46,8 +42,6 @@ spec:
         volumeMounts:
          - mountPath: "/config"
            name: config
-         - mountPath: "/dev/ttyACM0"
-           name: dev-acm0
          - mountPath: "/dev/ttyUSB0"
            name: dev-usb0
         securityContext:
