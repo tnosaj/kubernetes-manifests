@@ -19,6 +19,8 @@ spec:
         fsGroup: 65534
         runAsNonRoot: false
         runAsUser: 65534
+      nodeSelector:
+        worker: "true"
       containers:
       - name: sidecar
         image: kiwigrid/k8s-sidecar:latest
