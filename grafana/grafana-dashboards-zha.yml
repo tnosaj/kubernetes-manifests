@@ -350,48 +350,12 @@ data:
             "label": "sensor",
             "multi": true,
             "name": "sensor",
-            "options": [
-              {
-                "selected": true,
-                "text": "All",
-                "value": "$__all"
-              },
-              {
-                "selected": false,
-                "text": "bathroom",
-                "value": "bathroom"
-              },
-              {
-                "selected": false,
-                "text": "clock",
-                "value": "clock"
-              },
-              {
-                "selected": false,
-                "text": "livingroom",
-                "value": "livingroom"
-              },
-              {
-                "selected": false,
-                "text": "office",
-                "value": "office"
-              },
-              {
-                "selected": false,
-                "text": "pantry",
-                "value": "pantry"
-              },
-              {
-                "selected": false,
-                "text": "bedroom",
-                "value": "bedroom"
-              }
-            ],
+            "options": [],
             "query": {
               "query": "label_values(hass_sensor_temperature_celsius,friendly_name)",
               "refId": "StandardVariableQuery"
             },
-            "refresh": 0,
+            "refresh": 1,
             "regex": "/^(.*)\\s/g",
             "skipUrlSync": false,
             "sort": 0,
@@ -1026,38 +990,12 @@ data:
             "label": "sensor",
             "multi": true,
             "name": "sensor",
-            "options": [
-              {
-                "selected": true,
-                "text": "All",
-                "value": "$__all"
-              },
-              {
-                "selected": false,
-                "text": "desk",
-                "value": "desk"
-              },
-              {
-                "selected": false,
-                "text": "freezer",
-                "value": "freezer"
-              },
-              {
-                "selected": false,
-                "text": "refrigerator",
-                "value": "refrigerator"
-              },
-              {
-                "selected": false,
-                "text": "ups",
-                "value": "ups"
-              }
-            ],
+            "options": [],
             "query": {
               "query": "label_values(hass_sensor_power_w,friendly_name)",
               "refId": "StandardVariableQuery"
             },
-            "refresh": 0,
+            "refresh": 1,
             "regex": "/^(.*)\\s/g",
             "skipUrlSync": false,
             "sort": 1,
