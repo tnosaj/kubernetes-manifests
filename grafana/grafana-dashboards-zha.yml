@@ -1009,8 +1009,8 @@ data:
             "allValue": null,
             "current": {
               "selected": true,
-              "text": "0.16",
-              "value": "0.16"
+              "text": "0.1304",
+              "value": "0.1304"
             },
             "description": null,
             "error": null,
@@ -1031,7 +1031,7 @@ data:
                 "value": "0.16"
               }
             ],
-            "query": "0.15, 0.16",
+            "query": "0.1304, 0.16",
             "queryValue": "",
             "skipUrlSync": false,
             "type": "custom"
