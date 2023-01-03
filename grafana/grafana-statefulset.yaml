@@ -35,7 +35,7 @@ spec:
         - name: FOLDER_ANNOTATION
           value: "grafana-dashboard-folder"
       - name: grafana
-        image: grafana/grafana:7.4.3
+        image: grafana/grafana:8.5.15
         volumeMounts:
         - name: grafana-dashboards
           mountPath: /var/lib/grafana/dashboards
@@ -52,7 +52,7 @@ spec:
         - name: GF_SERVER_SERVE_FROM_SUB_PATH
           value: "true"
         - name: GF_INSTALL_PLUGINS
-          value: "grafana-clock-panel,grafana-piechart-panel,camptocamp-prometheus-alertmanager-datasource"
+          value: "grafana-piechart-panel,camptocamp-prometheus-alertmanager-datasource"
         - name: GF_PATHS_PROVISIONING
           value: "/grafana/provisioning/"
         - name: GF_SECURITY_ADMIN_USER
