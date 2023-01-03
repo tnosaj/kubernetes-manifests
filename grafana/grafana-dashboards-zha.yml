@@ -383,30 +383,42 @@ data:
         "list": [
           {
             "builtIn": 1,
-            "datasource": "-- Grafana --",
+            "datasource": {
+              "type": "datasource",
+              "uid": "grafana"
+            },
             "enable": true,
             "hide": true,
             "iconColor": "rgba(0, 211, 255, 1)",
             "name": "Annotations & Alerts",
+            "target": {
+              "limit": 100,
+              "matchAny": false,
+              "tags": [],
+              "type": "dashboard"
+            },
             "type": "dashboard"
           }
         ]
       },
       "editable": true,
-      "gnetId": null,
+      "fiscalYearStartMonth": 0,
       "graphTooltip": 0,
-      "id": 23,
-      "iteration": 1660684597517,
+      "iteration": 1672735858711,
       "links": [],
+      "liveNow": false,
       "panels": [
         {
-          "datasource": "prometheus-backup",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P9C20BFC998B97ACD"
+          },
           "fieldConfig": {
             "defaults": {
               "color": {
                 "mode": "thresholds"
               },
-              "custom": {},
+              "decimals": 2,
               "mappings": [],
               "thresholds": {
                 "mode": "absolute",
@@ -420,13 +432,14 @@ data:
                     "value": 80
                   }
                 ]
-              }
+              },
+              "unit": "currencyEUR"
             },
             "overrides": []
           },
           "gridPos": {
-            "h": 9,
-            "w": 12,
+            "h": 5,
+            "w": 6,
             "x": 0,
             "y": 0
           },
@@ -446,17 +459,25 @@ data:
             "text": {},
             "textMode": "auto"
           },
-          "pluginVersion": "7.4.3",
+          "pluginVersion": "8.5.15",
           "targets": [
             {
-              "expr": "sum(hass_sensor_energy_kwh{friendly_name=~\"$sensor.*\"})*$cost",
+              "datasource": {
+                "type": "prometheus",
+                "uid": "P9C20BFC998B97ACD"
+              },
+              "editorMode": "code",
+              "exemplar": false,
+              "expr": "sum(delta(hass_sensor_energy_kwh{}[$time]))*$cost",
+              "instant": true,
               "interval": "",
               "legendFormat": "",
               "queryType": "randomWalk",
+              "range": false,
               "refId": "A"
             }
           ],
-          "title": "Total Cost",
+          "title": "Total Cost Over Time",
           "type": "stat"
         },
         {
@@ -464,314 +485,17 @@ data:
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "prometheus-backup",
-          "fieldConfig": {
-            "defaults": {
-              "custom": {}
-            },
-            "overrides": []
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P9C20BFC998B97ACD"
           },
           "fill": 1,
           "fillGradient": 0,
           "gridPos": {
-            "h": 9,
-            "w": 12,
-            "x": 12,
-            "y": 0
-          },
-          "hiddenSeries": false,
-          "id": 6,
-          "legend": {
-            "avg": false,
-            "current": false,
-            "max": false,
-            "min": false,
-            "show": true,
-            "total": false,
-            "values": false
-          },
-          "lines": true,
-          "linewidth": 1,
-          "nullPointMode": "null",
-          "options": {
-            "alertThreshold": true
-          },
-          "percentage": false,
-          "pluginVersion": "7.4.3",
-          "pointradius": 2,
-          "points": false,
-          "renderer": "flot",
-          "seriesOverrides": [],
-          "spaceLength": 10,
-          "stack": false,
-          "steppedLine": false,
-          "targets": [
-            {
-              "expr": "(hass_sensor_energy_kwh{friendly_name=~\"$sensor.*\"})*$cost",
-              "interval": "",
-              "legendFormat": "{{friendly_name}}",
-              "queryType": "randomWalk",
-              "refId": "A"
-            }
-          ],
-          "thresholds": [],
-          "timeFrom": null,
-          "timeRegions": [],
-          "timeShift": null,
-          "title": "Power consumption cost",
-          "tooltip": {
-            "shared": true,
-            "sort": 0,
-            "value_type": "individual"
-          },
-          "type": "graph",
-          "xaxis": {
-            "buckets": null,
-            "mode": "time",
-            "name": null,
-            "show": true,
-            "values": []
-          },
-          "yaxes": [
-            {
-              "$$hashKey": "object:915",
-              "format": "currencyEUR",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
-            },
-            {
-              "$$hashKey": "object:916",
-              "format": "short",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
-            }
-          ],
-          "yaxis": {
-            "align": false,
-            "alignLevel": null
-          }
-        },
-        {
-          "aliasColors": {},
-          "bars": false,
-          "dashLength": 10,
-          "dashes": false,
-          "datasource": "prometheus-backup",
-          "fieldConfig": {
-            "defaults": {
-              "custom": {}
-            },
-            "overrides": []
-          },
-          "fill": 1,
-          "fillGradient": 0,
-          "gridPos": {
-            "h": 9,
-            "w": 6,
-            "x": 0,
-            "y": 9
-          },
-          "hiddenSeries": false,
-          "id": 5,
-          "legend": {
-            "avg": false,
-            "current": false,
-            "max": false,
-            "min": false,
-            "show": true,
-            "total": false,
-            "values": false
-          },
-          "lines": true,
-          "linewidth": 1,
-          "nullPointMode": "null",
-          "options": {
-            "alertThreshold": true
-          },
-          "percentage": false,
-          "pluginVersion": "7.4.3",
-          "pointradius": 2,
-          "points": false,
-          "renderer": "flot",
-          "seriesOverrides": [],
-          "spaceLength": 10,
-          "stack": false,
-          "steppedLine": false,
-          "targets": [
-            {
-              "expr": "hass_sensor_energy_kwh{friendly_name=~\"$sensor.*\"}",
-              "interval": "",
-              "legendFormat": "{{friendly_name}}",
-              "queryType": "randomWalk",
-              "refId": "A"
-            }
-          ],
-          "thresholds": [],
-          "timeFrom": null,
-          "timeRegions": [],
-          "timeShift": null,
-          "title": "Power consumption [kwh]",
-          "tooltip": {
-            "shared": true,
-            "sort": 0,
-            "value_type": "individual"
-          },
-          "type": "graph",
-          "xaxis": {
-            "buckets": null,
-            "mode": "time",
-            "name": null,
-            "show": true,
-            "values": []
-          },
-          "yaxes": [
-            {
-              "$$hashKey": "object:915",
-              "format": "kwatth",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
-            },
-            {
-              "$$hashKey": "object:916",
-              "format": "short",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
-            }
-          ],
-          "yaxis": {
-            "align": false,
-            "alignLevel": null
-          }
-        },
-        {
-          "aliasColors": {},
-          "bars": false,
-          "dashLength": 10,
-          "dashes": false,
-          "datasource": "prometheus-backup",
-          "fieldConfig": {
-            "defaults": {
-              "custom": {}
-            },
-            "overrides": []
-          },
-          "fill": 1,
-          "fillGradient": 0,
-          "gridPos": {
-            "h": 9,
+            "h": 17,
             "w": 6,
             "x": 6,
-            "y": 9
-          },
-          "hiddenSeries": false,
-          "id": 2,
-          "legend": {
-            "avg": false,
-            "current": false,
-            "max": false,
-            "min": false,
-            "show": true,
-            "total": false,
-            "values": false
-          },
-          "lines": true,
-          "linewidth": 1,
-          "nullPointMode": "null",
-          "options": {
-            "alertThreshold": true
-          },
-          "percentage": false,
-          "pluginVersion": "7.4.3",
-          "pointradius": 2,
-          "points": false,
-          "renderer": "flot",
-          "seriesOverrides": [],
-          "spaceLength": 10,
-          "stack": false,
-          "steppedLine": false,
-          "targets": [
-            {
-              "expr": "hass_sensor_power_w{friendly_name=~\"$sensor.*\"}",
-              "interval": "",
-              "legendFormat": "{{friendly_name}}",
-              "queryType": "randomWalk",
-              "refId": "A"
-            }
-          ],
-          "thresholds": [],
-          "timeFrom": null,
-          "timeRegions": [],
-          "timeShift": null,
-          "title": "Power usage [w]",
-          "tooltip": {
-            "shared": true,
-            "sort": 0,
-            "value_type": "individual"
-          },
-          "type": "graph",
-          "xaxis": {
-            "buckets": null,
-            "mode": "time",
-            "name": null,
-            "show": true,
-            "values": []
-          },
-          "yaxes": [
-            {
-              "$$hashKey": "object:915",
-              "format": "watt",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
-            },
-            {
-              "$$hashKey": "object:916",
-              "format": "short",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
-            }
-          ],
-          "yaxis": {
-            "align": false,
-            "alignLevel": null
-          }
-        },
-        {
-          "aliasColors": {},
-          "bars": false,
-          "dashLength": 10,
-          "dashes": false,
-          "datasource": "prometheus-backup",
-          "fieldConfig": {
-            "defaults": {
-              "custom": {}
-            },
-            "overrides": []
-          },
-          "fill": 1,
-          "fillGradient": 0,
-          "gridPos": {
-            "h": 9,
-            "w": 6,
-            "x": 12,
-            "y": 9
+            "y": 0
           },
           "hiddenSeries": false,
           "id": 4,
@@ -793,7 +517,7 @@ data:
             "alertThreshold": true
           },
           "percentage": false,
-          "pluginVersion": "7.4.3",
+          "pluginVersion": "8.5.15",
           "pointradius": 2,
           "points": false,
           "renderer": "flot",
@@ -816,9 +540,7 @@ data:
             }
           ],
           "thresholds": [],
-          "timeFrom": null,
           "timeRegions": [],
-          "timeShift": null,
           "title": "Voltage usage [V]",
           "tooltip": {
             "shared": true,
@@ -827,9 +549,7 @@ data:
           },
           "type": "graph",
           "xaxis": {
-            "buckets": null,
             "mode": "time",
-            "name": null,
             "show": true,
             "values": []
           },
@@ -839,8 +559,6 @@ data:
               "format": "volt",
               "label": "amps",
               "logBase": 1,
-              "max": null,
-              "min": null,
               "show": true
             },
             {
@@ -848,14 +566,11 @@ data:
               "format": "volt",
               "label": "volts",
               "logBase": 1,
-              "max": null,
-              "min": null,
               "show": false
             }
           ],
           "yaxis": {
-            "align": false,
-            "alignLevel": null
+            "align": false
           }
         },
         {
@@ -863,20 +578,17 @@ data:
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "prometheus-backup",
-          "fieldConfig": {
-            "defaults": {
-              "custom": {}
-            },
-            "overrides": []
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P9C20BFC998B97ACD"
           },
           "fill": 1,
           "fillGradient": 0,
           "gridPos": {
-            "h": 9,
+            "h": 17,
             "w": 6,
-            "x": 18,
-            "y": 9
+            "x": 12,
+            "y": 0
           },
           "hiddenSeries": false,
           "id": 3,
@@ -898,7 +610,7 @@ data:
             "alertThreshold": true
           },
           "percentage": false,
-          "pluginVersion": "7.4.3",
+          "pluginVersion": "8.5.15",
           "pointradius": 2,
           "points": false,
           "renderer": "flot",
@@ -921,9 +633,7 @@ data:
             }
           ],
           "thresholds": [],
-          "timeFrom": null,
           "timeRegions": [],
-          "timeShift": null,
           "title": "Current usage [A]",
           "tooltip": {
             "shared": true,
@@ -932,9 +642,7 @@ data:
           },
           "type": "graph",
           "xaxis": {
-            "buckets": null,
             "mode": "time",
-            "name": null,
             "show": true,
             "values": []
           },
@@ -944,8 +652,6 @@ data:
               "format": "amp",
               "label": "amps",
               "logBase": 1,
-              "max": null,
-              "min": null,
               "show": true
             },
             {
@@ -953,27 +659,405 @@ data:
               "format": "volt",
               "label": "volts",
               "logBase": 1,
-              "max": null,
-              "min": null,
               "show": false
             }
           ],
           "yaxis": {
-            "align": false,
-            "alignLevel": null
+            "align": false
           }
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P9C20BFC998B97ACD"
+          },
+          "fill": 1,
+          "fillGradient": 0,
+          "gridPos": {
+            "h": 17,
+            "w": 6,
+            "x": 18,
+            "y": 0
+          },
+          "hiddenSeries": false,
+          "id": 2,
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 1,
+          "nullPointMode": "null",
+          "options": {
+            "alertThreshold": true
+          },
+          "percentage": false,
+          "pluginVersion": "8.5.15",
+          "pointradius": 2,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "hass_sensor_power_w{friendly_name=~\"$sensor.*\"}",
+              "interval": "",
+              "legendFormat": "{{friendly_name}}",
+              "queryType": "randomWalk",
+              "refId": "A"
+            }
+          ],
+          "thresholds": [],
+          "timeRegions": [],
+          "title": "Power usage [w]",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "mode": "time",
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "$$hashKey": "object:915",
+              "format": "watt",
+              "logBase": 1,
+              "show": true
+            },
+            {
+              "$$hashKey": "object:916",
+              "format": "short",
+              "logBase": 1,
+              "show": true
+            }
+          ],
+          "yaxis": {
+            "align": false
+          }
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P9C20BFC998B97ACD"
+          },
+          "description": "",
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "thresholds"
+              },
+              "custom": {
+                "align": "auto",
+                "displayMode": "auto",
+                "filterable": false,
+                "inspect": false
+              },
+              "decimals": 2,
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              },
+              "unit": "currencyEUR"
+            },
+            "overrides": [
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "Value"
+                },
+                "properties": [
+                  {
+                    "id": "custom.displayMode",
+                    "value": "lcd-gauge"
+                  }
+                ]
+              }
+            ]
+          },
+          "gridPos": {
+            "h": 12,
+            "w": 6,
+            "x": 0,
+            "y": 5
+          },
+          "id": 12,
+          "options": {
+            "footer": {
+              "fields": "",
+              "reducer": [
+                "sum"
+              ],
+              "show": false
+            },
+            "showHeader": false
+          },
+          "pluginVersion": "8.5.15",
+          "targets": [
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "P9C20BFC998B97ACD"
+              },
+              "editorMode": "code",
+              "exemplar": false,
+              "expr": "sort_desc(delta(hass_sensor_energy_kwh{ friendly_name=~\"$sensor.*\" }[$time])*$cost)",
+              "format": "table",
+              "instant": true,
+              "legendFormat": "__auto",
+              "range": false,
+              "refId": "A"
+            }
+          ],
+          "title": "Power Cost per time",
+          "transformations": [
+            {
+              "id": "filterFieldsByName",
+              "options": {
+                "include": {
+                  "names": [
+                    "friendly_name",
+                    "Value"
+                  ]
+                }
+              }
+            }
+          ],
+          "type": "table"
+        },
+        {
+          "collapsed": false,
+          "gridPos": {
+            "h": 1,
+            "w": 24,
+            "x": 0,
+            "y": 17
+          },
+          "id": 14,
+          "panels": [],
+          "title": "yearly",
+          "type": "row"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P9C20BFC998B97ACD"
+          },
+          "description": "based on last 30 days",
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "thresholds"
+              },
+              "custom": {
+                "align": "auto",
+                "displayMode": "auto",
+                "filterable": false,
+                "inspect": false
+              },
+              "decimals": 2,
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              },
+              "unit": "kwatth"
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 14,
+            "w": 6,
+            "x": 0,
+            "y": 18
+          },
+          "id": 10,
+          "options": {
+            "footer": {
+              "fields": "",
+              "reducer": [
+                "sum"
+              ],
+              "show": false
+            },
+            "showHeader": false
+          },
+          "pluginVersion": "8.5.15",
+          "targets": [
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "P9C20BFC998B97ACD"
+              },
+              "editorMode": "code",
+              "exemplar": false,
+              "expr": "sort_desc(delta(hass_sensor_energy_kwh{ friendly_name=~\"$sensor.*\" }[30d])*12)",
+              "format": "table",
+              "instant": true,
+              "legendFormat": "__auto",
+              "range": false,
+              "refId": "A"
+            }
+          ],
+          "title": "Power consumption per year [kwh]",
+          "transformations": [
+            {
+              "id": "filterFieldsByName",
+              "options": {
+                "include": {
+                  "names": [
+                    "friendly_name",
+                    "Value"
+                  ]
+                }
+              }
+            }
+          ],
+          "type": "table"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P9C20BFC998B97ACD"
+          },
+          "description": "based on last 30 days",
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "thresholds"
+              },
+              "custom": {
+                "align": "auto",
+                "displayMode": "auto",
+                "filterable": false,
+                "inspect": false
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  },
+                  {
+                    "color": "#EAB839",
+                    "value": 20
+                  },
+                  {
+                    "color": "red",
+                    "value": 25
+                  }
+                ]
+              }
+            },
+            "overrides": [
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "Value"
+                },
+                "properties": [
+                  {
+                    "id": "custom.displayMode",
+                    "value": "basic"
+                  }
+                ]
+              }
+            ]
+          },
+          "gridPos": {
+            "h": 14,
+            "w": 6,
+            "x": 6,
+            "y": 18
+          },
+          "id": 11,
+          "options": {
+            "footer": {
+              "fields": "",
+              "reducer": [
+                "sum"
+              ],
+              "show": false
+            },
+            "showHeader": false
+          },
+          "pluginVersion": "8.5.15",
+          "targets": [
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "P9C20BFC998B97ACD"
+              },
+              "editorMode": "code",
+              "exemplar": false,
+              "expr": "sort_desc((delta(hass_sensor_energy_kwh{}[30d])*12 / ignoring(domain,entity,friendly_name,instance,job) group_left sum(delta(hass_sensor_energy_kwh{}[30d])*12) )*100 )",
+              "format": "table",
+              "instant": true,
+              "legendFormat": "__auto",
+              "range": false,
+              "refId": "A"
+            }
+          ],
+          "title": "Power consumption per year [%]",
+          "transformations": [
+            {
+              "id": "filterFieldsByName",
+              "options": {
+                "include": {
+                  "names": [
+                    "friendly_name",
+                    "Value"
+                  ]
+                }
+              }
+            }
+          ],
+          "type": "table"
         }
       ],
-      "schemaVersion": 27,
+      "schemaVersion": 36,
       "style": "dark",
       "tags": [],
       "templating": {
         "list": [
           {
-            "allValue": null,
             "current": {
               "selected": true,
-              "tags": [],
               "text": [
                 "All"
               ],
@@ -981,10 +1065,11 @@ data:
                 "$__all"
               ]
             },
-            "datasource": "prometheus-backup",
+            "datasource": {
+              "type": "prometheus",
+              "uid": "P9C20BFC998B97ACD"
+            },
             "definition": "label_values(hass_sensor_power_w,friendly_name)",
-            "description": null,
-            "error": null,
             "hide": 0,
             "includeAll": true,
             "label": "sensor",
@@ -1000,23 +1085,18 @@ data:
             "skipUrlSync": false,
             "sort": 1,
             "tagValuesQuery": "",
-            "tags": [],
             "tagsQuery": "",
             "type": "query",
             "useTags": false
           },
           {
-            "allValue": null,
             "current": {
               "selected": true,
               "text": "0.1304",
               "value": "0.1304"
             },
-            "description": null,
-            "error": null,
             "hide": 0,
             "includeAll": false,
-            "label": null,
             "multi": false,
             "name": "cost",
             "options": [
@@ -1035,6 +1115,80 @@ data:
             "queryValue": "",
             "skipUrlSync": false,
             "type": "custom"
+          },
+          {
+            "auto": false,
+            "auto_count": 30,
+            "auto_min": "10s",
+            "current": {
+              "selected": true,
+              "text": "30d",
+              "value": "30d"
+            },
+            "hide": 0,
+            "name": "time",
+            "options": [
+              {
+                "selected": false,
+                "text": "1h",
+                "value": "1h"
+              },
+              {
+                "selected": false,
+                "text": "6h",
+                "value": "6h"
+              },
+              {
+                "selected": false,
+                "text": "12h",
+                "value": "12h"
+              },
+              {
+                "selected": false,
+                "text": "1d",
+                "value": "1d"
+              },
+              {
+                "selected": false,
+                "text": "7d",
+                "value": "7d"
+              },
+              {
+                "selected": false,
+                "text": "14d",
+                "value": "14d"
+              },
+              {
+                "selected": true,
+                "text": "30d",
+                "value": "30d"
+              },
+              {
+                "selected": false,
+                "text": "60d",
+                "value": "60d"
+              },
+              {
+                "selected": false,
+                "text": "90d",
+                "value": "90d"
+              },
+              {
+                "selected": false,
+                "text": "180d",
+                "value": "180d"
+              },
+              {
+                "selected": false,
+                "text": "365d",
+                "value": "365d"
+              }
+            ],
+            "query": "1h,6h,12h,1d,7d,14d,30d,60d,90d,180d,365d",
+            "queryValue": "",
+            "refresh": 2,
+            "skipUrlSync": false,
+            "type": "interval"
           }
         ]
       },
@@ -1046,5 +1200,6 @@ data:
       "timezone": "",
       "title": "ZHA Power sensors",
       "uid": "lsVAgsiVz",
-      "version": 1
+      "version": 2,
+      "weekStart": ""
     }
