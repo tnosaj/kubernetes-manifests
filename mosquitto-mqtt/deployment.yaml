@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mosquitto
+  namespace: mosquitto
+spec:
+  selector:
+    matchLabels:
+      app: mosquitto
+  template:
+    metadata:
+      labels:
+        app: mosquitto
+    spec:
+      nodeSelector:
+        kubernetes.io/hostname: wrk-3
+      containers:
+      - name: mosquitto
+        image: eclipse-mosquitto:latest
+        resources:
+          requests:
+            cpu: "50m"
+          limits:
+            memory: "128Mi"
+        ports:
+        - containerPort: 1883
+        volumeMounts:
+            - name: mosquitto-config
+              mountPath: /mosquitto/config/mosquitto.conf
+              subPath: mosquitto.conf
+      - name: mosquitto-exporter
+        image: tnosaj/mosquitto-exporter
+        ports:
+        - containerPort: 9234
+        args:
+          - --endpoint=tcp://localhost:1883
+      volumes:
+        - name: mosquitto-config
+          configMap:
+            name: mosquitto-config
