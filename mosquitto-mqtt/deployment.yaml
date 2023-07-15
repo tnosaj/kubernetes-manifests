@@ -23,7 +23,8 @@ spec:
           limits:
             memory: "128Mi"
         ports:
-        - containerPort: 1883
+        - name: app
+          containerPort: 1883
         volumeMounts:
             - name: mosquitto-config
               mountPath: /mosquitto/config/mosquitto.conf
@@ -31,7 +32,8 @@ spec:
       - name: mosquitto-exporter
         image: tnosaj/mosquitto-exporter
         ports:
-        - containerPort: 9234
+        - name: monitoring
+          containerPort: 9234
         args:
           - --endpoint=tcp://localhost:1883
       volumes:

@@ -6,6 +6,7 @@ metadata:
   namespace: mosquitto
   annotations:
     prometheus.io/scrape: 'true'
+    prometheus.io/port: '9234'
   labels:
     longterm: 'true'
 spec:
@@ -13,7 +14,7 @@ spec:
     app: mosquitto
   ports:
   - port: 9234
-    targetPort: 9234
+    targetPort: monitoring
 ---
 apiVersion: v1
 kind: Service
@@ -26,6 +27,6 @@ spec:
   type: NodePort
   ports:
     - port: 1883
-      targetPort: 1883
+      targetPort: app
       nodePort: 31883
 
