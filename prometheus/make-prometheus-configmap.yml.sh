@@ -264,7 +264,7 @@ data:
               title: "Check HomeAssistantHangUp"
               description: "Zigbee GW might be foobar"
           - alert: PowerConsumptionHigh
-            expr: sum(hass_sensor_power_w{entity!~"sensor.hms.*"}) > 250
+            expr: hass_sensor_power_w{friendly_name="Mean AMIS power in"} > 2500
             for: 120m
             labels:
               severity: slack
