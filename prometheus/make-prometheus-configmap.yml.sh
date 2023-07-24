@@ -44,6 +44,9 @@ data:
       - job_name: 'vpn-nginx'
         static_configs:
           - targets: ['192.168.1.145:9113']
+      - job_name: 'vpn-fail2ban'
+        static_configs:
+          - targets: ['192.168.1.145:9191']
       - job_name: 'router'
         static_configs:
           - targets: ['192.168.1.1:9101']
