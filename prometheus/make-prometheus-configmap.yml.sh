@@ -230,6 +230,15 @@ data:
     groups:
       - name: home
         rules:
+          - alert: DehumidifierWaterFull
+            expr: sum(hass_switch_state{friendly_name="dehumidifier  Switch"} == 1) and sum(hass_sensor_power_w{friendly_name="dehumidifier  Active power"} < 20)
+            for: 5m
+            labels:
+              severity: slack
+              channel: '#private-alerts'
+            annotations:
+              title: "Dehumidifier is on but not consuming electricity"
+              description: "The water container for the dehumidifier is probably full. please empty it."
           - alert: TempratureSensorBatteryOut
             expr: rate(hass_sensor_temperature_celsius[720m])*100 == 0
             for: 120m
