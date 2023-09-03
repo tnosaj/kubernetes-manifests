@@ -29,7 +29,7 @@ spec:
            type: CharDevice
            path: /dev/ttyUSB0
       containers:
-      - image: homeassistant/raspberrypi4-homeassistant:stable
+      - image: ghcr.io/home-assistant/home-assistant:stable
         imagePullPolicy: Always
         name: home-assistant
         resources:
