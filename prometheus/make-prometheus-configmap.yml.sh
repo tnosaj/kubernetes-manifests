@@ -277,7 +277,7 @@ data:
               description: "Zigbee GW might be foobar"
           - alert: PowerConsumptionHigh
             expr: hass_sensor_power_w{friendly_name="Mean AMIS power in"} > 2500
-            for: 120m
+            for: 180m
             labels:
               severity: slack
               channel: '#private-alerts'
