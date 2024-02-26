@@ -36,6 +36,8 @@ data:
         'match[]':
           - '{job="homeassistant"}'
           - '{job="blackbox"}'
+          - '{job="vpn-fail2ban"}'
+          - '{job="opendtu"}'
           - '{longterm="true"}'
           - '{instance="monitoring.freikirche-traun.at:80"}'
       static_configs:

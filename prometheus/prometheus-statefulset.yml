@@ -72,10 +72,10 @@ spec:
           # based on 10 running nodes with 30 pods each
           resources:
             limits:
-              cpu: 200m
+              cpu: 400m
               memory: 2400Mi
             requests:
-              cpu: 200m
+              cpu: 400m
               memory: 2400Mi
           volumeMounts:
             - name: config-volume

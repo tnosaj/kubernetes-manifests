@@ -37,7 +37,7 @@ spec:
         - name: FOLDER_ANNOTATION
           value: "grafana-dashboard-folder"
       - name: grafana
-        image: grafana/grafana:8.5.15
+        image: grafana/grafana:latest
         volumeMounts:
         - name: grafana-dashboards
           mountPath: /var/lib/grafana/dashboards
@@ -49,10 +49,6 @@ spec:
         - name: web
           containerPort: 3000
         env:
-        - name: GF_SERVER_ROOT_URL
-          value: https://tevnan.duckdns.org/grafana
-        - name: GF_SERVER_SERVE_FROM_SUB_PATH
-          value: "true"
         - name: GF_INSTALL_PLUGINS
           value: "grafana-piechart-panel,camptocamp-prometheus-alertmanager-datasource"
         - name: GF_PATHS_PROVISIONING

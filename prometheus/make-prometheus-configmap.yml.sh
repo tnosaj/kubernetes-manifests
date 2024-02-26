@@ -55,6 +55,12 @@ data:
         bearer_token: '$HOMEASSISTANT_TOKEN'
         static_configs:
           - targets: ['homeassistant.homeassistant.svc:8123']
+      - job_name: 'opendtu'
+        scrape_interval: 60s
+        scrape_timeout: 30s
+        metrics_path: '/api/prometheus/metrics'
+        static_configs:
+          - targets: ['http://192.168.1.146:80']
       - job_name: 'prometheus'
         static_configs:
           - targets: ['prometheus.monitoring.svc:9090']
