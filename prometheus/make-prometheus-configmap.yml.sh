@@ -35,9 +35,6 @@ data:
         metrics_path: '/nginx/metrics'
         static_configs:
           - targets: ['monitoring.freikirche-traun.at']
-      - job_name: 'kitchen-display'
-        static_configs:
-          - targets: ['192.168.1.178:9100']
       - job_name: 'vpn-node'
         static_configs:
           - targets: ['192.168.1.145:9100']
@@ -60,7 +57,7 @@ data:
         scrape_timeout: 30s
         metrics_path: '/api/prometheus/metrics'
         static_configs:
-          - targets: ['http://192.168.1.146:80']
+          - targets: ['192.168.1.146:80']
       - job_name: 'prometheus'
         static_configs:
           - targets: ['prometheus.monitoring.svc:9090']
@@ -74,7 +71,12 @@ data:
         static_configs:
           - targets:
             - https://freikirche-traun.at
-            - http://192.168.1.127
+            - http://192.168.1.146
+            - http://192.168.1.179
+            - http://192.168.1.107
+            - http://192.168.1.151
+            - http://192.168.1.161
+            - http://192.168.1.145
         relabel_configs:
           - source_labels: [__address__]
             target_label: __param_target
