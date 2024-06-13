@@ -3176,7 +3176,10 @@ data:
         "list": [
           {
             "builtIn": 1,
-            "datasource": "-- Grafana --",
+            "datasource": {
+              "type": "datasource",
+              "uid": "grafana"
+            },
             "enable": true,
             "hide": true,
             "iconColor": "rgba(0, 211, 255, 1)",
@@ -3187,78 +3190,88 @@ data:
       },
       "description": "Host overview tuned to router specs",
       "editable": true,
+      "fiscalYearStartMonth": 0,
       "gnetId": 554,
       "graphTooltip": 1,
-      "id": 18,
-      "iteration": 1549557517174,
+      "id": 6,
       "links": [],
+      "liveNow": false,
       "panels": [
         {
-          "cacheTimeout": null,
-          "colorBackground": false,
-          "colorValue": false,
-          "colors": [
-            "rgba(50, 172, 45, 0.97)",
-            "rgba(237, 129, 40, 0.89)",
-            "rgba(245, 54, 54, 0.9)"
-          ],
-          "datasource": "prometheus",
-          "decimals": null,
-          "editable": true,
-          "error": false,
-          "format": "percent",
-          "gauge": {
-            "maxValue": 100,
-            "minValue": 0,
-            "show": true,
-            "thresholdLabels": false,
-            "thresholdMarkers": true
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P1809F7CD0C75ACF3"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "thresholds"
+              },
+              "mappings": [
+                {
+                  "options": {
+                    "match": "null",
+                    "result": {
+                      "text": "N/A"
+                    }
+                  },
+                  "type": "special"
+                }
+              ],
+              "max": 100,
+              "min": 0,
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "rgba(50, 172, 45, 0.97)",
+                    "value": null
+                  },
+                  {
+                    "color": "rgba(237, 129, 40, 0.89)",
+                    "value": 65
+                  },
+                  {
+                    "color": "rgba(245, 54, 54, 0.9)",
+                    "value": 85
+                  }
+                ]
+              },
+              "unit": "percent"
+            },
+            "overrides": []
           },
           "gridPos": {
-            "h": 5,
+            "h": 7,
             "w": 8,
             "x": 0,
             "y": 0
           },
-          "height": "180px",
           "id": 16,
-          "interval": null,
-          "isNew": true,
           "links": [],
-          "mappingType": 1,
-          "mappingTypes": [
-            {
-              "name": "value to text",
-              "value": 1
-            },
-            {
-              "name": "range to text",
-              "value": 2
-            }
-          ],
           "maxDataPoints": 100,
-          "nullPointMode": "connected",
-          "nullText": null,
-          "postfix": "",
-          "postfixFontSize": "50%",
-          "prefix": "",
-          "prefixFontSize": "50%",
-          "rangeMaps": [
-            {
-              "from": "null",
-              "text": "N/A",
-              "to": "null"
-            }
-          ],
-          "sparkline": {
-            "fillColor": "rgba(31, 118, 189, 0.18)",
-            "full": false,
-            "lineColor": "rgb(31, 120, 193)",
-            "show": true
+          "options": {
+            "minVizHeight": 200,
+            "minVizWidth": 200,
+            "orientation": "horizontal",
+            "reduceOptions": {
+              "calcs": [
+                "lastNotNull"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "showThresholdLabels": false,
+            "showThresholdMarkers": true,
+            "sizing": "auto"
           },
-          "tableColumn": "",
+          "pluginVersion": "10.2.3",
           "targets": [
             {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "P1809F7CD0C75ACF3"
+              },
               "expr": "node_nf_conntrack_entries{instance=~\"$router$\"}/node_nf_conntrack_entries_limit {instance=~\"$router$\"}*100",
               "format": "time_series",
               "interval": "10s",
@@ -3267,85 +3280,84 @@ data:
               "step": 10
             }
           ],
-          "thresholds": "65,85",
           "title": "Contract Table",
-          "type": "singlestat",
-          "valueFontSize": "80%",
-          "valueMaps": [
-            {
-              "op": "=",
-              "text": "N/A",
-              "value": "null"
-            }
-          ],
-          "valueName": "current"
+          "type": "gauge"
         },
         {
-          "cacheTimeout": null,
-          "colorBackground": false,
-          "colorValue": false,
-          "colors": [
-            "rgba(50, 172, 45, 0.97)",
-            "rgba(237, 129, 40, 0.89)",
-            "rgba(245, 54, 54, 0.9)"
-          ],
-          "datasource": "prometheus",
-          "decimals": null,
-          "editable": true,
-          "error": false,
-          "format": "percent",
-          "gauge": {
-            "maxValue": 100,
-            "minValue": 0,
-            "show": true,
-            "thresholdLabels": false,
-            "thresholdMarkers": true
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P1809F7CD0C75ACF3"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "thresholds"
+              },
+              "mappings": [
+                {
+                  "options": {
+                    "match": "null",
+                    "result": {
+                      "text": "N/A"
+                    }
+                  },
+                  "type": "special"
+                }
+              ],
+              "max": 100,
+              "min": 0,
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "rgba(50, 172, 45, 0.97)",
+                    "value": null
+                  },
+                  {
+                    "color": "rgba(237, 129, 40, 0.89)",
+                    "value": 65
+                  },
+                  {
+                    "color": "rgba(245, 54, 54, 0.9)",
+                    "value": 80
+                  }
+                ]
+              },
+              "unit": "percent"
+            },
+            "overrides": []
           },
           "gridPos": {
-            "h": 5,
+            "h": 7,
             "w": 8,
             "x": 8,
             "y": 0
           },
-          "height": "180px",
           "id": 19,
-          "interval": null,
-          "isNew": true,
           "links": [],
-          "mappingType": 1,
-          "mappingTypes": [
-            {
-              "name": "value to text",
-              "value": 1
-            },
-            {
-              "name": "range to text",
-              "value": 2
-            }
-          ],
           "maxDataPoints": 100,
-          "nullPointMode": "connected",
-          "nullText": null,
-          "postfix": "",
-          "postfixFontSize": "50%",
-          "prefix": "",
-          "prefixFontSize": "50%",
-          "rangeMaps": [
-            {
-              "from": "null",
-              "text": "N/A",
-              "to": "null"
-            }
-          ],
-          "sparkline": {
-            "fillColor": "rgba(31, 118, 189, 0.18)",
-            "full": false,
-            "lineColor": "rgb(31, 120, 193)",
-            "show": true
+          "options": {
+            "minVizHeight": 200,
+            "minVizWidth": 200,
+            "orientation": "horizontal",
+            "reduceOptions": {
+              "calcs": [
+                "lastNotNull"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "showThresholdLabels": false,
+            "showThresholdMarkers": true,
+            "sizing": "auto"
           },
-          "tableColumn": "",
+          "pluginVersion": "10.2.3",
           "targets": [
             {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "P1809F7CD0C75ACF3"
+              },
               "expr": "sum(node_cpu_seconds_total{instance=~\"$router$\",mode!=\"idle\"})/sum(node_cpu_seconds_total{instance=~\"$router$\"})*100",
               "format": "time_series",
               "interval": "10s",
@@ -3354,85 +3366,84 @@ data:
               "step": 10
             }
           ],
-          "thresholds": "65,80",
           "title": "Router CPU",
-          "type": "singlestat",
-          "valueFontSize": "80%",
-          "valueMaps": [
-            {
-              "op": "=",
-              "text": "N/A",
-              "value": "null"
-            }
-          ],
-          "valueName": "current"
+          "type": "gauge"
         },
         {
-          "cacheTimeout": null,
-          "colorBackground": false,
-          "colorValue": false,
-          "colors": [
-            "rgba(50, 172, 45, 0.97)",
-            "rgba(237, 129, 40, 0.89)",
-            "rgba(245, 54, 54, 0.9)"
-          ],
-          "datasource": "prometheus",
-          "decimals": null,
-          "editable": true,
-          "error": false,
-          "format": "percent",
-          "gauge": {
-            "maxValue": 100,
-            "minValue": 0,
-            "show": true,
-            "thresholdLabels": false,
-            "thresholdMarkers": true
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P1809F7CD0C75ACF3"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "thresholds"
+              },
+              "mappings": [
+                {
+                  "options": {
+                    "match": "null",
+                    "result": {
+                      "text": "N/A"
+                    }
+                  },
+                  "type": "special"
+                }
+              ],
+              "max": 100,
+              "min": 0,
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "rgba(50, 172, 45, 0.97)",
+                    "value": null
+                  },
+                  {
+                    "color": "rgba(237, 129, 40, 0.89)",
+                    "value": 65
+                  },
+                  {
+                    "color": "rgba(245, 54, 54, 0.9)",
+                    "value": 85
+                  }
+                ]
+              },
+              "unit": "percent"
+            },
+            "overrides": []
           },
           "gridPos": {
-            "h": 5,
+            "h": 7,
             "w": 8,
             "x": 16,
             "y": 0
           },
-          "height": "180px",
           "id": 18,
-          "interval": null,
-          "isNew": true,
           "links": [],
-          "mappingType": 1,
-          "mappingTypes": [
-            {
-              "name": "value to text",
-              "value": 1
-            },
-            {
-              "name": "range to text",
-              "value": 2
-            }
-          ],
           "maxDataPoints": 100,
-          "nullPointMode": "connected",
-          "nullText": null,
-          "postfix": "",
-          "postfixFontSize": "50%",
-          "prefix": "",
-          "prefixFontSize": "50%",
-          "rangeMaps": [
-            {
-              "from": "null",
-              "text": "N/A",
-              "to": "null"
-            }
-          ],
-          "sparkline": {
-            "fillColor": "rgba(31, 118, 189, 0.18)",
-            "full": false,
-            "lineColor": "rgb(31, 120, 193)",
-            "show": true
+          "options": {
+            "minVizHeight": 200,
+            "minVizWidth": 200,
+            "orientation": "horizontal",
+            "reduceOptions": {
+              "calcs": [
+                "lastNotNull"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "showThresholdLabels": false,
+            "showThresholdMarkers": true,
+            "sizing": "auto"
           },
-          "tableColumn": "",
+          "pluginVersion": "10.2.3",
           "targets": [
             {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "P1809F7CD0C75ACF3"
+              },
               "expr": "(node_memory_MemTotal_bytes{instance=~\"$router$\"}-node_memory_MemFree_bytes{instance=~\"$router$\"})/(node_memory_MemTotal_bytes{instance=~\"$router$\"}) * 100",
               "format": "time_series",
               "interval": "10s",
@@ -3441,36 +3452,31 @@ data:
               "step": 10
             }
           ],
-          "thresholds": "65,85",
           "title": "Router Memory",
-          "type": "singlestat",
-          "valueFontSize": "80%",
-          "valueMaps": [
-            {
-              "op": "=",
-              "text": "N/A",
-              "value": "null"
-            }
-          ],
-          "valueName": "current"
+          "type": "gauge"
         },
         {
           "aliasColors": {},
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "prometheus",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P1809F7CD0C75ACF3"
+          },
           "decimals": 2,
           "editable": true,
           "error": false,
           "fill": 1,
+          "fillGradient": 0,
           "grid": {},
           "gridPos": {
             "h": 7,
             "w": 12,
             "x": 0,
-            "y": 5
+            "y": 7
           },
+          "hiddenSeries": false,
           "id": 22,
           "legend": {
             "alignAsTable": true,
@@ -3480,7 +3486,6 @@ data:
             "min": false,
             "rightSide": true,
             "show": false,
-            "sideWidth": null,
             "sort": "max",
             "sortDesc": true,
             "total": false,
@@ -3490,7 +3495,11 @@ data:
           "linewidth": 1,
           "links": [],
           "nullPointMode": "connected",
+          "options": {
+            "alertThreshold": true
+          },
           "percentage": false,
+          "pluginVersion": "10.2.3",
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
@@ -3501,6 +3510,10 @@ data:
           "targets": [
             {
               "alias": "received",
+              "datasource": {
+                "type": "prometheus",
+                "uid": "P1809F7CD0C75ACF3"
+              },
               "dsType": "influxdb",
               "expr": "rate(node_nat_traffic{dest!~\"192.168.1.*\",instance=~\"$router$\"}[1m])",
               "format": "time_series",
@@ -3574,9 +3587,7 @@ data:
             }
           ],
           "thresholds": [],
-          "timeFrom": null,
           "timeRegions": [],
-          "timeShift": null,
           "title": "Outbound connections",
           "tooltip": {
             "msResolution": true,
@@ -3586,44 +3597,38 @@ data:
           },
           "type": "graph",
           "xaxis": {
-            "buckets": null,
             "mode": "time",
-            "name": null,
             "show": true,
             "values": []
           },
           "yaxes": [
             {
               "format": "decbytes",
-              "label": null,
               "logBase": 1,
-              "max": null,
-              "min": null,
               "show": true
             },
             {
               "format": "short",
-              "label": null,
               "logBase": 1,
-              "max": null,
-              "min": null,
               "show": true
             }
           ],
           "yaxis": {
-            "align": false,
-            "alignLevel": null
+            "align": false
           }
         },
         {
           "columns": [],
-          "datasource": "prometheus",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P1809F7CD0C75ACF3"
+          },
           "fontSize": "100%",
           "gridPos": {
             "h": 21,
             "w": 12,
             "x": 12,
-            "y": 5
+            "y": 7
           },
           "id": 24,
           "pageSize": 50,
@@ -3636,7 +3641,7 @@ data:
           "styles": [
             {
               "alias": "",
-              "colorMode": null,
+              "align": "auto",
               "colors": [
                 "rgba(245, 54, 54, 0.9)",
                 "rgba(237, 129, 40, 0.89)",
@@ -3652,7 +3657,7 @@ data:
             },
             {
               "alias": "",
-              "colorMode": null,
+              "align": "auto",
               "colors": [
                 "rgba(245, 54, 54, 0.9)",
                 "rgba(237, 129, 40, 0.89)",
@@ -3668,7 +3673,7 @@ data:
             },
             {
               "alias": "",
-              "colorMode": null,
+              "align": "auto",
               "colors": [
                 "rgba(245, 54, 54, 0.9)",
                 "rgba(237, 129, 40, 0.89)",
@@ -3685,7 +3690,7 @@ data:
             },
             {
               "alias": "",
-              "colorMode": null,
+              "align": "auto",
               "colors": [
                 "rgba(245, 54, 54, 0.9)",
                 "rgba(237, 129, 40, 0.89)",
@@ -3700,6 +3705,10 @@ data:
           ],
           "targets": [
             {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "P1809F7CD0C75ACF3"
+              },
               "expr": "topk(20, rate(node_nat_traffic{dest!~\"192.168.1.*\",instance=~\"$router$\"}[1m]))",
               "format": "table",
               "intervalFactor": 1,
@@ -3708,25 +3717,30 @@ data:
           ],
           "title": "Panel Title",
           "transform": "table",
-          "type": "table"
+          "type": "table-old"
         },
         {
           "aliasColors": {},
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "prometheus",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P1809F7CD0C75ACF3"
+          },
           "decimals": 2,
           "editable": true,
           "error": false,
           "fill": 1,
+          "fillGradient": 0,
           "grid": {},
           "gridPos": {
             "h": 7,
             "w": 12,
             "x": 0,
-            "y": 12
+            "y": 14
           },
+          "hiddenSeries": false,
           "id": 14,
           "legend": {
             "alignAsTable": true,
@@ -3743,7 +3757,11 @@ data:
           "linewidth": 1,
           "links": [],
           "nullPointMode": "connected",
+          "options": {
+            "alertThreshold": true
+          },
           "percentage": false,
+          "pluginVersion": "10.2.3",
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
@@ -3754,6 +3772,10 @@ data:
           "targets": [
             {
               "alias": "received",
+              "datasource": {
+                "type": "prometheus",
+                "uid": "P1809F7CD0C75ACF3"
+              },
               "dsType": "influxdb",
               "expr": "irate(node_network_transmit_bytes_total{instance=~\"$router$\"}[2m])",
               "format": "time_series",
@@ -3827,9 +3849,7 @@ data:
             }
           ],
           "thresholds": [],
-          "timeFrom": null,
           "timeRegions": [],
-          "timeShift": null,
           "title": "Network Traffic (br-wan)",
           "tooltip": {
             "msResolution": true,
@@ -3839,33 +3859,24 @@ data:
           },
           "type": "graph",
           "xaxis": {
-            "buckets": null,
             "mode": "time",
-            "name": null,
             "show": true,
             "values": []
           },
           "yaxes": [
             {
               "format": "bps",
-              "label": null,
               "logBase": 1,
-              "max": null,
-              "min": null,
               "show": true
             },
             {
               "format": "short",
-              "label": null,
               "logBase": 1,
-              "max": null,
-              "min": null,
               "show": true
             }
           ],
           "yaxis": {
-            "align": false,
-            "alignLevel": null
+            "align": false
           }
         },
         {
@@ -3873,15 +3884,20 @@ data:
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "prometheus",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P1809F7CD0C75ACF3"
+          },
           "decimals": 2,
           "fill": 1,
+          "fillGradient": 0,
           "gridPos": {
             "h": 7,
             "w": 12,
             "x": 0,
-            "y": 19
+            "y": 21
           },
+          "hiddenSeries": false,
           "id": 21,
           "legend": {
             "alignAsTable": true,
@@ -3891,7 +3907,6 @@ data:
             "min": false,
             "rightSide": true,
             "show": true,
-            "sideWidth": null,
             "total": false,
             "values": true
           },
@@ -3899,7 +3914,11 @@ data:
           "linewidth": 1,
           "links": [],
           "nullPointMode": "null",
+          "options": {
+            "alertThreshold": true
+          },
           "percentage": false,
+          "pluginVersion": "10.2.3",
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
@@ -3909,6 +3928,10 @@ data:
           "steppedLine": false,
           "targets": [
             {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "P1809F7CD0C75ACF3"
+              },
               "expr": "irate(node_network_receive_drop_total{instance=~\"$router$\"}[2m])",
               "format": "time_series",
               "intervalFactor": 1,
@@ -3916,6 +3939,10 @@ data:
               "refId": "A"
             },
             {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "P1809F7CD0C75ACF3"
+              },
               "expr": "irate(node_network_receive_errs_total{instance=~\"$router$\"}[2m])",
               "format": "time_series",
               "intervalFactor": 1,
@@ -3924,9 +3951,7 @@ data:
             }
           ],
           "thresholds": [],
-          "timeFrom": null,
           "timeRegions": [],
-          "timeShift": null,
           "title": "Errors/Drops",
           "tooltip": {
             "shared": true,
@@ -3935,33 +3960,24 @@ data:
           },
           "type": "graph",
           "xaxis": {
-            "buckets": null,
             "mode": "time",
-            "name": null,
             "show": true,
             "values": []
           },
           "yaxes": [
             {
               "format": "short",
-              "label": null,
               "logBase": 1,
-              "max": null,
-              "min": null,
               "show": true
             },
             {
               "format": "short",
-              "label": null,
               "logBase": 1,
-              "max": null,
-              "min": null,
               "show": true
             }
           ],
           "yaxis": {
-            "align": false,
-            "alignLevel": null
+            "align": false
           }
         },
         {
@@ -3969,7 +3985,10 @@ data:
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "prometheus",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P1809F7CD0C75ACF3"
+          },
           "editable": true,
           "error": false,
           "fill": 1,
@@ -3978,7 +3997,7 @@ data:
             "h": 7,
             "w": 12,
             "x": 0,
-            "y": 26
+            "y": 28
           },
           "id": 5,
           "legend": {
@@ -4007,6 +4026,10 @@ data:
           "steppedLine": false,
           "targets": [
             {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "P1809F7CD0C75ACF3"
+              },
               "expr": "irate(node_cpu_seconds_total{instance=~\"$router$\"}[2m])",
               "format": "time_series",
               "intervalFactor": 1,
@@ -4015,9 +4038,7 @@ data:
             }
           ],
           "thresholds": [],
-          "timeFrom": null,
           "timeRegions": [],
-          "timeShift": null,
           "title": "CPU Usage",
           "tooltip": {
             "msResolution": true,
@@ -4027,33 +4048,24 @@ data:
           },
           "type": "graph",
           "xaxis": {
-            "buckets": null,
             "mode": "time",
-            "name": null,
             "show": true,
             "values": []
           },
           "yaxes": [
             {
               "format": "short",
-              "label": null,
               "logBase": 1,
-              "max": null,
-              "min": null,
               "show": true
             },
             {
               "format": "short",
-              "label": null,
               "logBase": 1,
-              "max": null,
-              "min": null,
               "show": true
             }
           ],
           "yaxis": {
-            "align": false,
-            "alignLevel": null
+            "align": false
           }
         },
         {
@@ -4061,7 +4073,10 @@ data:
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "prometheus",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P1809F7CD0C75ACF3"
+          },
           "decimals": 2,
           "editable": true,
           "error": false,
@@ -4071,7 +4086,7 @@ data:
             "h": 7,
             "w": 12,
             "x": 12,
-            "y": 26
+            "y": 28
           },
           "id": 6,
           "legend": {
@@ -4100,6 +4115,10 @@ data:
           "targets": [
             {
               "alias": "short",
+              "datasource": {
+                "type": "prometheus",
+                "uid": "P1809F7CD0C75ACF3"
+              },
               "dsType": "influxdb",
               "expr": "node_load1{instance=~\"$router$\"}",
               "format": "time_series",
@@ -4147,6 +4166,10 @@ data:
             },
             {
               "alias": "medium",
+              "datasource": {
+                "type": "prometheus",
+                "uid": "P1809F7CD0C75ACF3"
+              },
               "dsType": "influxdb",
               "expr": "node_load5{instance=~\"$router$\"}",
               "format": "time_series",
@@ -4194,6 +4217,10 @@ data:
             },
             {
               "alias": "long",
+              "datasource": {
+                "type": "prometheus",
+                "uid": "P1809F7CD0C75ACF3"
+              },
               "dsType": "influxdb",
               "expr": "node_load15{instance=~\"$router$\"}",
               "format": "time_series",
@@ -4241,9 +4268,7 @@ data:
             }
           ],
           "thresholds": [],
-          "timeFrom": null,
           "timeRegions": [],
-          "timeShift": null,
           "title": "Load Average",
           "tooltip": {
             "msResolution": true,
@@ -4253,33 +4278,24 @@ data:
           },
           "type": "graph",
           "xaxis": {
-            "buckets": null,
             "mode": "time",
-            "name": null,
             "show": true,
             "values": []
           },
           "yaxes": [
             {
               "format": "short",
-              "label": null,
               "logBase": 1,
-              "max": null,
-              "min": null,
               "show": true
             },
             {
               "format": "short",
-              "label": null,
               "logBase": 1,
-              "max": null,
-              "min": null,
               "show": true
             }
           ],
           "yaxis": {
-            "align": false,
-            "alignLevel": null
+            "align": false
           }
         },
         {
@@ -4287,7 +4303,10 @@ data:
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "prometheus",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P1809F7CD0C75ACF3"
+          },
           "editable": true,
           "error": false,
           "fill": 1,
@@ -4296,7 +4315,7 @@ data:
             "h": 7,
             "w": 12,
             "x": 0,
-            "y": 33
+            "y": 35
           },
           "id": 7,
           "legend": {
@@ -4323,6 +4342,10 @@ data:
           "targets": [
             {
               "alias": "used",
+              "datasource": {
+                "type": "prometheus",
+                "uid": "P1809F7CD0C75ACF3"
+              },
               "dsType": "influxdb",
               "expr": "sum((node_memory_MemTotal_bytes{instance=~\"$router$\"}-node_memory_MemFree_bytes{instance=~\"$router$\"}-node_memory_Cached_bytes{instance=~\"$router$\"})/(node_memory_MemTotal_bytes{instance=~\"$router$\"})) by (job) * 100",
               "format": "time_series",
@@ -4378,9 +4401,7 @@ data:
             }
           ],
           "thresholds": [],
-          "timeFrom": null,
           "timeRegions": [],
-          "timeShift": null,
           "title": "Memory %",
           "tooltip": {
             "msResolution": true,
@@ -4390,9 +4411,7 @@ data:
           },
           "type": "graph",
           "xaxis": {
-            "buckets": null,
             "mode": "time",
-            "name": null,
             "show": true,
             "values": []
           },
@@ -4401,22 +4420,16 @@ data:
               "format": "none",
               "label": "%",
               "logBase": 1,
-              "max": null,
-              "min": null,
               "show": true
             },
             {
               "format": "short",
-              "label": null,
               "logBase": 1,
-              "max": null,
-              "min": null,
               "show": true
             }
           ],
           "yaxis": {
-            "align": false,
-            "alignLevel": null
+            "align": false
           }
         },
         {
@@ -4424,7 +4437,10 @@ data:
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "prometheus",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P1809F7CD0C75ACF3"
+          },
           "editable": true,
           "error": false,
           "fill": 1,
@@ -4433,7 +4449,7 @@ data:
             "h": 7,
             "w": 12,
             "x": 12,
-            "y": 33
+            "y": 35
           },
           "id": 8,
           "legend": {
@@ -4467,6 +4483,10 @@ data:
           "targets": [
             {
               "alias": "free",
+              "datasource": {
+                "type": "prometheus",
+                "uid": "P1809F7CD0C75ACF3"
+              },
               "dsType": "influxdb",
               "expr": "node_memory_MemTotal_bytes{instance=~\"$router$\"}",
               "format": "time_series",
@@ -4520,6 +4540,10 @@ data:
             },
             {
               "alias": "buffered",
+              "datasource": {
+                "type": "prometheus",
+                "uid": "P1809F7CD0C75ACF3"
+              },
               "dsType": "influxdb",
               "expr": "node_memory_Cached_bytes{instance=~\"$router$\"}",
               "format": "time_series",
@@ -4573,6 +4597,10 @@ data:
             },
             {
               "alias": "cached",
+              "datasource": {
+                "type": "prometheus",
+                "uid": "P1809F7CD0C75ACF3"
+              },
               "dsType": "influxdb",
               "expr": "node_memory_Buffers_bytes{instance=~\"$router$\"}",
               "format": "time_series",
@@ -4625,6 +4653,10 @@ data:
               ]
             },
             {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "P1809F7CD0C75ACF3"
+              },
               "expr": "node_memory_MemTotal_bytes{instance=~\"$router$\"}-node_memory_MemFree_bytes{instance=~\"$router$\"}",
               "format": "time_series",
               "intervalFactor": 1,
@@ -4633,9 +4665,7 @@ data:
             }
           ],
           "thresholds": [],
-          "timeFrom": null,
           "timeRegions": [],
-          "timeShift": null,
           "title": "Memory Distrubution",
           "tooltip": {
             "msResolution": true,
@@ -4645,39 +4675,29 @@ data:
           },
           "type": "graph",
           "xaxis": {
-            "buckets": null,
             "mode": "time",
-            "name": null,
             "show": true,
             "values": []
           },
           "yaxes": [
             {
               "format": "bytes",
-              "label": null,
               "logBase": 1,
-              "max": null,
-              "min": null,
               "show": true
             },
             {
               "format": "short",
-              "label": null,
               "logBase": 1,
-              "max": null,
-              "min": null,
               "show": true
             }
           ],
           "yaxis": {
-            "align": false,
-            "alignLevel": null
+            "align": false
           }
         }
       ],
       "refresh": "1m",
-      "schemaVersion": 16,
-      "style": "dark",
+      "schemaVersion": 39,
       "tags": [
         "system",
         "os"
@@ -4685,24 +4705,27 @@ data:
       "templating": {
         "list": [
           {
-            "allValue": null,
             "current": {
+              "selected": false,
               "text": "192.168.1.1:9101",
               "value": "192.168.1.1:9101"
             },
-            "datasource": "prometheus",
+            "datasource": {
+              "type": "prometheus",
+              "uid": "P1809F7CD0C75ACF3"
+            },
+            "definition": "",
             "hide": 0,
             "includeAll": false,
-            "label": null,
             "multi": false,
             "name": "router",
             "options": [],
             "query": "label_values(node_openwrt_info,instance)",
             "refresh": 1,
             "regex": "",
+            "skipUrlSync": false,
             "sort": 0,
             "tagValuesQuery": "",
-            "tags": [],
             "tagsQuery": "",
             "type": "query",
             "useTags": false
@@ -4740,7 +4763,9 @@ data:
       },
       "timezone": "browser",
       "title": "Router",
-      "version": 6
+      "uid": "daa31e62-e896-4b0a-9363-ab916f9f05d8",
+      "version": 1,
+      "weekStart": ""
     }
   hardware.json: |
     {
