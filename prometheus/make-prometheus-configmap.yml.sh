@@ -35,6 +35,9 @@ data:
         metrics_path: '/nginx/metrics'
         static_configs:
           - targets: ['monitoring.freikirche-traun.at']
+      - job_name: 'screen'
+        static_configs:
+          - targets: ['192.168.1.178:9100']
       - job_name: 'vpn-node'
         static_configs:
           - targets: ['192.168.1.145:9100']
