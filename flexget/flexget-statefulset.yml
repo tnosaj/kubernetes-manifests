@@ -34,6 +34,12 @@ spec:
             - --autoreload-config
           ports:
             - containerPort: 5050
+          env:
+          - name: CI_JOB_TOKEN
+            valueFrom:
+              secretKeyRef:
+                name: flexget
+                key: CI_JOB_TOKEN
           # readinessProbe:
           #   httpGet:
           #     path: /-/ready
