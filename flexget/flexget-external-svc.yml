@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: flexget-external
+  namespace: flexget
+  
+spec:
+  selector: 
+    k8s-app: flexget
+  type: NodePort  
+  ports:
+    - port: 5050
+      targetPort: 5050 
+      nodePort: 30005
