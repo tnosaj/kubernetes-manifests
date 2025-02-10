@@ -27,7 +27,7 @@ spec:
       containers:
         - name: flexget-server
           image: "tnosaj/flexget:latest"
-          imagePullPolicy: "IfNotPresent"
+          imagePullPolicy: "Always"
           args:
             - daemon
             - start 
