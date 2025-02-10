@@ -74,12 +74,18 @@ data:
         static_configs:
           - targets:
             - https://freikirche-traun.at
-            - http://192.168.1.146
-            - http://192.168.1.179
-            - http://192.168.1.107
-            - http://192.168.1.151
-            - http://192.168.1.161
-            - http://192.168.1.145
+            - http://opendtu
+            - http://shellypro2
+            - http://shelly1
+            - http://amis-1
+            - http://esompfy
+            - http://boiler
+            - http://vpn-1
+            - http://wlan-uplink
+            - http://wlan-attic
+            - http://wlan-groundfloor
+            - http://wlan-livingroom
+            - http://screen:8080
         relabel_configs:
           - source_labels: [__address__]
             target_label: __param_target
