@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: noah-mqtt
+  namespace: noah-mqtt
+spec:
+  selector:
+    matchLabels:
+      app: noah-mqtt
+  template:
+    metadata:
+      labels:
+        app: noah-mqtt
+    spec:
+      nodeSelector:
+        kubernetes.io/hostname: wrk-3
+      containers:
+      - name: noah-mqtt
+        image: ghcr.io/mtrossbach/noah-mqtt:latest
+        resources:
+          requests:
+            cpu: "50m"
+          limits:
+            memory: "64Mi"
+        env:
+        - name: GROWATT_USERNAME
+          valueFrom:
+            secretKeyRef:
+              name: noah-mqtt
+              key: username
+        - name: GROWATT_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: noah-mqtt
+              key: password
+        - name: MQTT_HOST
+          value: mosquitto.mosquitto
+        - name: MQTT_PORT
+          value: "1883"
