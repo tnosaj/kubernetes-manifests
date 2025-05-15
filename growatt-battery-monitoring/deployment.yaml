@@ -37,3 +37,5 @@ spec:
           value: mosquitto.mosquitto
         - name: MQTT_PORT
           value: "1883"
+        - name: POLLING_INTERVAL
+          value: "60"
