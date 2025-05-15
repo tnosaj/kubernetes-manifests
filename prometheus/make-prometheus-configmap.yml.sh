@@ -47,9 +47,9 @@ data:
       - job_name: 'vpn-fail2ban'
         static_configs:
           - targets: ['192.168.1.145:9191']
-      - job_name: 'router'
+      - job_name: 'nas'
         static_configs:
-          - targets: ['192.168.1.1:9101']
+          - targets: ['192.168.1.125:9100']
       - job_name: 'homeassistant'
         metrics_path: '/api/prometheus'
         bearer_token: '$HOMEASSISTANT_TOKEN'
