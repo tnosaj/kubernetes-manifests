@@ -1,5 +1,5 @@
 #!/bin/bash
-cat << EOF
+cat <<EOF
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -247,6 +247,15 @@ data:
     groups:
       - name: home
         rules:
+          - alert: RaidDegraded
+            expr: node_md_disks{state="failed"} != 0
+            for: 5m
+            labels:
+              severity: slack
+              channel: '#private-alerts'
+            annotations:
+              title: "Raid Array degraded"
+              description: "{{ $labels.device}} on {{ $labels.job }} has failed disks."
           - alert: DehumidifierWaterFull
             expr: sum(hass_switch_state{friendly_name="dehumidifier  Switch"} == 1) and sum(hass_sensor_power_w{friendly_name="dehumidifier  Active power"} < 20)
             for: 5m
