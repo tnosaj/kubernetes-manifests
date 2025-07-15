@@ -35,21 +35,30 @@ data:
         metrics_path: '/nginx/metrics'
         static_configs:
           - targets: ['monitoring.freikirche-traun.at']
+      - job_name: 'nas'
+        static_configs:
+          - targets: ['192.168.1.125:9100']
+      - job_name: 'ai'
+        static_configs:
+          - targets: ['192.168.1.138:9100']
       - job_name: 'screen'
         static_configs:
           - targets: ['192.168.1.178:9100']
       - job_name: 'vpn-node'
         static_configs:
           - targets: ['192.168.1.145:9100']
-      - job_name: 'vpn-nginx'
+      - job_name: 'ssl'
         static_configs:
-          - targets: ['192.168.1.145:9113']
-      - job_name: 'vpn-fail2ban'
+          - targets: ['192.168.1.162:9100']
+      - job_name: 'ssl-nginx'
         static_configs:
-          - targets: ['192.168.1.145:9191']
-      - job_name: 'nas'
+          - targets: ['192.168.1.162:9113']
+      - job_name: 'ssl-certbot'
         static_configs:
-          - targets: ['192.168.1.125:9100']
+          - targets: ['192.168.1.162:9099']
+      - job_name: 'ssl-fail2ban'
+        static_configs:
+          - targets: ['192.168.1.162:9191']
       - job_name: 'homeassistant'
         metrics_path: '/api/prometheus'
         bearer_token: '$HOMEASSISTANT_TOKEN'
