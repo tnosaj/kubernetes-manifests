@@ -256,6 +256,15 @@ data:
     groups:
       - name: home
         rules:
+          - alert: CertExpiration
+            expr: certbot_cert_expiry_countdown{name="tevnan.duckdns.org"} < 172800
+            for: 5m
+            labels:
+              severity: slack
+              channel: '#private-alerts'
+            annotations:
+              title: "Certificat expiration"
+              description: "{{ $labels.name} cert will expire in 2 days"
           - alert: CertValidity
             expr: certbot_cert{name="tevnan.duckdns.org",certbot_cert="VALID"} != 1
             for: 5m
