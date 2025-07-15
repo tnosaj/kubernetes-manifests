@@ -256,6 +256,15 @@ data:
     groups:
       - name: home
         rules:
+          - alert: CertValidity
+            expr: certbot_cert{name="tevnan.duckdns.org",certbot_cert="VALID"} != 1
+            for: 5m
+            labels:
+              severity: slack
+              channel: '#private-alerts'
+            annotations:
+              title: "Certificat not valid"
+              description: "{{ $labels.name} cert is not valid"
           - alert: RaidDegraded
             expr: node_md_disks{state="failed"} != 0
             for: 5m
