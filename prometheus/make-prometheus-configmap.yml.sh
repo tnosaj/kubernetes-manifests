@@ -59,6 +59,34 @@ data:
       - job_name: 'ssl-fail2ban'
         static_configs:
           - targets: ['192.168.1.162:9191']
+      - job_name: 'sar-server-node'
+        metrics_path: '/metrics/node'
+        static_configs:
+          - targets: ['$SERVER']
+        basic_auth:
+          username: '$BASICAUTHUSER'
+          password: '$BASICAUTHPASS'
+      - job_name: 'sar-server-nginx'
+        metrics_path: '/metrics/nginx'
+        static_configs:
+          - targets: ['$SERVER']
+        basic_auth:
+          username: '$BASICAUTHUSER'
+          password: '$BASICAUTHPASS'
+      - job_name: 'sar-server-fail2ban'
+        metrics_path: '/metrics/fail2ban'
+        static_configs:
+          - targets: ['$SERVER']
+        basic_auth:
+          username: '$BASICAUTHUSER'
+          password: '$BASICAUTHPASS'
+      - job_name: 'sar-server-certbot'
+        metrics_path: '/metrics/certbot'
+        static_configs:
+          - targets: ['$SERVER']
+        basic_auth:
+          username: '$BASICAUTHUSER'
+          password: '$BASICAUTHPASS'
       - job_name: 'homeassistant'
         metrics_path: '/api/prometheus'
         bearer_token: '$HOMEASSISTANT_TOKEN'
@@ -264,7 +292,7 @@ data:
               channel: '#private-alerts'
             annotations:
               title: "Certificat expiration"
-              description: "{{ $labels.name} cert will expire in 2 days"
+              description: "{{ $labels.name }} cert will expire in 2 days"
           - alert: CertValidity
             expr: certbot_cert{name="tevnan.duckdns.org",certbot_cert="VALID"} != 1
             for: 5m
@@ -273,7 +301,7 @@ data:
               channel: '#private-alerts'
             annotations:
               title: "Certificat not valid"
-              description: "{{ $labels.name} cert is not valid"
+              description: "{{ $labels.name }} cert is not valid"
           - alert: RaidDegraded
             expr: node_md_disks{state="failed"} != 0
             for: 5m
