@@ -13,7 +13,10 @@ data:
         "list": [
           {
             "builtIn": 1,
-            "datasource": "-- Grafana --",
+            "datasource": {
+              "type": "datasource",
+              "uid": "grafana"
+            },
             "enable": true,
             "hide": true,
             "iconColor": "rgba(0, 211, 255, 1)",
@@ -24,30 +27,50 @@ data:
       },
       "description": "Grafana Internal Metics Dashboards",
       "editable": true,
+      "fiscalYearStartMonth": 0,
       "gnetId": 3590,
       "graphTooltip": 0,
-      "id": 5,
-      "iteration": 1549213258220,
       "links": [],
+      "liveNow": false,
       "panels": [
         {
-          "cacheTimeout": null,
-          "colorBackground": false,
-          "colorValue": false,
-          "colors": [
-            "#299c46",
-            "rgba(237, 129, 40, 0.89)",
-            "#d44a3a"
-          ],
-          "datasource": "prometheus",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P1809F7CD0C75ACF3"
+          },
           "description": "start time of the process",
-          "format": "dateTimeFromNow",
-          "gauge": {
-            "maxValue": 100,
-            "minValue": 0,
-            "show": false,
-            "thresholdLabels": false,
-            "thresholdMarkers": true
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "thresholds"
+              },
+              "mappings": [
+                {
+                  "options": {
+                    "match": "null",
+                    "result": {
+                      "text": "N/A"
+                    }
+                  },
+                  "type": "special"
+                }
+              ],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              },
+              "unit": "dateTimeFromNow"
+            },
+            "overrides": []
           },
           "gridPos": {
             "h": 4,
@@ -56,79 +79,77 @@ data:
             "y": 0
           },
           "id": 16,
-          "interval": null,
           "links": [],
-          "mappingType": 1,
-          "mappingTypes": [
-            {
-              "name": "value to text",
-              "value": 1
-            },
-            {
-              "name": "range to text",
-              "value": 2
-            }
-          ],
           "maxDataPoints": 100,
-          "nullPointMode": "connected",
-          "nullText": null,
-          "postfix": "",
-          "postfixFontSize": "50%",
-          "prefix": "",
-          "prefixFontSize": "50%",
-          "rangeMaps": [
-            {
-              "from": "null",
-              "text": "N/A",
-              "to": "null"
-            }
-          ],
-          "sparkline": {
-            "fillColor": "rgba(31, 118, 189, 0.18)",
-            "full": false,
-            "lineColor": "rgb(31, 120, 193)",
-            "show": false
+          "options": {
+            "colorMode": "none",
+            "graphMode": "none",
+            "justifyMode": "auto",
+            "orientation": "horizontal",
+            "reduceOptions": {
+              "calcs": [
+                "lastNotNull"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "textMode": "auto",
+            "wideLayout": true
           },
-          "tableColumn": "",
+          "pluginVersion": "10.2.3",
           "targets": [
             {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "P1809F7CD0C75ACF3"
+              },
               "expr": "process_start_time_seconds{kubernetes_name=\"$pod\"} * 1000",
               "format": "time_series",
               "intervalFactor": 2,
               "refId": "A"
             }
           ],
-          "thresholds": "",
           "title": "Start time",
-          "type": "singlestat",
-          "valueFontSize": "80%",
-          "valueMaps": [
-            {
-              "op": "=",
-              "text": "N/A",
-              "value": "null"
-            }
-          ],
-          "valueName": "current"
+          "type": "stat"
         },
         {
-          "cacheTimeout": null,
-          "colorBackground": false,
-          "colorValue": false,
-          "colors": [
-            "#299c46",
-            "rgba(237, 129, 40, 0.89)",
-            "#d44a3a"
-          ],
-          "datasource": "prometheus",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P1809F7CD0C75ACF3"
+          },
           "description": "total amount of orgs",
-          "format": "none",
-          "gauge": {
-            "maxValue": 100,
-            "minValue": 0,
-            "show": false,
-            "thresholdLabels": false,
-            "thresholdMarkers": true
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "thresholds"
+              },
+              "mappings": [
+                {
+                  "options": {
+                    "match": "null",
+                    "result": {
+                      "text": "N/A"
+                    }
+                  },
+                  "type": "special"
+                }
+              ],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              },
+              "unit": "none"
+            },
+            "overrides": []
           },
           "gridPos": {
             "h": 4,
@@ -137,79 +158,77 @@ data:
             "y": 0
           },
           "id": 2,
-          "interval": null,
           "links": [],
-          "mappingType": 1,
-          "mappingTypes": [
-            {
-              "name": "value to text",
-              "value": 1
-            },
-            {
-              "name": "range to text",
-              "value": 2
-            }
-          ],
           "maxDataPoints": 100,
-          "nullPointMode": "connected",
-          "nullText": null,
-          "postfix": "",
-          "postfixFontSize": "50%",
-          "prefix": "",
-          "prefixFontSize": "50%",
-          "rangeMaps": [
-            {
-              "from": "null",
-              "text": "N/A",
-              "to": "null"
-            }
-          ],
-          "sparkline": {
-            "fillColor": "rgba(31, 118, 189, 0.18)",
-            "full": false,
-            "lineColor": "rgb(31, 120, 193)",
-            "show": false
+          "options": {
+            "colorMode": "none",
+            "graphMode": "none",
+            "justifyMode": "auto",
+            "orientation": "horizontal",
+            "reduceOptions": {
+              "calcs": [
+                "mean"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "textMode": "auto",
+            "wideLayout": true
           },
-          "tableColumn": "",
+          "pluginVersion": "10.2.3",
           "targets": [
             {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "P1809F7CD0C75ACF3"
+              },
               "expr": "grafana_stat_total_orgs{kubernetes_name=\"$pod\"}",
               "format": "time_series",
               "intervalFactor": 2,
               "refId": "A"
             }
           ],
-          "thresholds": "",
           "title": "Organisation Count",
-          "type": "singlestat",
-          "valueFontSize": "80%",
-          "valueMaps": [
-            {
-              "op": "=",
-              "text": "N/A",
-              "value": "null"
-            }
-          ],
-          "valueName": "avg"
+          "type": "stat"
         },
         {
-          "cacheTimeout": null,
-          "colorBackground": false,
-          "colorValue": false,
-          "colors": [
-            "#299c46",
-            "rgba(237, 129, 40, 0.89)",
-            "#d44a3a"
-          ],
-          "datasource": "prometheus",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P1809F7CD0C75ACF3"
+          },
           "description": "total amount of users",
-          "format": "none",
-          "gauge": {
-            "maxValue": 100,
-            "minValue": 0,
-            "show": false,
-            "thresholdLabels": false,
-            "thresholdMarkers": true
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "thresholds"
+              },
+              "mappings": [
+                {
+                  "options": {
+                    "match": "null",
+                    "result": {
+                      "text": "N/A"
+                    }
+                  },
+                  "type": "special"
+                }
+              ],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              },
+              "unit": "none"
+            },
+            "overrides": []
           },
           "gridPos": {
             "h": 4,
@@ -218,64 +237,45 @@ data:
             "y": 0
           },
           "id": 3,
-          "interval": null,
           "links": [],
-          "mappingType": 1,
-          "mappingTypes": [
-            {
-              "name": "value to text",
-              "value": 1
-            },
-            {
-              "name": "range to text",
-              "value": 2
-            }
-          ],
           "maxDataPoints": 100,
-          "nullPointMode": "connected",
-          "nullText": null,
-          "postfix": "",
-          "postfixFontSize": "50%",
-          "prefix": "",
-          "prefixFontSize": "50%",
-          "rangeMaps": [
-            {
-              "from": "null",
-              "text": "N/A",
-              "to": "null"
-            }
-          ],
-          "sparkline": {
-            "fillColor": "rgba(31, 118, 189, 0.18)",
-            "full": false,
-            "lineColor": "rgb(31, 120, 193)",
-            "show": false
+          "options": {
+            "colorMode": "none",
+            "graphMode": "none",
+            "justifyMode": "auto",
+            "orientation": "horizontal",
+            "reduceOptions": {
+              "calcs": [
+                "mean"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "textMode": "auto",
+            "wideLayout": true
           },
-          "tableColumn": "",
+          "pluginVersion": "10.2.3",
           "targets": [
             {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "P1809F7CD0C75ACF3"
+              },
               "expr": "grafana_stat_total_users{kubernetes_name=\"$pod\"}",
               "format": "time_series",
               "intervalFactor": 2,
               "refId": "A"
             }
           ],
-          "thresholds": "",
           "title": "User Count",
-          "type": "singlestat",
-          "valueFontSize": "80%",
-          "valueMaps": [
-            {
-              "op": "=",
-              "text": "N/A",
-              "value": "null"
-            }
-          ],
-          "valueName": "avg"
+          "type": "stat"
         },
         {
           "columns": [],
-          "datasource": "prometheus",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P1809F7CD0C75ACF3"
+          },
           "fontSize": "100%",
           "gridPos": {
             "h": 4,
@@ -285,7 +285,6 @@ data:
           },
           "id": 29,
           "links": [],
-          "pageSize": null,
           "scroll": false,
           "showHeader": true,
           "sort": {
@@ -295,6 +294,7 @@ data:
           "styles": [
             {
               "alias": "Time",
+              "align": "auto",
               "dateFormat": "YYYY-MM-DD HH:mm:ss",
               "link": false,
               "pattern": "Time",
@@ -302,7 +302,7 @@ data:
             },
             {
               "alias": "",
-              "colorMode": null,
+              "align": "auto",
               "colors": [
                 "rgba(245, 54, 54, 0.9)",
                 "rgba(237, 129, 40, 0.89)",
@@ -317,6 +317,10 @@ data:
           ],
           "targets": [
             {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "P1809F7CD0C75ACF3"
+              },
               "expr": "topk(1, grafana_info)",
               "format": "time_series",
               "instant": true,
@@ -327,27 +331,47 @@ data:
             }
           ],
           "title": "Grafana version",
-          "transform": "timeseries_to_rows",
-          "type": "table"
+          "transform": "table",
+          "type": "table-old"
         },
         {
-          "cacheTimeout": null,
-          "colorBackground": false,
-          "colorValue": false,
-          "colors": [
-            "#299c46",
-            "rgba(237, 129, 40, 0.89)",
-            "#d44a3a"
-          ],
-          "datasource": "prometheus",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P1809F7CD0C75ACF3"
+          },
           "description": "total amount of dashboards",
-          "format": "none",
-          "gauge": {
-            "maxValue": 100,
-            "minValue": 0,
-            "show": false,
-            "thresholdLabels": false,
-            "thresholdMarkers": true
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "thresholds"
+              },
+              "mappings": [
+                {
+                  "options": {
+                    "match": "null",
+                    "result": {
+                      "text": "N/A"
+                    }
+                  },
+                  "type": "special"
+                }
+              ],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              },
+              "unit": "none"
+            },
+            "overrides": []
           },
           "gridPos": {
             "h": 4,
@@ -356,42 +380,30 @@ data:
             "y": 0
           },
           "id": 5,
-          "interval": null,
           "links": [],
-          "mappingType": 1,
-          "mappingTypes": [
-            {
-              "name": "value to text",
-              "value": 1
-            },
-            {
-              "name": "range to text",
-              "value": 2
-            }
-          ],
           "maxDataPoints": 100,
-          "nullPointMode": "connected",
-          "nullText": null,
-          "postfix": "",
-          "postfixFontSize": "50%",
-          "prefix": "",
-          "prefixFontSize": "50%",
-          "rangeMaps": [
-            {
-              "from": "null",
-              "text": "N/A",
-              "to": "null"
-            }
-          ],
-          "sparkline": {
-            "fillColor": "rgba(31, 118, 189, 0.18)",
-            "full": false,
-            "lineColor": "rgb(31, 120, 193)",
-            "show": false
+          "options": {
+            "colorMode": "none",
+            "graphMode": "none",
+            "justifyMode": "auto",
+            "orientation": "horizontal",
+            "reduceOptions": {
+              "calcs": [
+                "mean"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "textMode": "auto",
+            "wideLayout": true
           },
-          "tableColumn": "",
+          "pluginVersion": "10.2.3",
           "targets": [
             {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "P1809F7CD0C75ACF3"
+              },
               "expr": "grafana_stat_totals_dashboard",
               "format": "time_series",
               "intervalFactor": 2,
@@ -399,36 +411,46 @@ data:
               "refId": "A"
             }
           ],
-          "thresholds": "",
           "title": "Dashboard Count",
-          "type": "singlestat",
-          "valueFontSize": "80%",
-          "valueMaps": [
-            {
-              "op": "=",
-              "text": "N/A",
-              "value": "null"
-            }
-          ],
-          "valueName": "avg"
+          "type": "stat"
         },
         {
-          "cacheTimeout": null,
-          "colorBackground": false,
-          "colorValue": false,
-          "colors": [
-            "#299c46",
-            "rgba(237, 129, 40, 0.89)",
-            "#d44a3a"
-          ],
-          "datasource": "prometheus",
-          "format": "none",
-          "gauge": {
-            "maxValue": 100,
-            "minValue": 0,
-            "show": false,
-            "thresholdLabels": false,
-            "thresholdMarkers": true
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P1809F7CD0C75ACF3"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "thresholds"
+              },
+              "mappings": [
+                {
+                  "options": {
+                    "match": "null",
+                    "result": {
+                      "text": "N/A"
+                    }
+                  },
+                  "type": "special"
+                }
+              ],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              },
+              "unit": "none"
+            },
+            "overrides": []
           },
           "gridPos": {
             "h": 4,
@@ -437,63 +459,45 @@ data:
             "y": 0
           },
           "id": 33,
-          "interval": null,
           "links": [],
-          "mappingType": 1,
-          "mappingTypes": [
-            {
-              "name": "value to text",
-              "value": 1
-            },
-            {
-              "name": "range to text",
-              "value": 2
-            }
-          ],
           "maxDataPoints": 100,
-          "nullPointMode": "connected",
-          "nullText": null,
-          "postfix": "",
-          "postfixFontSize": "50%",
-          "prefix": "",
-          "prefixFontSize": "50%",
-          "rangeMaps": [
-            {
-              "from": "null",
-              "text": "N/A",
-              "to": "null"
-            }
-          ],
-          "sparkline": {
-            "fillColor": "rgba(31, 118, 189, 0.18)",
-            "full": false,
-            "lineColor": "rgb(31, 120, 193)",
-            "show": false
+          "options": {
+            "colorMode": "none",
+            "graphMode": "none",
+            "justifyMode": "auto",
+            "orientation": "horizontal",
+            "reduceOptions": {
+              "calcs": [
+                "mean"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "textMode": "auto",
+            "wideLayout": true
           },
-          "tableColumn": "",
+          "pluginVersion": "10.2.3",
           "targets": [
             {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "P1809F7CD0C75ACF3"
+              },
               "expr": "increase(grafana_alerting_active_alerts[1m])",
               "format": "time_series",
               "intervalFactor": 1,
               "refId": "A"
             }
           ],
-          "thresholds": "",
           "title": "Alerts",
-          "type": "singlestat",
-          "valueFontSize": "80%",
-          "valueMaps": [
-            {
-              "op": "=",
-              "text": "N/A",
-              "value": "null"
-            }
-          ],
-          "valueName": "avg"
+          "type": "stat"
         },
         {
           "collapsed": false,
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P1809F7CD0C75ACF3"
+          },
           "gridPos": {
             "h": 1,
             "w": 24,
@@ -502,7 +506,15 @@ data:
           },
           "id": 22,
           "panels": [],
-          "repeat": null,
+          "targets": [
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "P1809F7CD0C75ACF3"
+              },
+              "refId": "A"
+            }
+          ],
           "title": "CPU, Memory and File Descriptor Stats",
           "type": "row"
         },
@@ -511,15 +523,20 @@ data:
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "prometheus",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P1809F7CD0C75ACF3"
+          },
           "description": "Average user and system CPU time spent in seconds.",
           "fill": 1,
+          "fillGradient": 0,
           "gridPos": {
             "h": 7,
             "w": 8,
             "x": 0,
             "y": 5
           },
+          "hiddenSeries": false,
           "id": 14,
           "legend": {
             "alignAsTable": true,
@@ -535,7 +552,11 @@ data:
           "linewidth": 1,
           "links": [],
           "nullPointMode": "null",
+          "options": {
+            "alertThreshold": true
+          },
           "percentage": false,
+          "pluginVersion": "10.2.3",
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
@@ -545,6 +566,10 @@ data:
           "steppedLine": false,
           "targets": [
             {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "P1809F7CD0C75ACF3"
+              },
               "expr": "avg(rate(process_cpu_seconds_total{kubernetes_name=\"$pod\"}[5m]))",
               "format": "time_series",
               "intervalFactor": 2,
@@ -553,9 +578,7 @@ data:
             }
           ],
           "thresholds": [],
-          "timeFrom": null,
           "timeRegions": [],
-          "timeShift": null,
           "title": "Average CPU Usage",
           "tooltip": {
             "shared": true,
@@ -564,33 +587,24 @@ data:
           },
           "type": "graph",
           "xaxis": {
-            "buckets": null,
             "mode": "time",
-            "name": null,
             "show": true,
             "values": []
           },
           "yaxes": [
             {
               "format": "s",
-              "label": null,
               "logBase": 1,
-              "max": null,
-              "min": null,
               "show": true
             },
             {
               "format": "short",
-              "label": null,
               "logBase": 1,
-              "max": null,
-              "min": null,
               "show": true
             }
           ],
           "yaxis": {
-            "align": false,
-            "alignLevel": null
+            "align": false
           }
         },
         {
@@ -598,15 +612,20 @@ data:
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "prometheus",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P1809F7CD0C75ACF3"
+          },
           "description": "Virtual and Resident memory size in bytes, averages over 5 min interval",
           "fill": 1,
+          "fillGradient": 0,
           "gridPos": {
             "h": 7,
             "w": 8,
             "x": 8,
             "y": 5
           },
+          "hiddenSeries": false,
           "id": 15,
           "legend": {
             "alignAsTable": true,
@@ -622,7 +641,11 @@ data:
           "linewidth": 1,
           "links": [],
           "nullPointMode": "null",
+          "options": {
+            "alertThreshold": true
+          },
           "percentage": false,
+          "pluginVersion": "10.2.3",
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
@@ -632,6 +655,10 @@ data:
           "steppedLine": false,
           "targets": [
             {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "P1809F7CD0C75ACF3"
+              },
               "expr": "avg(rate(process_resident_memory_bytes{kubernetes_name=\"$pod\"}[5m]))",
               "format": "time_series",
               "intervalFactor": 2,
@@ -639,6 +666,10 @@ data:
               "refId": "A"
             },
             {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "P1809F7CD0C75ACF3"
+              },
               "expr": "avg(rate(process_virtual_memory_bytes{kubernetes_name=\"$pod\"}[5m]))",
               "format": "time_series",
               "intervalFactor": 2,
@@ -647,9 +678,7 @@ data:
             }
           ],
           "thresholds": [],
-          "timeFrom": null,
           "timeRegions": [],
-          "timeShift": null,
           "title": "Average Memory Usage",
           "tooltip": {
             "shared": true,
@@ -658,34 +687,24 @@ data:
           },
           "type": "graph",
           "xaxis": {
-            "buckets": null,
             "mode": "time",
-            "name": null,
             "show": true,
             "values": []
           },
           "yaxes": [
             {
-              "decimals": null,
               "format": "decbytes",
-              "label": null,
               "logBase": 1,
-              "max": null,
-              "min": null,
               "show": true
             },
             {
               "format": "short",
-              "label": null,
               "logBase": 1,
-              "max": null,
-              "min": null,
               "show": true
             }
           ],
           "yaxis": {
-            "align": false,
-            "alignLevel": null
+            "align": false
           }
         },
         {
@@ -693,15 +712,20 @@ data:
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "prometheus",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P1809F7CD0C75ACF3"
+          },
           "description": "Number of open file descriptors",
           "fill": 1,
+          "fillGradient": 0,
           "gridPos": {
             "h": 7,
             "w": 8,
             "x": 16,
             "y": 5
           },
+          "hiddenSeries": false,
           "id": 17,
           "legend": {
             "alignAsTable": true,
@@ -717,7 +741,11 @@ data:
           "linewidth": 1,
           "links": [],
           "nullPointMode": "null",
+          "options": {
+            "alertThreshold": true
+          },
           "percentage": false,
+          "pluginVersion": "10.2.3",
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
@@ -727,6 +755,10 @@ data:
           "steppedLine": false,
           "targets": [
             {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "P1809F7CD0C75ACF3"
+              },
               "expr": "process_open_fds{kubernetes_name=\"$pod\"}",
               "format": "time_series",
               "intervalFactor": 2,
@@ -735,9 +767,7 @@ data:
             }
           ],
           "thresholds": [],
-          "timeFrom": null,
           "timeRegions": [],
-          "timeShift": null,
           "title": "Open File Descriptors",
           "tooltip": {
             "shared": true,
@@ -746,38 +776,32 @@ data:
           },
           "type": "graph",
           "xaxis": {
-            "buckets": null,
             "mode": "time",
-            "name": null,
             "show": true,
             "values": []
           },
           "yaxes": [
             {
-              "decimals": null,
               "format": "short",
-              "label": null,
               "logBase": 1,
-              "max": null,
-              "min": null,
               "show": true
             },
             {
               "format": "short",
-              "label": null,
               "logBase": 1,
-              "max": null,
-              "min": null,
               "show": true
             }
           ],
           "yaxis": {
-            "align": false,
-            "alignLevel": null
+            "align": false
           }
         },
         {
           "collapsed": false,
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P1809F7CD0C75ACF3"
+          },
           "gridPos": {
             "h": 1,
             "w": 24,
@@ -786,7 +810,15 @@ data:
           },
           "id": 23,
           "panels": [],
-          "repeat": null,
+          "targets": [
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "P1809F7CD0C75ACF3"
+              },
+              "refId": "A"
+            }
+          ],
           "title": "Responce Codes and Logins",
           "type": "row"
         },
@@ -795,15 +827,20 @@ data:
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "prometheus",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P1809F7CD0C75ACF3"
+          },
           "description": "http response status",
           "fill": 1,
+          "fillGradient": 0,
           "gridPos": {
             "h": 7,
             "w": 6,
             "x": 0,
             "y": 13
           },
+          "hiddenSeries": false,
           "id": 18,
           "legend": {
             "alignAsTable": true,
@@ -819,7 +856,11 @@ data:
           "linewidth": 1,
           "links": [],
           "nullPointMode": "null",
+          "options": {
+            "alertThreshold": true
+          },
           "percentage": false,
+          "pluginVersion": "10.2.3",
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
@@ -829,6 +870,10 @@ data:
           "steppedLine": false,
           "targets": [
             {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "P1809F7CD0C75ACF3"
+              },
               "expr": "grafana_api_response_status_total{kubernetes_name=\"$pod\"}",
               "format": "time_series",
               "intervalFactor": 2,
@@ -836,6 +881,10 @@ data:
               "refId": "A"
             },
             {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "P1809F7CD0C75ACF3"
+              },
               "expr": "grafana_page_response_status_total{kubernetes_name=\"$pod\"}",
               "format": "time_series",
               "intervalFactor": 2,
@@ -843,6 +892,10 @@ data:
               "refId": "B"
             },
             {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "P1809F7CD0C75ACF3"
+              },
               "expr": "grafana_proxy_response_status_total{kubernetes_name=\"$pod\"}",
               "format": "time_series",
               "intervalFactor": 2,
@@ -851,9 +904,7 @@ data:
             }
           ],
           "thresholds": [],
-          "timeFrom": null,
           "timeRegions": [],
-          "timeShift": null,
           "title": "Total Response Statuses",
           "tooltip": {
             "shared": true,
@@ -862,33 +913,24 @@ data:
           },
           "type": "graph",
           "xaxis": {
-            "buckets": null,
             "mode": "time",
-            "name": null,
             "show": true,
             "values": []
           },
           "yaxes": [
             {
               "format": "short",
-              "label": null,
               "logBase": 1,
-              "max": null,
-              "min": null,
               "show": true
             },
             {
               "format": "short",
-              "label": null,
               "logBase": 1,
-              "max": null,
-              "min": null,
               "show": true
             }
           ],
           "yaxis": {
-            "align": false,
-            "alignLevel": null
+            "align": false
           }
         },
         {
@@ -896,15 +938,20 @@ data:
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "prometheus",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P1809F7CD0C75ACF3"
+          },
           "description": "http request counter",
           "fill": 1,
+          "fillGradient": 0,
           "gridPos": {
             "h": 7,
             "w": 6,
             "x": 6,
             "y": 13
           },
+          "hiddenSeries": false,
           "id": 20,
           "legend": {
             "alignAsTable": true,
@@ -922,7 +969,11 @@ data:
           "linewidth": 1,
           "links": [],
           "nullPointMode": "null",
+          "options": {
+            "alertThreshold": true
+          },
           "percentage": false,
+          "pluginVersion": "10.2.3",
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
@@ -932,6 +983,10 @@ data:
           "steppedLine": false,
           "targets": [
             {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "P1809F7CD0C75ACF3"
+              },
               "expr": "http_request_total{kubernetes_name=\"$pod\"}",
               "format": "time_series",
               "intervalFactor": 2,
@@ -940,9 +995,7 @@ data:
             }
           ],
           "thresholds": [],
-          "timeFrom": null,
           "timeRegions": [],
-          "timeShift": null,
           "title": "HTTP Req/Resp Details",
           "tooltip": {
             "shared": true,
@@ -951,33 +1004,24 @@ data:
           },
           "type": "graph",
           "xaxis": {
-            "buckets": null,
             "mode": "time",
-            "name": null,
             "show": true,
             "values": []
           },
           "yaxes": [
             {
               "format": "short",
-              "label": null,
               "logBase": 1,
-              "max": null,
-              "min": null,
               "show": true
             },
             {
               "format": "short",
-              "label": null,
               "logBase": 1,
-              "max": null,
-              "min": null,
               "show": true
             }
           ],
           "yaxis": {
-            "align": false,
-            "alignLevel": null
+            "align": false
           }
         },
         {
@@ -988,8 +1032,12 @@ data:
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "prometheus",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P1809F7CD0C75ACF3"
+          },
           "fill": 1,
+          "fillGradient": 0,
           "gridPos": {
             "h": 7,
             "w": 7,
@@ -997,6 +1045,7 @@ data:
             "y": 13
           },
           "height": "",
+          "hiddenSeries": false,
           "id": 31,
           "legend": {
             "avg": false,
@@ -1011,7 +1060,11 @@ data:
           "linewidth": 2,
           "links": [],
           "nullPointMode": "null as zero",
+          "options": {
+            "alertThreshold": true
+          },
           "percentage": false,
+          "pluginVersion": "10.2.3",
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
@@ -1023,6 +1076,10 @@ data:
           "steppedLine": false,
           "targets": [
             {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "P1809F7CD0C75ACF3"
+              },
               "expr": "sum(irate(grafana_api_response_status_total[5m]))",
               "format": "time_series",
               "intervalFactor": 4,
@@ -1031,6 +1088,10 @@ data:
               "step": 20
             },
             {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "P1809F7CD0C75ACF3"
+              },
               "expr": "sum(irate(grafana_proxy_response_status_total[5m]))",
               "format": "time_series",
               "intervalFactor": 4,
@@ -1039,6 +1100,10 @@ data:
               "step": 20
             },
             {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "P1809F7CD0C75ACF3"
+              },
               "expr": "sum(irate(grafana_page_response_status_total[5m]))",
               "format": "time_series",
               "intervalFactor": 4,
@@ -1048,9 +1113,7 @@ data:
             }
           ],
           "thresholds": [],
-          "timeFrom": null,
           "timeRegions": [],
-          "timeShift": null,
           "title": "Requests by routing group",
           "tooltip": {
             "shared": true,
@@ -1059,33 +1122,24 @@ data:
           },
           "type": "graph",
           "xaxis": {
-            "buckets": null,
             "mode": "time",
-            "name": null,
             "show": true,
             "values": []
           },
           "yaxes": [
             {
               "format": "short",
-              "label": null,
               "logBase": 1,
-              "max": null,
-              "min": null,
               "show": true
             },
             {
               "format": "short",
-              "label": null,
               "logBase": 1,
-              "max": null,
-              "min": null,
               "show": true
             }
           ],
           "yaxis": {
-            "align": false,
-            "alignLevel": null
+            "align": false
           }
         },
         {
@@ -1093,15 +1147,20 @@ data:
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "prometheus",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P1809F7CD0C75ACF3"
+          },
           "description": "api login counters",
           "fill": 1,
+          "fillGradient": 0,
           "gridPos": {
             "h": 7,
             "w": 5,
             "x": 19,
             "y": 13
           },
+          "hiddenSeries": false,
           "id": 19,
           "legend": {
             "alignAsTable": true,
@@ -1117,7 +1176,11 @@ data:
           "linewidth": 1,
           "links": [],
           "nullPointMode": "null",
+          "options": {
+            "alertThreshold": true
+          },
           "percentage": false,
+          "pluginVersion": "10.2.3",
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
@@ -1127,6 +1190,10 @@ data:
           "steppedLine": false,
           "targets": [
             {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "P1809F7CD0C75ACF3"
+              },
               "expr": "grafana_api_login_post_total{kubernetes_name=\"$pod\"}",
               "format": "time_series",
               "intervalFactor": 2,
@@ -1134,6 +1201,10 @@ data:
               "refId": "A"
             },
             {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "P1809F7CD0C75ACF3"
+              },
               "expr": "grafana_api_login_oauth_total{kubernetes_name=\"$pod\"}",
               "format": "time_series",
               "intervalFactor": 2,
@@ -1142,9 +1213,7 @@ data:
             }
           ],
           "thresholds": [],
-          "timeFrom": null,
           "timeRegions": [],
-          "timeShift": null,
           "title": "Login Counts",
           "tooltip": {
             "shared": true,
@@ -1153,37 +1222,32 @@ data:
           },
           "type": "graph",
           "xaxis": {
-            "buckets": null,
             "mode": "time",
-            "name": null,
             "show": true,
             "values": []
           },
           "yaxes": [
             {
               "format": "short",
-              "label": null,
               "logBase": 1,
-              "max": null,
-              "min": null,
               "show": true
             },
             {
               "format": "short",
-              "label": null,
               "logBase": 1,
-              "max": null,
-              "min": null,
               "show": true
             }
           ],
           "yaxis": {
-            "align": false,
-            "alignLevel": null
+            "align": false
           }
         },
         {
           "collapsed": false,
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P1809F7CD0C75ACF3"
+          },
           "gridPos": {
             "h": 1,
             "w": 24,
@@ -1192,7 +1256,15 @@ data:
           },
           "id": 24,
           "panels": [],
-          "repeat": null,
+          "targets": [
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "P1809F7CD0C75ACF3"
+              },
+              "refId": "A"
+            }
+          ],
           "title": "Dataproxy Stats",
           "type": "row"
         },
@@ -1201,15 +1273,20 @@ data:
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "prometheus",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P1809F7CD0C75ACF3"
+          },
           "description": "summary for dataproxy request duration",
           "fill": 1,
+          "fillGradient": 0,
           "gridPos": {
             "h": 7,
             "w": 12,
             "x": 0,
             "y": 21
           },
+          "hiddenSeries": false,
           "id": 6,
           "legend": {
             "alignAsTable": true,
@@ -1225,7 +1302,11 @@ data:
           "linewidth": 1,
           "links": [],
           "nullPointMode": "null",
+          "options": {
+            "alertThreshold": true
+          },
           "percentage": false,
+          "pluginVersion": "10.2.3",
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
@@ -1235,6 +1316,10 @@ data:
           "steppedLine": false,
           "targets": [
             {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "P1809F7CD0C75ACF3"
+              },
               "expr": "grafana_api_dataproxy_request_all_milliseconds{kubernetes_name=\"$pod\", quantile=\"0.5\"}",
               "format": "time_series",
               "intervalFactor": 2,
@@ -1242,6 +1327,10 @@ data:
               "refId": "A"
             },
             {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "P1809F7CD0C75ACF3"
+              },
               "expr": "grafana_api_dataproxy_request_all_milliseconds{kubernetes_name=\"$pod\", quantile=\"0.9\"}",
               "format": "time_series",
               "intervalFactor": 2,
@@ -1249,6 +1338,10 @@ data:
               "refId": "B"
             },
             {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "P1809F7CD0C75ACF3"
+              },
               "expr": "grafana_api_dataproxy_request_all_milliseconds{kubernetes_name=\"$pod\", quantile=\"0.99\"}",
               "format": "time_series",
               "intervalFactor": 2,
@@ -1257,9 +1350,7 @@ data:
             }
           ],
           "thresholds": [],
-          "timeFrom": null,
           "timeRegions": [],
-          "timeShift": null,
           "title": "Dataproxy Request Quantiles",
           "tooltip": {
             "shared": true,
@@ -1268,33 +1359,24 @@ data:
           },
           "type": "graph",
           "xaxis": {
-            "buckets": null,
             "mode": "time",
-            "name": null,
             "show": true,
             "values": []
           },
           "yaxes": [
             {
               "format": "ms",
-              "label": null,
               "logBase": 1,
-              "max": null,
-              "min": null,
               "show": true
             },
             {
               "format": "short",
-              "label": null,
               "logBase": 1,
-              "max": null,
-              "min": null,
               "show": true
             }
           ],
           "yaxis": {
-            "align": false,
-            "alignLevel": null
+            "align": false
           }
         },
         {
@@ -1302,15 +1384,20 @@ data:
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "prometheus",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P1809F7CD0C75ACF3"
+          },
           "description": "average dataproxy request duration over 5 minutes",
           "fill": 1,
+          "fillGradient": 0,
           "gridPos": {
             "h": 7,
             "w": 12,
             "x": 12,
             "y": 21
           },
+          "hiddenSeries": false,
           "id": 7,
           "legend": {
             "alignAsTable": true,
@@ -1326,7 +1413,11 @@ data:
           "linewidth": 1,
           "links": [],
           "nullPointMode": "null",
+          "options": {
+            "alertThreshold": true
+          },
           "percentage": false,
+          "pluginVersion": "10.2.3",
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
@@ -1336,6 +1427,10 @@ data:
           "steppedLine": false,
           "targets": [
             {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "P1809F7CD0C75ACF3"
+              },
               "expr": "rate(grafana_api_dataproxy_request_all_milliseconds_sum{kubernetes_name=\"$pod\"}[5m]) / rate(grafana_api_dataproxy_request_all_milliseconds_count{kubernetes_name=\"$pod\"}[5m])",
               "format": "time_series",
               "intervalFactor": 2,
@@ -1344,9 +1439,7 @@ data:
             }
           ],
           "thresholds": [],
-          "timeFrom": null,
           "timeRegions": [],
-          "timeShift": null,
           "title": "Dataproxy Request Avg [5 min]",
           "tooltip": {
             "shared": true,
@@ -1355,37 +1448,32 @@ data:
           },
           "type": "graph",
           "xaxis": {
-            "buckets": null,
             "mode": "time",
-            "name": null,
             "show": true,
             "values": []
           },
           "yaxes": [
             {
               "format": "ms",
-              "label": null,
               "logBase": 1,
-              "max": null,
-              "min": null,
               "show": true
             },
             {
               "format": "short",
-              "label": null,
               "logBase": 1,
-              "max": null,
-              "min": null,
               "show": true
             }
           ],
           "yaxis": {
-            "align": false,
-            "alignLevel": null
+            "align": false
           }
         },
         {
           "collapsed": false,
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P1809F7CD0C75ACF3"
+          },
           "gridPos": {
             "h": 1,
             "w": 24,
@@ -1394,7 +1482,15 @@ data:
           },
           "id": 25,
           "panels": [],
-          "repeat": null,
+          "targets": [
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "P1809F7CD0C75ACF3"
+              },
+              "refId": "A"
+            }
+          ],
           "title": "Dashboard Get Stats",
           "type": "row"
         },
@@ -1403,15 +1499,20 @@ data:
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "prometheus",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P1809F7CD0C75ACF3"
+          },
           "description": "summary for dashboard get duration",
           "fill": 1,
+          "fillGradient": 0,
           "gridPos": {
             "h": 7,
             "w": 12,
             "x": 0,
             "y": 29
           },
+          "hiddenSeries": false,
           "id": 8,
           "legend": {
             "alignAsTable": true,
@@ -1427,7 +1528,11 @@ data:
           "linewidth": 1,
           "links": [],
           "nullPointMode": "null",
+          "options": {
+            "alertThreshold": true
+          },
           "percentage": false,
+          "pluginVersion": "10.2.3",
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
@@ -1437,6 +1542,10 @@ data:
           "steppedLine": false,
           "targets": [
             {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "P1809F7CD0C75ACF3"
+              },
               "expr": "grafana_api_dashboard_get_milliseconds{kubernetes_name=\"$pod\", quantile=\"0.5\"}",
               "format": "time_series",
               "intervalFactor": 2,
@@ -1444,6 +1553,10 @@ data:
               "refId": "A"
             },
             {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "P1809F7CD0C75ACF3"
+              },
               "expr": "grafana_api_dashboard_get_milliseconds{kubernetes_name=\"$pod\", quantile=\"0.9\"}",
               "format": "time_series",
               "intervalFactor": 2,
@@ -1451,6 +1564,10 @@ data:
               "refId": "B"
             },
             {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "P1809F7CD0C75ACF3"
+              },
               "expr": "grafana_api_dashboard_get_milliseconds{kubernetes_name=\"$pod\", quantile=\"0.99\"}",
               "format": "time_series",
               "intervalFactor": 2,
@@ -1459,9 +1576,7 @@ data:
             }
           ],
           "thresholds": [],
-          "timeFrom": null,
           "timeRegions": [],
-          "timeShift": null,
           "title": "Dashboard Get Duration Quantiles",
           "tooltip": {
             "shared": true,
@@ -1470,33 +1585,24 @@ data:
           },
           "type": "graph",
           "xaxis": {
-            "buckets": null,
             "mode": "time",
-            "name": null,
             "show": true,
             "values": []
           },
           "yaxes": [
             {
               "format": "ms",
-              "label": null,
               "logBase": 1,
-              "max": null,
-              "min": null,
               "show": true
             },
             {
               "format": "short",
-              "label": null,
               "logBase": 1,
-              "max": null,
-              "min": null,
               "show": true
             }
           ],
           "yaxis": {
-            "align": false,
-            "alignLevel": null
+            "align": false
           }
         },
         {
@@ -1504,15 +1610,20 @@ data:
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "prometheus",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P1809F7CD0C75ACF3"
+          },
           "description": "average dashboard get duration over 5 minutes",
           "fill": 1,
+          "fillGradient": 0,
           "gridPos": {
             "h": 7,
             "w": 12,
             "x": 12,
             "y": 29
           },
+          "hiddenSeries": false,
           "id": 9,
           "legend": {
             "alignAsTable": true,
@@ -1528,7 +1639,11 @@ data:
           "linewidth": 1,
           "links": [],
           "nullPointMode": "null",
+          "options": {
+            "alertThreshold": true
+          },
           "percentage": false,
+          "pluginVersion": "10.2.3",
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
@@ -1538,6 +1653,10 @@ data:
           "steppedLine": false,
           "targets": [
             {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "P1809F7CD0C75ACF3"
+              },
               "expr": "rate(grafana_api_dashboard_get_milliseconds_sum{kubernetes_name=\"$pod\"}[5m]) / rate(grafana_api_dashboard_get_milliseconds_count{kubernetes_name=\"$pod\"}[5m])",
               "format": "time_series",
               "intervalFactor": 2,
@@ -1546,9 +1665,7 @@ data:
             }
           ],
           "thresholds": [],
-          "timeFrom": null,
           "timeRegions": [],
-          "timeShift": null,
           "title": "Dashboard Get Duration Avg [5 min]",
           "tooltip": {
             "shared": true,
@@ -1557,37 +1674,32 @@ data:
           },
           "type": "graph",
           "xaxis": {
-            "buckets": null,
             "mode": "time",
-            "name": null,
             "show": true,
             "values": []
           },
           "yaxes": [
             {
               "format": "ms",
-              "label": null,
               "logBase": 1,
-              "max": null,
-              "min": null,
               "show": true
             },
             {
               "format": "short",
-              "label": null,
               "logBase": 1,
-              "max": null,
-              "min": null,
               "show": true
             }
           ],
           "yaxis": {
-            "align": false,
-            "alignLevel": null
+            "align": false
           }
         },
         {
           "collapsed": false,
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P1809F7CD0C75ACF3"
+          },
           "gridPos": {
             "h": 1,
             "w": 24,
@@ -1596,7 +1708,15 @@ data:
           },
           "id": 26,
           "panels": [],
-          "repeat": null,
+          "targets": [
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "P1809F7CD0C75ACF3"
+              },
+              "refId": "A"
+            }
+          ],
           "title": "Dashboard Save Stats",
           "type": "row"
         },
@@ -1605,15 +1725,20 @@ data:
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "prometheus",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P1809F7CD0C75ACF3"
+          },
           "description": "summary for dashboard save duration",
           "fill": 1,
+          "fillGradient": 0,
           "gridPos": {
             "h": 7,
             "w": 12,
             "x": 0,
             "y": 37
           },
+          "hiddenSeries": false,
           "id": 10,
           "legend": {
             "alignAsTable": true,
@@ -1629,7 +1754,11 @@ data:
           "linewidth": 1,
           "links": [],
           "nullPointMode": "null",
+          "options": {
+            "alertThreshold": true
+          },
           "percentage": false,
+          "pluginVersion": "10.2.3",
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
@@ -1639,6 +1768,10 @@ data:
           "steppedLine": false,
           "targets": [
             {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "P1809F7CD0C75ACF3"
+              },
               "expr": "grafana_api_dashboard_save_milliseconds{kubernetes_name=\"$pod\", quantile=\"0.5\"}",
               "format": "time_series",
               "intervalFactor": 2,
@@ -1646,6 +1779,10 @@ data:
               "refId": "A"
             },
             {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "P1809F7CD0C75ACF3"
+              },
               "expr": "grafana_api_dashboard_save_milliseconds{kubernetes_name=\"$pod\", quantile=\"0.9\"}",
               "format": "time_series",
               "intervalFactor": 2,
@@ -1653,6 +1790,10 @@ data:
               "refId": "B"
             },
             {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "P1809F7CD0C75ACF3"
+              },
               "expr": "grafana_api_dashboard_save_milliseconds{kubernetes_name=\"$pod\", quantile=\"0.99\"}",
               "format": "time_series",
               "intervalFactor": 2,
@@ -1661,9 +1802,7 @@ data:
             }
           ],
           "thresholds": [],
-          "timeFrom": null,
           "timeRegions": [],
-          "timeShift": null,
           "title": "Dashboard Save Duration Quantiles",
           "tooltip": {
             "shared": true,
@@ -1672,33 +1811,24 @@ data:
           },
           "type": "graph",
           "xaxis": {
-            "buckets": null,
             "mode": "time",
-            "name": null,
             "show": true,
             "values": []
           },
           "yaxes": [
             {
               "format": "ms",
-              "label": null,
               "logBase": 1,
-              "max": null,
-              "min": null,
               "show": true
             },
             {
               "format": "short",
-              "label": null,
               "logBase": 1,
-              "max": null,
-              "min": null,
               "show": true
             }
           ],
           "yaxis": {
-            "align": false,
-            "alignLevel": null
+            "align": false
           }
         },
         {
@@ -1706,15 +1836,20 @@ data:
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "prometheus",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P1809F7CD0C75ACF3"
+          },
           "description": "average dashboard save duration over 5 minutes",
           "fill": 1,
+          "fillGradient": 0,
           "gridPos": {
             "h": 7,
             "w": 12,
             "x": 12,
             "y": 37
           },
+          "hiddenSeries": false,
           "id": 11,
           "legend": {
             "alignAsTable": true,
@@ -1730,7 +1865,11 @@ data:
           "linewidth": 1,
           "links": [],
           "nullPointMode": "null",
+          "options": {
+            "alertThreshold": true
+          },
           "percentage": false,
+          "pluginVersion": "10.2.3",
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
@@ -1740,6 +1879,10 @@ data:
           "steppedLine": false,
           "targets": [
             {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "P1809F7CD0C75ACF3"
+              },
               "expr": "rate(grafana_api_dashboard_save_milliseconds_sum{kubernetes_name=\"$pod\"}[5m]) / rate(grafana_api_dashboard_save_milliseconds_count{kubernetes_name=\"$pod\"}[5m])",
               "format": "time_series",
               "intervalFactor": 2,
@@ -1748,9 +1891,7 @@ data:
             }
           ],
           "thresholds": [],
-          "timeFrom": null,
           "timeRegions": [],
-          "timeShift": null,
           "title": "Dashboard Save Duration Avg [5 min]",
           "tooltip": {
             "shared": true,
@@ -1759,37 +1900,32 @@ data:
           },
           "type": "graph",
           "xaxis": {
-            "buckets": null,
             "mode": "time",
-            "name": null,
             "show": true,
             "values": []
           },
           "yaxes": [
             {
               "format": "ms",
-              "label": null,
               "logBase": 1,
-              "max": null,
-              "min": null,
               "show": true
             },
             {
               "format": "short",
-              "label": null,
               "logBase": 1,
-              "max": null,
-              "min": null,
               "show": true
             }
           ],
           "yaxis": {
-            "align": false,
-            "alignLevel": null
+            "align": false
           }
         },
         {
           "collapsed": false,
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P1809F7CD0C75ACF3"
+          },
           "gridPos": {
             "h": 1,
             "w": 24,
@@ -1798,7 +1934,15 @@ data:
           },
           "id": 27,
           "panels": [],
-          "repeat": null,
+          "targets": [
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "P1809F7CD0C75ACF3"
+              },
+              "refId": "A"
+            }
+          ],
           "title": "Dashboard Search Stats",
           "type": "row"
         },
@@ -1807,15 +1951,20 @@ data:
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "prometheus",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P1809F7CD0C75ACF3"
+          },
           "description": "summary for dashboard search duration",
           "fill": 1,
+          "fillGradient": 0,
           "gridPos": {
             "h": 7,
             "w": 12,
             "x": 0,
             "y": 45
           },
+          "hiddenSeries": false,
           "id": 12,
           "legend": {
             "alignAsTable": true,
@@ -1831,7 +1980,11 @@ data:
           "linewidth": 1,
           "links": [],
           "nullPointMode": "null",
+          "options": {
+            "alertThreshold": true
+          },
           "percentage": false,
+          "pluginVersion": "10.2.3",
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
@@ -1841,6 +1994,10 @@ data:
           "steppedLine": false,
           "targets": [
             {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "P1809F7CD0C75ACF3"
+              },
               "expr": "grafana_api_dashboard_search_milliseconds{kubernetes_name=\"$pod\", quantile=\"0.5\"}",
               "format": "time_series",
               "intervalFactor": 2,
@@ -1848,6 +2005,10 @@ data:
               "refId": "A"
             },
             {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "P1809F7CD0C75ACF3"
+              },
               "expr": "grafana_api_dashboard_search_milliseconds{kubernetes_name=\"$pod\", quantile=\"0.9\"}",
               "format": "time_series",
               "intervalFactor": 2,
@@ -1855,6 +2016,10 @@ data:
               "refId": "B"
             },
             {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "P1809F7CD0C75ACF3"
+              },
               "expr": "grafana_api_dashboard_search_milliseconds{kubernetes_name=\"$pod\", quantile=\"0.99\"}",
               "format": "time_series",
               "intervalFactor": 2,
@@ -1863,9 +2028,7 @@ data:
             }
           ],
           "thresholds": [],
-          "timeFrom": null,
           "timeRegions": [],
-          "timeShift": null,
           "title": "Dashboard Search Duration Quantiles",
           "tooltip": {
             "shared": true,
@@ -1874,33 +2037,24 @@ data:
           },
           "type": "graph",
           "xaxis": {
-            "buckets": null,
             "mode": "time",
-            "name": null,
             "show": true,
             "values": []
           },
           "yaxes": [
             {
               "format": "ms",
-              "label": null,
               "logBase": 1,
-              "max": null,
-              "min": null,
               "show": true
             },
             {
               "format": "short",
-              "label": null,
               "logBase": 1,
-              "max": null,
-              "min": null,
               "show": true
             }
           ],
           "yaxis": {
-            "align": false,
-            "alignLevel": null
+            "align": false
           }
         },
         {
@@ -1908,15 +2062,20 @@ data:
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "prometheus",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P1809F7CD0C75ACF3"
+          },
           "description": "average dashboard search duration over 5 minutes",
           "fill": 1,
+          "fillGradient": 0,
           "gridPos": {
             "h": 7,
             "w": 12,
             "x": 12,
             "y": 45
           },
+          "hiddenSeries": false,
           "id": 13,
           "legend": {
             "alignAsTable": true,
@@ -1932,7 +2091,11 @@ data:
           "linewidth": 1,
           "links": [],
           "nullPointMode": "null",
+          "options": {
+            "alertThreshold": true
+          },
           "percentage": false,
+          "pluginVersion": "10.2.3",
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
@@ -1942,6 +2105,10 @@ data:
           "steppedLine": false,
           "targets": [
             {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "P1809F7CD0C75ACF3"
+              },
               "expr": "rate(grafana_api_dashboard_search_milliseconds_sum{kubernetes_name=\"$pod\"}[5m]) / rate(grafana_api_dashboard_search_milliseconds_count{kubernetes_name=\"$pod\"}[5m])",
               "format": "time_series",
               "intervalFactor": 2,
@@ -1950,9 +2117,7 @@ data:
             }
           ],
           "thresholds": [],
-          "timeFrom": null,
           "timeRegions": [],
-          "timeShift": null,
           "title": "Dashboard Search Duration Avg [5 min]",
           "tooltip": {
             "shared": true,
@@ -1961,76 +2126,76 @@ data:
           },
           "type": "graph",
           "xaxis": {
-            "buckets": null,
             "mode": "time",
-            "name": null,
             "show": true,
             "values": []
           },
           "yaxes": [
             {
               "format": "ms",
-              "label": null,
               "logBase": 1,
-              "max": null,
-              "min": null,
               "show": true
             },
             {
               "format": "short",
-              "label": null,
               "logBase": 1,
-              "max": null,
-              "min": null,
               "show": true
             }
           ],
           "yaxis": {
-            "align": false,
-            "alignLevel": null
+            "align": false
           }
         }
       ],
-      "refresh": false,
-      "schemaVersion": 16,
-      "style": "dark",
+      "refresh": "",
+      "schemaVersion": 39,
       "tags": [
         "grafana"
       ],
       "templating": {
         "list": [
           {
-            "allValue": null,
             "current": {
+              "selected": false,
               "text": "grafana",
               "value": "grafana"
             },
-            "datasource": "prometheus",
-            "definition": "label_values(grafana_info,kubernetes_name)",
+            "datasource": {
+              "type": "prometheus",
+              "uid": "P1809F7CD0C75ACF3"
+            },
+            "definition": "label_values(grafana_stat_totals_viewers,kubernetes_name)",
             "hide": 0,
             "includeAll": false,
             "label": "Pod",
             "multi": false,
             "name": "pod",
             "options": [],
-            "query": "label_values(grafana_info,kubernetes_name)",
+            "query": {
+              "qryType": 1,
+              "query": "label_values(grafana_stat_totals_viewers,kubernetes_name)",
+              "refId": "PrometheusVariableQueryEditor-VariableQuery"
+            },
             "refresh": 2,
             "regex": "",
             "skipUrlSync": false,
             "sort": 1,
             "tagValuesQuery": "",
-            "tags": [],
             "tagsQuery": "",
             "type": "query",
             "useTags": false
           },
           {
-            "allValue": null,
             "current": {
-              "text": "5.4.3",
-              "value": "5.4.3"
+              "isNone": true,
+              "selected": false,
+              "text": "None",
+              "value": ""
             },
-            "datasource": "prometheus",
+            "datasource": {
+              "type": "prometheus",
+              "uid": "P1809F7CD0C75ACF3"
+            },
             "definition": "",
             "hide": 0,
             "includeAll": false,
@@ -2044,7 +2209,6 @@ data:
             "skipUrlSync": false,
             "sort": 1,
             "tagValuesQuery": "",
-            "tags": [],
             "tagsQuery": "",
             "type": "query",
             "useTags": false
@@ -2083,5 +2247,6 @@ data:
       "timezone": "browser",
       "title": "Grafana",
       "uid": "m6eId_igk",
-      "version": 7
+      "version": 1,
+      "weekStart": ""
     }
