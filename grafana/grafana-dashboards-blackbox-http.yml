@@ -1,12 +1,12 @@
 kind: ConfigMap
 apiVersion: v1
 metadata:
-  name: grafana-dashboards-blackbox
+  name: grafana-dashboards-blackbox-http
   namespace: monitoring
   labels:
     grafana-dashboard: "true"
 data:
-  blackbox.json: |
+  http-blackbox.json: |
     {
       "annotations": {
         "list": [
@@ -912,17 +912,17 @@ data:
             "current": {
               "selected": true,
               "text": [
-                "http://192.168.1.145"
+                "https://static.208.147.201.195.clients.your-server.de"
               ],
               "value": [
-                "http://192.168.1.145"
+                "https://static.208.147.201.195.clients.your-server.de"
               ]
             },
             "datasource": {
               "type": "prometheus",
               "uid": "P1809F7CD0C75ACF3"
             },
-            "definition": "label_values(probe_success,instance)",
+            "definition": "label_values(probe_success{job=\"blackbox\"},instance)",
             "hide": 0,
             "includeAll": true,
             "multi": true,
@@ -930,7 +930,7 @@ data:
             "options": [],
             "query": {
               "qryType": 1,
-              "query": "label_values(probe_success,instance)",
+              "query": "label_values(probe_success{job=\"blackbox\"},instance)",
               "refId": "PrometheusVariableQueryEditor-VariableQuery"
             },
             "refresh": 1,
@@ -974,7 +974,7 @@ data:
         ]
       },
       "timezone": "",
-      "title": "Blackbox Exporter",
+      "title": "Blackbox Exporter HTTP",
       "uid": "xtkCtBkiz",
       "version": 1,
       "weekStart": ""

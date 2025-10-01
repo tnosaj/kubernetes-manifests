@@ -27,42 +27,66 @@ data:
         metrics_path: '/node/metrics'
         static_configs:
           - targets: ['monitoring.freikirche-traun.at']
+            labels:
+              longterm: "true"
       - job_name: 'fk-traun-mysql'
         metrics_path: '/mysql/metrics'
         static_configs:
           - targets: ['monitoring.freikirche-traun.at']
+            labels:
+              longterm: "true"
       - job_name: 'fk-traun-nginx'
         metrics_path: '/nginx/metrics'
         static_configs:
           - targets: ['monitoring.freikirche-traun.at']
+            labels:
+              longterm: "true"
       - job_name: 'nas'
         static_configs:
           - targets: ['192.168.1.125:9100']
+            labels:
+              longterm: "true"
       - job_name: 'ai'
         static_configs:
           - targets: ['192.168.1.138:9100']
+            labels:
+              longterm: "true"
       - job_name: 'screen'
         static_configs:
           - targets: ['192.168.1.178:9100']
+            labels:
+              longterm: "true"
       - job_name: 'vpn-node'
         static_configs:
           - targets: ['192.168.1.145:9100']
+            labels:
+              longterm: "true"
       - job_name: 'ssl'
         static_configs:
           - targets: ['192.168.1.162:9100']
+            labels:
+              longterm: "true"
       - job_name: 'ssl-nginx'
         static_configs:
           - targets: ['192.168.1.162:9113']
+            labels:
+              longterm: "true"
       - job_name: 'ssl-certbot'
         static_configs:
           - targets: ['192.168.1.162:9099']
+            labels:
+              longterm: "true"
       - job_name: 'ssl-fail2ban'
         static_configs:
           - targets: ['192.168.1.162:9191']
+            labels:
+              longterm: "true"
       - job_name: 'sar-server-node'
         metrics_path: '/metrics/node'
         static_configs:
           - targets: ['$SERVER']
+            labels:
+              longterm: "true"
         basic_auth:
           username: '$BASICAUTHUSER'
           password: '$BASICAUTHPASS'
@@ -70,6 +94,8 @@ data:
         metrics_path: '/metrics/nginx'
         static_configs:
           - targets: ['$SERVER']
+            labels:
+              longterm: "true"
         basic_auth:
           username: '$BASICAUTHUSER'
           password: '$BASICAUTHPASS'
@@ -77,6 +103,8 @@ data:
         metrics_path: '/metrics/fail2ban'
         static_configs:
           - targets: ['$SERVER']
+            labels:
+              longterm: "true"
         basic_auth:
           username: '$BASICAUTHUSER'
           password: '$BASICAUTHPASS'
@@ -84,6 +112,8 @@ data:
         metrics_path: '/metrics/certbot'
         static_configs:
           - targets: ['$SERVER']
+            labels:
+              longterm: "true"
         basic_auth:
           username: '$BASICAUTHUSER'
           password: '$BASICAUTHPASS'
@@ -92,18 +122,39 @@ data:
         bearer_token: '$HOMEASSISTANT_TOKEN'
         static_configs:
           - targets: ['homeassistant.homeassistant.svc:8123']
+            labels:
+              longterm: "true"
       - job_name: 'opendtu'
         scrape_interval: 60s
         scrape_timeout: 30s
         metrics_path: '/api/prometheus/metrics'
         static_configs:
           - targets: ['192.168.1.146:80']
+            labels:
+              longterm: "true"
       - job_name: 'prometheus'
         static_configs:
           - targets: ['prometheus.monitoring.svc:9090']
       - job_name: 'prometheus-backup'
         static_configs:
           - targets: ['prometheus-backup.monitoring.svc:9090']
+			- job_name: 'internet_latency'
+				metrics_path: /probe
+				params:
+					module: [icmp]
+				static_configs:
+					- targets:
+						- 1.1.1.1    # Cloudflare
+						- 8.8.8.8    # Google DNS
+            labels:
+              longterm: "true"
+				relabel_configs:
+					- source_labels: [__address__]
+						target_label: __param_target
+					- source_labels: [__param_target]
+						target_label: instance
+					- target_label: __address__
+            replacement: blackbox-exporter.monitoring.svc:9115
       - job_name: 'blackbox'
         metrics_path: /probe
         params:
@@ -112,7 +163,9 @@ data:
           - targets:
             - https://freikirche-traun.at
             - https://sar-voest.duckdns.org
-            - https://$SERVER
+            - https://$SERVER/up
+            labels:
+              longterm: "true"
         relabel_configs:
           - source_labels: [__address__]
             target_label: __param_target
