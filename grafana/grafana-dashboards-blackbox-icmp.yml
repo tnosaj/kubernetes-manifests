@@ -27,7 +27,6 @@ data:
       "editable": true,
       "fiscalYearStartMonth": 0,
       "graphTooltip": 0,
-      "id": 23,
       "links": [],
       "liveNow": false,
       "panels": [
@@ -107,7 +106,7 @@ data:
           },
           "gridPos": {
             "h": 8,
-            "w": 12,
+            "w": 9,
             "x": 0,
             "y": 1
           },
@@ -172,7 +171,7 @@ data:
           "gridPos": {
             "h": 4,
             "w": 4,
-            "x": 12,
+            "x": 9,
             "y": 1
           },
           "id": 5,
@@ -217,6 +216,102 @@ data:
           "fieldConfig": {
             "defaults": {
               "color": {
+                "mode": "palette-classic"
+              },
+              "custom": {
+                "axisBorderShow": false,
+                "axisCenteredZero": false,
+                "axisColorMode": "text",
+                "axisLabel": "",
+                "axisPlacement": "auto",
+                "barAlignment": 0,
+                "drawStyle": "line",
+                "fillOpacity": 0,
+                "gradientMode": "none",
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
+                "insertNulls": false,
+                "lineInterpolation": "linear",
+                "lineWidth": 1,
+                "pointSize": 5,
+                "scaleDistribution": {
+                  "type": "linear"
+                },
+                "showPoints": "auto",
+                "spanNulls": false,
+                "stacking": {
+                  "group": "A",
+                  "mode": "none"
+                },
+                "thresholdsStyle": {
+                  "mode": "off"
+                }
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              },
+              "unit": "s"
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 8,
+            "w": 9,
+            "x": 13,
+            "y": 1
+          },
+          "id": 15,
+          "options": {
+            "legend": {
+              "calcs": [],
+              "displayMode": "list",
+              "placement": "bottom",
+              "showLegend": true
+            },
+            "tooltip": {
+              "mode": "single",
+              "sort": "none"
+            }
+          },
+          "targets": [
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "P1809F7CD0C75ACF3"
+              },
+              "editorMode": "code",
+              "expr": "ping_loss_ratio{target=~\"$targets\"}",
+              "instant": false,
+              "legendFormat": "{{target}}",
+              "range": true,
+              "refId": "A"
+            }
+          ],
+          "title": "Packet Loss",
+          "type": "timeseries"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P1809F7CD0C75ACF3"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "color": {
                 "mode": "thresholds"
               },
               "mappings": [],
@@ -240,7 +335,7 @@ data:
           "gridPos": {
             "h": 4,
             "w": 4,
-            "x": 12,
+            "x": 9,
             "y": 5
           },
           "id": 6,
@@ -321,6 +416,6 @@ data:
       "timezone": "",
       "title": "Blackbox Exporter ICMP",
       "uid": "fbaba168-8daf-40f2-bd68-2f0d2a3a1219",
-      "version": 1,
+      "version": 2,
       "weekStart": ""
     }

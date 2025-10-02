@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ping-exporter
+  namespace: monitoring
+spec:
+  selector:
+    matchLabels:
+      app: ping-exporter
+  template:
+    metadata:
+      labels:
+        app: ping-exporter
+    spec:
+      containers:
+      - name: ping-exporter
+        image: czerwonk/ping_exporter
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "200m"
+        volumeMounts:
+          - name: config-volume
+            mountPath: /config
+        ports:
+        - containerPort: 9427
+      volumes:
+        - name: config-volume
+          configMap:
+            name: ping-exporter-config
