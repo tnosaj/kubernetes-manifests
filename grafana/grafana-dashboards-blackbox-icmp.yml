@@ -264,7 +264,7 @@ data:
                   }
                 ]
               },
-              "unit": "s"
+              "unit": "percentunit"
             },
             "overrides": []
           },
@@ -301,7 +301,7 @@ data:
               "refId": "A"
             }
           ],
-          "title": "Packet Loss",
+          "title": "Packet Loss [%]",
           "type": "timeseries"
         },
         {
@@ -416,6 +416,6 @@ data:
       "timezone": "",
       "title": "Blackbox Exporter ICMP",
       "uid": "fbaba168-8daf-40f2-bd68-2f0d2a3a1219",
-      "version": 2,
+      "version": 3,
       "weekStart": ""
     }
