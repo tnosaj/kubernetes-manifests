@@ -25,7 +25,7 @@ spec:
         worker: "true"
       containers:
       - name: sidecar
-        image: kiwigrid/k8s-sidecar:latest
+        image: kiwigrid/k8s-sidecar:1.30.9
         volumeMounts:
         - name: grafana-dashboards
           mountPath: /tmp/
