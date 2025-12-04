@@ -81,6 +81,11 @@ data:
           - targets: ['192.168.1.162:9191']
             labels:
               longterm: "true"
+      - job_name: 'ups'
+        static_configs:
+          - targets: ['192.168.1.30:9780']
+            labels:
+              longterm: "true"
       - job_name: 'sar-server-node'
         metrics_path: '/metrics/node'
         static_configs:
