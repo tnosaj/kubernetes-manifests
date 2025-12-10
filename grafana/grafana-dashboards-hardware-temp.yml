@@ -120,10 +120,10 @@ data:
                 "uid": "P1809F7CD0C75ACF3"
               },
               "editorMode": "code",
-              "expr": "avg(node_hwmon_temp_celsius{kubernetes_pod_node_name=~\"wrk.*\"}) by (kubernetes_pod_node_name)",
+              "expr": "avg(node_hwmon_temp_celsius{job=~\"ai|nas|vpn-node|screen|ssl\"})by(job)",
               "format": "time_series",
               "intervalFactor": 1,
-              "legendFormat": "{{kubernetes_pod_node_name}}",
+              "legendFormat": "{{job}}",
               "range": true,
               "refId": "A"
             }
