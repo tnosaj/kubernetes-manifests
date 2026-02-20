@@ -219,7 +219,7 @@ data:
                 "uid": "P1809F7CD0C75ACF3"
               },
               "editorMode": "code",
-              "expr": "node_hwmon_temp_celsius{job=~\"ai|nas|vpn-node|screen|ssl\"}",
+              "expr": "node_hwmon_temp_celsius{job=~\"ai|nas|backup-node|screen|ssl\"}",
               "format": "time_series",
               "intervalFactor": 1,
               "legendFormat": "{{job}}-{{sensor}}",
