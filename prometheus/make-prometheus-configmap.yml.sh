@@ -56,9 +56,9 @@ data:
           - targets: ['192.168.1.178:9100']
             labels:
               longterm: "true"
-      - job_name: 'vpn-node'
+      - job_name: 'backup-node'
         static_configs:
-          - targets: ['192.168.1.145:9100']
+          - targets: ['192.168.1.61:9100']
             labels:
               longterm: "true"
       - job_name: 'ssl'
