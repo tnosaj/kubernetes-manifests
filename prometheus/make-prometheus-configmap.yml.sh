@@ -86,6 +86,21 @@ data:
           - targets: ['192.168.1.30:9780']
             labels:
               longterm: "true"
+      - job_name: 'nas-disks'
+        static_configs:
+          - targets: ['192.168.1.125:9633']
+            labels:
+              longterm: "true"
+      - job_name: 'ai-disks'
+        static_configs:
+          - targets: ['192.168.1.138:9633']
+            labels:
+              longterm: "true"
+      - job_name: 'backup-disks'
+        static_configs:
+          - targets: ['192.168.1.61:9633']
+            labels:
+              longterm: "true"
       - job_name: 'sar-server-node'
         metrics_path: '/metrics/node'
         static_configs:
@@ -205,7 +220,6 @@ data:
           regex: (.+)
           target_label: __metrics_path__
           replacement: /api/v1/nodes/\${1}/proxy/metrics
-      
       - job_name: 'kubernetes-pods'
         kubernetes_sd_configs:
         - role: pod
