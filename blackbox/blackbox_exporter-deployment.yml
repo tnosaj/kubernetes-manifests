@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: blackbox-exporter
-        image: prom/blackbox-exporter
+        image: prom/blackbox-exporter:latest
         ports:
         - name: blackbox
           containerPort: 9115
