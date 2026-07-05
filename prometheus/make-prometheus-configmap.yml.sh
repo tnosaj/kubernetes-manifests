@@ -48,7 +48,7 @@ data:
               longterm: "true"
       - job_name: 'ai'
         static_configs:
-          - targets: ['192.168.1.138:9100']
+          - targets: ['192.168.1.58:9100']
             labels:
               longterm: "true"
       - job_name: 'screen'
@@ -103,7 +103,7 @@ data:
               longterm: "true"
       - job_name: 'ai-disks'
         static_configs:
-          - targets: ['192.168.1.138:9633']
+          - targets: ['192.168.1.58:9633']
             labels:
               longterm: "true"
       - job_name: 'backup-disks'
@@ -168,22 +168,23 @@ data:
       - job_name: 'prometheus-backup'
         static_configs:
           - targets: ['prometheus-backup.monitoring.svc:9090']
-			- job_name: 'internet_latency'
-				metrics_path: /probe
-				params:
-					module: [icmp]
-				static_configs:
-					- targets:
-						- 1.1.1.1    # Cloudflare
-						- 8.8.8.8    # Google DNS
+      - job_name: 'internet_latency'
+        metrics_path: /probe
+        params:
+          module: [icmp]
+        static_configs:
+          - targets:
+            - 1.1.1.1    # Cloudflare
+            - 8.8.8.8    # Google DNS
+            - 192.168.0.1
             labels:
               longterm: "true"
-				relabel_configs:
-					- source_labels: [__address__]
-						target_label: __param_target
-					- source_labels: [__param_target]
-						target_label: instance
-					- target_label: __address__
+        relabel_configs:
+          - source_labels: [__address__]
+            target_label: __param_target
+          - source_labels: [__param_target]
+            target_label: instance
+          - target_label: __address__
             replacement: blackbox-exporter.monitoring.svc:9115
       - job_name: 'blackbox'
         metrics_path: /probe
