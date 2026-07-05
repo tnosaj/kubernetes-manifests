@@ -61,6 +61,16 @@ data:
           - targets: ['192.168.1.61:9100']
             labels:
               longterm: "true"
+      - job_name: 'ollama'
+        static_configs:
+          - targets: ['192.168.1.16:9100']
+            labels:
+              longterm: "true"
+      - job_name: 'ollama-ollama'
+        static_configs:
+          - targets: ['192.168.1.16:9400']
+            labels:
+              longterm: "true"
       - job_name: 'ssl'
         static_configs:
           - targets: ['192.168.1.162:9100']
