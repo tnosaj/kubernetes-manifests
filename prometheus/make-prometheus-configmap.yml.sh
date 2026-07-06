@@ -412,7 +412,7 @@ data:
               title: "Temperature Sensor Metrics Missing"
               description: "Metrics for the temperature sensors from home assistant are missing"
           - alert: ExporterDown
-            expr: up != 1
+            expr: up{job!~"ollama|ollama-ollama"} != 1
             for: 30m
             labels:
               severity: slack
